@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=9 format=3 uid="uid://cwpm1jnf5exi3"]
 
-[ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Dani Test/TestMovementCollide.cs" id="1_c8pj7"]
-[ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="1_x6abv"]
+[ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
+[ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
+[ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Background/1.jpg" id="3_nhkr4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
@@ -21,17 +22,16 @@ size = Vector2(20, 2160)
 
 [node name="MoveTest" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Snorp" type="CharacterBody2D" parent="."]
 motion_mode = 1
-script = ExtResource("1_c8pj7")
-speedIncrease = 3000.0
+script = ExtResource("1_tr2i4")
 
-[node name="SnorpUfo" type="Sprite2D" parent="CharacterBody2D"]
+[node name="SnorpUfo" type="Sprite2D" parent="Snorp"]
 position = Vector2(1904.0001, 1045)
 scale = Vector2(0.1583742, 0.13923799)
-texture = ExtResource("1_x6abv")
+texture = ExtResource("2_nhkr4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Snorp"]
 position = Vector2(1901, 1023)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tx7fy")
@@ -59,3 +59,9 @@ position = Vector2(3830, 1080)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
 shape = SubResource("RectangleShape2D_o8fna")
+
+[node name="background" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(1920.4999, 1080.5)
+scale = Vector2(2.133889, 1.8008333)
+texture = ExtResource("3_nhkr4")

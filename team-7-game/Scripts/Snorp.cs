@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TestMovementCollide : CharacterBody2D
+public partial class Snorp : CharacterBody2D
 {
 	// Creates the speed and direction
 	[Export] public float Speed = 300.0f;
@@ -43,11 +43,10 @@ public partial class TestMovementCollide : CharacterBody2D
 		var collision = MoveAndCollide(Velocity * (float)delta);
 
 		// if collides Bounces in the relative direction
-		// also increases Speed everytime by speedIncrease amount
 		if (collision != null)
 		{
 			direction = direction.Bounce(collision.GetNormal());
-			Speed += speedIncrease;
+			Speed += speedIncrease;  // also increases Speed everytime by speedIncrease amount
 		}
 	}
 }
