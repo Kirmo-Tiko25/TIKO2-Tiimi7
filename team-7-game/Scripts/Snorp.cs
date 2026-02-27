@@ -8,7 +8,9 @@ public partial class Snorp : CharacterBody2D
 	[Export] public float speedIncrease = 50.0f;
 	private Vector2 direction;
 	[Export] private bool canMove = false;
-
+	[Export] private int maxhealth = 3;
+	public int CurrentHealth;
+	public int points;
 	public override async void _Ready()
 	{
 		// Randomize start movement direction
@@ -29,6 +31,10 @@ public partial class Snorp : CharacterBody2D
 		);
 
 		canMove = true;
+
+		// Gives you maxhealth in the start
+		CurrentHealth = maxhealth;
+
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -47,6 +53,28 @@ public partial class Snorp : CharacterBody2D
 		{
 			direction = direction.Bounce(collision.GetNormal());
 			Speed += speedIncrease;  // also increases Speed everytime by speedIncrease amount
+
+			points++;
+			GD.Print("You got a point now you have: "+points);
 		}
 	}
+	public void TakeDamage(int damage)
+    {
+		// Damage taking system every time this method is used it takes 1 of your HP away
+        CurrentHealth -= damage;
+        GD.Print("Player HP: " + CurrentHealth);
+		// This checks that if you have 0 HP after taking damage the game ends and you die
+        if (CurrentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+	private void Die()
+    {
+		// When this method is called it means you have died and the game ends
+        GD.Print("You Died!");
+		GD.Print("You got "+points+" Points!");
+        QueueFree();
+    }
 }
