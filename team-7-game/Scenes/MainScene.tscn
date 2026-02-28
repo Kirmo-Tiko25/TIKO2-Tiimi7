@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=13 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Background/1.jpg" id="3_nhkr4"]
+[ext_resource type="Script" uid="uid://ckujsir53050v" path="res://Scripts/Spawner.cs" id="5_qxria"]
+[ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/asteroid.tscn" id="5_y4jh7"]
+[ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
@@ -19,6 +22,12 @@ size = Vector2(20, 2160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8fna"]
 size = Vector2(20, 2160)
+
+[sub_resource type="Curve2D" id="Curve2D_qxria"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0.90327454, -5.7673798, 0, 0, 0, 0, 3665.4866, 11.6388855, 0, 0, 0, 0, 3665.4866, 1978.5454, 0, 0, 0, 0, -7.3876343, 1969.8423, 0, 0, 0, 0, 0.90327454, -5.7673798)
+}
+point_count = 5
 
 [node name="MoveTest" type="Node2D"]
 
@@ -65,3 +74,31 @@ show_behind_parent = true
 position = Vector2(1920.4999, 1080.5)
 scale = Vector2(2.133889, 1.8008333)
 texture = ExtResource("3_nhkr4")
+
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource("5_qxria")
+AsteroidScene = ExtResource("5_y4jh7")
+
+[node name="Asteroid" parent="Spawner" instance=ExtResource("5_y4jh7")]
+position = Vector2(600, 1024)
+
+[node name="ObjectTimer" type="Timer" parent="Spawner"]
+wait_time = 2.0
+
+[node name="StartTimer" type="Timer" parent="Spawner"]
+one_shot = true
+
+[node name="ObjectPath" type="Path2D" parent="Spawner"]
+position = Vector2(135.12842, 189.30142)
+scale = Vector2(0.9649118, 0.9192099)
+curve = SubResource("Curve2D_qxria")
+
+[node name="ObjectSpawnLocation" type="PathFollow2D" parent="Spawner/ObjectPath"]
+position = Vector2(0.90327454, -5.7673798)
+rotation = 0.004749826
+
+[node name="Sprite2D" type="Sprite2D" parent="Spawner/ObjectPath/ObjectSpawnLocation"]
+texture = ExtResource("6_q68mp")
+
+[connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
+[connection signal="timeout" from="Spawner/StartTimer" to="Spawner" method="OnStartTimerTimeout"]
