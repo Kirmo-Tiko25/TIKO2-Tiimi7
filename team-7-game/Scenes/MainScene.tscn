@@ -1,27 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=10 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Background/1.jpg" id="3_nhkr4"]
-[ext_resource type="Script" uid="uid://ckujsir53050v" path="res://Scripts/Spawner.cs" id="5_qxria"]
+[ext_resource type="Script" path="res://Scripts/Spawner.cs" id="5_qxria"]
 [ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/asteroid.tscn" id="5_y4jh7"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
+[ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
 height = 176.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_un5mk"]
-size = Vector2(3840, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvag"]
-size = Vector2(3840, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxefp"]
-size = Vector2(20, 2160)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8fna"]
-size = Vector2(20, 2160)
 
 [sub_resource type="Curve2D" id="Curve2D_qxria"]
 _data = {
@@ -44,30 +33,6 @@ texture = ExtResource("2_nhkr4")
 position = Vector2(1901, 1023)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tx7fy")
-
-[node name="TopWall" type="StaticBody2D" parent="."]
-position = Vector2(1920, 50)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
-shape = SubResource("RectangleShape2D_un5mk")
-
-[node name="BottomWall" type="StaticBody2D" parent="."]
-position = Vector2(1920, 2150)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
-shape = SubResource("RectangleShape2D_fkvag")
-
-[node name="LeftWall" type="StaticBody2D" parent="."]
-position = Vector2(10, 1080)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-shape = SubResource("RectangleShape2D_mxefp")
-
-[node name="RightWall" type="StaticBody2D" parent="."]
-position = Vector2(3830, 1080)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
-shape = SubResource("RectangleShape2D_o8fna")
 
 [node name="background" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -99,6 +64,8 @@ rotation = 0.004749826
 
 [node name="Sprite2D" type="Sprite2D" parent="Spawner/ObjectPath/ObjectSpawnLocation"]
 texture = ExtResource("6_q68mp")
+
+[node name="BorderWalls" parent="." instance=ExtResource("7_q68mp")]
 
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
 [connection signal="timeout" from="Spawner/StartTimer" to="Spawner" method="OnStartTimerTimeout"]
