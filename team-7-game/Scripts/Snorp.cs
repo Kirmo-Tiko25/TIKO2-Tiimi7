@@ -1,11 +1,13 @@
 using Godot;
 using System;
+using System.Text.RegularExpressions;
 
 public partial class Snorp : CharacterBody2D
 {
 	// Creates the speed and direction
 	[Export] public float Speed = 300.0f;
 	[Export] public float speedIncrease = 50.0f;
+	[Export] public float speedDecrease = 0.5f;
 	private Vector2 direction;
 	[Export] private bool canMove = false;
 	[Export] private int maxhealth = 3;
@@ -24,7 +26,7 @@ public partial class Snorp : CharacterBody2D
 			case 3: direction = new Vector2(1, 1).Normalized(); break;
 		}
 
-		// Create timer so Glorp wont move immediately
+		// Create timer so Snorp wont move immediately
 		await ToSignal(
 			GetTree().CreateTimer(3.0f),
 			SceneTreeTimer.SignalName.Timeout
@@ -42,20 +44,23 @@ public partial class Snorp : CharacterBody2D
 		if (!canMove) return;
 
 		// Create Velocity and local _velocity
-		Vector2 _velocity = direction * Speed;
-		Velocity = _velocity;
+		Vector2 Velocity = direction * Speed;
 
 		// Create Movement and enables colliding instead of MoveAndSlide sliding
 		var collision = MoveAndCollide(Velocity * (float)delta);
 
-		// if collides Bounces in the relative direction
+		// Checks if a collision happened.
 		if (collision != null)
 		{
-			direction = direction.Bounce(collision.GetNormal());
-			Speed += speedIncrease;  // also increases Speed everytime by speedIncrease amount
-
-			points++;
-			GD.Print("You got a point now you have: "+points);
+			// Checks if the collider is a hazard and if it is calls the relevant method.
+			if (collision.GetCollider() is Node collider && collider.IsInGroup("Hazards"))
+			{
+				HandleHazardCollision(collision);
+			}
+			else
+			{
+				HandleWallCollision(collision);
+			}
 		}
 	}
 	public void TakeDamage(int damage)
@@ -77,4 +82,27 @@ public partial class Snorp : CharacterBody2D
 		GD.Print("You got "+points+" Points!");
         QueueFree();
     }
+
+	private void HandleWallCollision(KinematicCollision2D collision)
+	{
+		direction = direction.Bounce(collision.GetNormal()); // Bounces in the relevant direction.
+		Speed += speedIncrease;  // also increases Speed everytime by speedIncrease amount
+
+		points++;
+		GD.Print("You got a point now you have: "+points);
+	}
+
+	private void HandleHazardCollision(KinematicCollision2D collision)
+	{
+		Speed *= speedDecrease; // Decreases speed by speedDecrease amount
+		TakeDamage(1);
+
+		Vector2 bounce = direction.Bounce(collision.GetNormal());
+
+		// Checks the direction of the bounce and changes the movement direction accordingly
+		if      (bounce.X > 0 && bounce.Y > 0)  direction = new Vector2(1, 1).Normalized();
+		else if (bounce.X > 0 && bounce.Y < 0)  direction = new Vector2(1, -1).Normalized();
+		else if (bounce.X < 0 && bounce.Y > 0)  direction = new Vector2(-1, 1).Normalized();
+		else if (bounce.X < 0 && bounce.Y < 0)  direction = new Vector2(-1, -1).Normalized();
+	}
 }
