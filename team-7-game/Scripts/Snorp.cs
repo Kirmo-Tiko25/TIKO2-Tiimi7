@@ -81,6 +81,7 @@ public partial class Snorp : CharacterBody2D
         GD.Print("You Died!");
 		GD.Print("You got "+points+" Points!");
         QueueFree();
+		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
     }
 
 	private void HandleWallCollision(KinematicCollision2D collision)
