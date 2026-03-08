@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2scnpeoidmyf"]
+
+[ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Background/1.jpg" id="1_3kf3n"]
+[ext_resource type="Script" uid="uid://dd6wwwplcusbd" path="res://Scripts/Menu.cs" id="2_6pedr"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1920.5, 1080.5)
+scale = Vector2(2.134, 1.801)
+texture = ExtResource("1_3kf3n")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1516.0
+offset_top = 1162.0
+offset_right = 2406.0
+offset_bottom = 1356.0
+script = ExtResource("2_6pedr")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -565.0
+offset_right = 896.0
+offset_bottom = -288.0
+theme_override_font_sizes/font_size = 100
+text = "Suojelupeli"
+horizontal_alignment = 1
+
+[node name="Nappi" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 881.0
+offset_bottom = 195.0
+theme_override_font_sizes/font_size = 100
+text = "Play"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 230.0
+offset_right = 890.0
+offset_bottom = 431.0
+theme_override_font_sizes/font_size = 100
+text = "Options"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 476.0
+offset_right = 886.0
+offset_bottom = 677.0
+theme_override_font_sizes/font_size = 100
+text = "Quit
+"
