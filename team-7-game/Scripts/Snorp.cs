@@ -105,5 +105,7 @@ public partial class Snorp : CharacterBody2D
 		else if (bounce.X > 0 && bounce.Y < 0)  direction = new Vector2(1, -1).Normalized();
 		else if (bounce.X < 0 && bounce.Y > 0)  direction = new Vector2(-1, 1).Normalized();
 		else if (bounce.X < 0 && bounce.Y < 0)  direction = new Vector2(-1, -1).Normalized();
+
+		GD.Print("You crashed into a hazard!");
 	}
 }
