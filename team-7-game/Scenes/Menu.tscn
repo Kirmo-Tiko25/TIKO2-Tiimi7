@@ -37,7 +37,7 @@ offset_bottom = 195.0
 theme_override_font_sizes/font_size = 100
 text = "Play"
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Options" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -5.0
 offset_top = 230.0
@@ -46,7 +46,7 @@ offset_bottom = 431.0
 theme_override_font_sizes/font_size = 100
 text = "Options"
 
-[node name="Button2" type="Button" parent="Control"]
+[node name="Quit" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -9.0
 offset_top = 476.0
