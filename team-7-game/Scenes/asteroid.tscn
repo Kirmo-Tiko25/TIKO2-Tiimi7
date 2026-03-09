@@ -77,7 +77,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7o5tt"]
 radius = 27.0
 
-[node name="Asteroid" type="RigidBody2D"]
+[node name="Asteroid" type="RigidBody2D" groups=["Hazards"]]
 position = Vector2(46, 33)
 gravity_scale = 0.0
 script = ExtResource("1_tsol6")
@@ -89,7 +89,7 @@ animation = &"spin"
 frame = 6
 frame_progress = 0.24495518
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Hazards"]]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_7o5tt")
 

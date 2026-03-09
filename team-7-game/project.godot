@@ -26,6 +26,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Team7 Game"
 
+[global_group]
+
+Hazards="For space dangers that do damage"
+
 [input]
 
 move_right={

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgmlfgy5yi5rb"]
+
+[ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Background/1.jpg" id="1_m5628"]
+[ext_resource type="Script" uid="uid://ciohg0gx8xy4i" path="res://Scripts/GameOver.cs" id="2_k52d1"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1920.5, 1080.5)
+scale = Vector2(2.134, 1.801)
+texture = ExtResource("1_m5628")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1780.0
+offset_top = 1119.0
+offset_right = 2033.0
+offset_bottom = 1351.0
+script = ExtResource("2_k52d1")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -419.0
+offset_top = -587.0
+offset_right = 699.0
+offset_bottom = -192.0
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="retry" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -258.0
+offset_top = -217.0
+offset_right = 511.0
+offset_bottom = -47.0
+theme_override_font_sizes/font_size = 100
+text = "Retry"
+
+[node name="menu" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -272.0
+offset_top = 48.0
+offset_right = 506.0
+offset_bottom = 198.0
+theme_override_font_sizes/font_size = 100
+text = "Menu"

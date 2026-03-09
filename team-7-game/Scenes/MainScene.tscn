@@ -25,6 +25,8 @@ collision_layer = 3
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_tr2i4")
+Speed = 500.0
+canMove = true
 
 [node name="SnorpUfo" type="Sprite2D" parent="Snorp"]
 position = Vector2(1904.0001, 1045)
@@ -46,7 +48,7 @@ texture = ExtResource("3_nhkr4")
 script = ExtResource("5_qxria")
 AsteroidScene = ExtResource("5_y4jh7")
 
-[node name="Asteroid" parent="Spawner" instance=ExtResource("5_y4jh7")]
+[node name="Asteroid" parent="Spawner" groups=["Hazards"] instance=ExtResource("5_y4jh7")]
 position = Vector2(600, 1024)
 
 [node name="ObjectTimer" type="Timer" parent="Spawner"]
