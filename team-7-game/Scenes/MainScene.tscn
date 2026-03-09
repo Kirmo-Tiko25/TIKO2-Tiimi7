@@ -14,7 +14,7 @@ height = 176.0
 
 [sub_resource type="Curve2D" id="Curve2D_qxria"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0.90327454, -5.7673798, 0, 0, 0, 0, 3665.4866, 11.6388855, 0, 0, 0, 0, 3665.4866, 1978.5454, 0, 0, 0, 0, -7.3876343, 1969.8423, 0, 0, 0, 0, 0.90327454, -5.7673798)
+"points": PackedVector2Array(0, 0, 0, 0, -122.82941, -153.72055, 0, 0, 0, 0, 3665.4866, -153.72052, 0, 0, 0, 0, 3665.4868, 2122.9622, 0, 0, 0, 0, -122.82941, 2131.4573, 0, 0, 0, 0, -122.82941, -153.72055)
 }
 point_count = 5
 
@@ -56,15 +56,15 @@ wait_time = 2.0
 one_shot = true
 
 [node name="ObjectPath" type="Path2D" parent="Spawner"]
-position = Vector2(135.12842, 189.30142)
-scale = Vector2(0.9649118, 0.9192099)
+position = Vector2(139.20824, 144.76186)
+scale = Vector2(1.0030842, 0.94172114)
 curve = SubResource("Curve2D_qxria")
 
 [node name="ObjectSpawnLocation" type="PathFollow2D" parent="Spawner/ObjectPath"]
-position = Vector2(0.90327454, -5.7673798)
-rotation = 0.004749826
+position = Vector2(-122.82941, -153.72055)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spawner/ObjectPath/ObjectSpawnLocation"]
+visible = false
 texture = ExtResource("6_q68mp")
 
 [node name="BorderWalls" parent="." instance=ExtResource("7_q68mp")]
