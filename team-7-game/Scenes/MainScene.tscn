@@ -38,6 +38,9 @@ position = Vector2(1901, 1023)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tx7fy")
 
+[node name="ImmuneTimer" type="Timer" parent="Snorp"]
+one_shot = true
+
 [node name="background" type="Sprite2D" parent="."]
 show_behind_parent = true
 position = Vector2(1920.4999, 1080.5)
@@ -48,8 +51,9 @@ texture = ExtResource("3_nhkr4")
 script = ExtResource("5_qxria")
 AsteroidScene = ExtResource("5_y4jh7")
 
-[node name="Asteroid" parent="Spawner" groups=["Hazards"] instance=ExtResource("5_y4jh7")]
+[node name="Asteroid" parent="Spawner" instance=ExtResource("5_y4jh7")]
 position = Vector2(600, 1024)
+scale = Vector2(0.9678769, 0.9951271)
 
 [node name="ObjectTimer" type="Timer" parent="Spawner"]
 wait_time = 2.0
@@ -71,5 +75,6 @@ texture = ExtResource("6_q68mp")
 
 [node name="BorderWalls" parent="." instance=ExtResource("7_q68mp")]
 
+[connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
 [connection signal="timeout" from="Spawner/StartTimer" to="Spawner" method="OnStartTimerTimeout"]

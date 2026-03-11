@@ -13,6 +13,7 @@ public partial class Snorp : CharacterBody2D
 	[Export] private int maxhealth = 3;
 	public int CurrentHealth;
 	public int points;
+	private bool immune = false;
 	public override async void _Ready()
 	{
 		// Randomize start movement direction
@@ -65,15 +66,30 @@ public partial class Snorp : CharacterBody2D
 	}
 	public void TakeDamage(int damage)
     {
-		// Damage taking system every time this method is used it takes 1 of your HP away
-        CurrentHealth -= damage;
-        GD.Print("Player HP: " + CurrentHealth);
-		// This checks that if you have 0 HP after taking damage the game ends and you die
-        if (CurrentHealth <= 0)
-        {
-            Die();
-        }
-    }
+		if (immune)
+		{
+			GD.Print("Crashed while Immune");
+		}
+		else
+		{
+			// 1 sec immunity
+			immune = true;
+			GetNode<Timer>("ImmuneTimer").Start();
+
+			// Damage taking system every time this method is used it takes 1 of your HP away
+			CurrentHealth -= damage;
+			GD.Print("Player HP: " + CurrentHealth);
+			// This checks that if you have 0 HP after taking damage the game ends and you die
+
+			// Decreases speed by speedDecrease amount
+			Speed *= speedDecrease;
+		}
+
+		if (CurrentHealth <= 0)
+		{
+			Die();
+		}
+	}
 
 	private void Die()
     {
@@ -95,7 +111,9 @@ public partial class Snorp : CharacterBody2D
 
 	private void HandleHazardCollision(KinematicCollision2D collision)
 	{
-		Speed *= speedDecrease; // Decreases speed by speedDecrease amount
+		// Pushes the player slightly away from the hazard to prevent sticking
+		GlobalPosition += collision.GetNormal() * 1f;
+
 		TakeDamage(1);
 
 		Vector2 bounce = direction.Bounce(collision.GetNormal());
@@ -107,5 +125,10 @@ public partial class Snorp : CharacterBody2D
 		else if (bounce.X < 0 && bounce.Y < 0)  direction = new Vector2(-1, -1).Normalized();
 
 		GD.Print("You crashed into a hazard!");
+	}
+	private void OnImmuneTimerTimeout()
+	{
+	immune = false;
+	GD.Print("Immunity ended");
 	}
 }
