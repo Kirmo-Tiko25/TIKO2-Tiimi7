@@ -3,13 +3,11 @@ using System;
 
 public partial class GameManager : Node2D
 {
-	public static GameManager Instance { get; private set; }
 	public static int Points { get; private set; } = 0;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Instance = this;
 	}
 
 	public static void AddPoint(int amount)
