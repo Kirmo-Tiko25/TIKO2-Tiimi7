@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=11 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/asteroid.tscn" id="5_y4jh7"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 [ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]
+[ext_resource type="Script" uid="uid://best7mddoga28" path="res://Scenes/PointManager.cs" id="8_f140w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
@@ -74,6 +75,9 @@ visible = false
 texture = ExtResource("6_q68mp")
 
 [node name="BorderWalls" parent="." instance=ExtResource("7_q68mp")]
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("8_f140w")
 
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]

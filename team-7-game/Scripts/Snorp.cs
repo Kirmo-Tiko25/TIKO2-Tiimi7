@@ -12,7 +12,6 @@ public partial class Snorp : CharacterBody2D
 	[Export] private bool canMove = false;
 	[Export] private int maxhealth = 3;
 	public int CurrentHealth;
-	public int points;
 	private bool immune = false;
 	public override async void _Ready()
 	{
@@ -95,7 +94,7 @@ public partial class Snorp : CharacterBody2D
     {
 		// When this method is called it means you have died and the game ends
         GD.Print("You Died!");
-		GD.Print("You got "+points+" Points!");
+		GD.Print("You got "+ GameManager.Points +" Points!");
         QueueFree();
 		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
     }
@@ -105,8 +104,7 @@ public partial class Snorp : CharacterBody2D
 		direction = direction.Bounce(collision.GetNormal()); // Bounces in the relevant direction.
 		Speed += speedIncrease;  // also increases Speed everytime by speedIncrease amount
 
-		points++;
-		GD.Print("You got a point now you have: "+points);
+		GameManager.AddPoint(1);
 	}
 
 	private void HandleHazardCollision(KinematicCollision2D collision)

@@ -26,6 +26,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Team7 Game"
 
+[editor]
+
+version_control/autoload_on_startup=true
+
 [global_group]
 
 Hazards="For space dangers that do damage"
@@ -61,3 +65,4 @@ pause={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
