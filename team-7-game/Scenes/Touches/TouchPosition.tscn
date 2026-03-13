@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgub5trsqi7aj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly5vk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p3wvx"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.25550345, 0.31457347, 0.80171263, 1)
+self_modulate = Color(0.56295663, 0.67222387, 0.910986, 1)
+z_index = 90
+material = SubResource("ShaderMaterial_ly5vk")
+scale = Vector2(204.25, 204.25)
+texture = SubResource("PlaceholderTexture2D_p3wvx")
+
+[node name="Text" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+z_index = 91
+offset_left = -104.0
+offset_top = -102.0
+offset_right = 104.0
+offset_bottom = 100.0
+text = "0"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1

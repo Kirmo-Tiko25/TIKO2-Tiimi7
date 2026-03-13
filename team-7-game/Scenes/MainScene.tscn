@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=12 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Background/1.jpg" id="3_nhkr4"]
 [ext_resource type="Script" uid="uid://ckujsir53050v" path="res://Scripts/Spawner.cs" id="5_qxria"]
 [ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/asteroid.tscn" id="5_y4jh7"]
+[ext_resource type="PackedScene" uid="uid://bo7aisp40hvdd" path="res://Scenes/Touches/Touch_scene.tscn" id="6_0iob3"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 [ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]
 [ext_resource type="Script" uid="uid://best7mddoga28" path="res://Scenes/PointManager.cs" id="8_f140w"]
@@ -51,6 +52,8 @@ texture = ExtResource("3_nhkr4")
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("5_qxria")
 AsteroidScene = ExtResource("5_y4jh7")
+
+[node name="TouchScene" parent="Spawner" instance=ExtResource("6_0iob3")]
 
 [node name="Asteroid" parent="Spawner" instance=ExtResource("5_y4jh7")]
 position = Vector2(600, 1024)
