@@ -11,8 +11,8 @@ public partial class GameManager : Node2D
 	}
 
 	public static void AddPoint(int amount)
-    {
-        Points += amount;
-        GD.Print("You got a point, now you have: " + Points);
-    }
+	{
+		Points += amount;
+		GD.Print("You got a point, now you have: " + Points);
+	}
 }
