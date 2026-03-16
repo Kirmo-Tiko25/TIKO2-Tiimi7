@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bo7aisp40hvdd"]
 
 [ext_resource type="Script" uid="uid://co1y57pgjaffv" path="res://Scripts/Touches.cs" id="1_hpwkd"]
-[ext_resource type="PackedScene" uid="uid://dgub5trsqi7aj" path="res://Scenes/Touches/TouchPosition.tscn" id="2_erbia"]
+[ext_resource type="PackedScene" uid="uid://yxl61h0crb01" path="res://Scenes/Touches/TouchPosition2.tscn" id="2_erbia"]
 [ext_resource type="PackedScene" uid="uid://dsvmbkj34xql3" path="res://Scenes/Touches/OriginalTouchPoint.tscn" id="3_3eh0d"]
 
 [node name="TouchScene" type="Node2D"]
