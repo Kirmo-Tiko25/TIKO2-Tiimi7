@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://07ssi72rve26"]
 
-[ext_resource type="Script" uid="uid://11lbgfw23ydj" path="res://Leaderboard.cs" id="1_oxn4a"]
+[ext_resource type="Script" uid="uid://11lbgfw23ydj" path="res://Scripts/LeaderboardScripts/Leaderboard.cs" id="1_oxn4a"]
 [ext_resource type="LabelSettings" uid="uid://dwr1ii23eiqdj" path="res://Text_Settings/Leaderboard_Labels.tres" id="2_0uewc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oxn4a"]
