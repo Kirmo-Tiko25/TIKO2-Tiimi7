@@ -79,6 +79,8 @@ radius = 27.0
 
 [node name="Asteroid" type="RigidBody2D" groups=["Hazards"]]
 position = Vector2(46, 33)
+collision_layer = 5
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_tsol6")
 metadata/_edit_group_ = true
