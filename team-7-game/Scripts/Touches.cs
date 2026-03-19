@@ -31,7 +31,7 @@ public partial class Touches : Node2D
 				newOriginalTouchPoint.Position = touch.Position;
 
 				// changes the text number on touchpoint to what number touch it is (0-9 in yeti?)
-				newTouchPoint.GetNode<RichTextLabel>("Text").Text = touch.Index.ToString();
+				newTouchPoint.GetNode<RichTextLabel>("TouchNuber").Text = touch.Index.ToString();
 
 				// save the touch points and add them to an index
 				TouchData tempTouchData = new TouchData
@@ -42,7 +42,7 @@ public partial class Touches : Node2D
 
 				touchData.Add(touch.Index, tempTouchData);
 			}
-			else // no longer touching (could change to trigger from release event)
+			else // no longer touching (could TODO change to trigger from release event)
 			{
 				// free the touchpoints from the index
 				touchData[touch.Index].originalTouchPoint.QueueFree();
