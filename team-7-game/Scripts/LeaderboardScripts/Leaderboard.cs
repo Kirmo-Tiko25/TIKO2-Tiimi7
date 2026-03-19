@@ -1,29 +1,34 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Text.Json;
 
 public partial class Leaderboard : Control
 {
 	private const string filePath = "user://leaderboard.json";
-	
+
+	private List<LeaderboardEntry> Entry = new();
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		// hide unnecessary UI elements until we know if the player has a high score or not
+		// readability improvement
 		var NameInput = GetNode<LineEdit>("NameInput");
-		NameInput.Visible = false;
-
 		var EnterButton = GetNode<Button>("EnterName");
-		EnterButton.Visible = false;
 
-		// checks if the player has a score that is higher than the lowest score on the leaderboard, 
+		// hide unnecessary UI elements until we know if the player has a high score or not
+		GetNode<Control>("IfGoodScore").Visible = false;
+
+
+		// checks if the player has a score that is higher than the lowest score on the leaderboard,
 		// if it is then it shows the input field and the button to enter their name
+
+		LoadLeaderboard();
+
 		ScoreCheck();
 
 		EnterButton.Pressed += OnEnterNamePressed;
 
-
-		LeaderboardFileExistCheck();
 	}
 
 	// private void ScoreCheck()
@@ -42,7 +47,7 @@ public partial class Leaderboard : Control
 
 		if (!string.IsNullOrEmpty(nameInput.Text))
 		{
-			SaveScore(nameInput.Text, GameManager.Points);
+			// SaveScore(nameInput.Text, GameManager.Points);
 
 			nameInput.Visible = false;
 			EnterButton.Visible = false;
@@ -50,14 +55,24 @@ public partial class Leaderboard : Control
 		}
 	}
 
-	private void LeaderboardFileExistCheck()
+	private void ScoreCheck()
 	{
+		bool qualifies = LeaderboardEntries < 5;
+		LoadLeaderboard();
+
+	}
+
+	private void LoadLeaderboard()
+	{
+		var fileWrite = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
+		var fileRead = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+
 		if (!FileAccess.FileExists(filePath))
 		{
-			var file = FileAccess.Open(filePath, FileAccess.ModeFlags.Write);
-			file.StoreString("[]");
-			file.Close();
+			fileWrite.StoreString("[]");
+			fileWrite.Close();
 		}
+
 	}
 }
 // SaveScore(nameInput.Text, GameManager.Points);

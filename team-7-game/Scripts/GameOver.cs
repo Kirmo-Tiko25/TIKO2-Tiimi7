@@ -14,10 +14,12 @@ public partial class GameOver : Control
     private void OnRetryPressed()
     {
         GetTree().ChangeSceneToFile("res://Scenes/Mainscene.tscn");
+        GameManager.ResetPoints();
     }
 
     private void OnMenuPressed()
     {
         GetTree().ChangeSceneToFile("res://Scenes/Menu.tscn");
+        GameManager.ResetPoints();
     }
 }

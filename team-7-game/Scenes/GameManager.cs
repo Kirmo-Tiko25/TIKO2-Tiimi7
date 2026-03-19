@@ -15,4 +15,9 @@ public partial class GameManager : Node2D
 		Points += amount;
 		GD.Print("You got a point, now you have: " + Points);
 	}
+
+	public static void ResetPoints()
+	{
+		Points = 0;
+	}
 }
