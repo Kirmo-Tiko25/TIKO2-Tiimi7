@@ -8,6 +8,8 @@ public partial class Spawner : Node
 	public PackedScene SmallAsteroidScene { get; set; }
 	[Export]
 	public PackedScene BigAsteroidScene { get; set; }
+	[Export]
+	public PackedScene CometScene { get; set; }
 
 	//TODO score system.
 	// private int _score;
@@ -49,14 +51,41 @@ public partial class Spawner : Node
 	private void OnStartTimerTimeout()
 	{
 		GetNode<Timer>("ObjectTimer").Start();
-		//GetNode<Timer>("ScoreTimer").Start();
+		GetNode<Timer>("DistracTimer").Start();
 
 		// for Logging.
-		GD.Print("Start Timer timeout: Started ObjectTimer");
+		GD.Print("Start Timer timeout: Started ObjectTimer and DistracTimer");
 	}
 
 	int objectsSpawned = 0;
 	int dangerLevel = 1;
+
+	private void OnDistracTimerTimeout()
+	{
+		// Create a new instance of the Asteroid scene.
+		Comet comet = CometScene.Instantiate<Comet>();
+
+		// Choose a random location on Path2D.
+		var SpawnLocation = GetNode<PathFollow2D>("LeftPath/LeftSpawnLocation");
+		SpawnLocation.ProgressRatio = GD.Randf();
+
+		// Set the Object's direction perpendicular to the path direction.
+		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+
+		// Set the Object's position to a random location.
+		comet.Position = SpawnLocation.Position;
+
+		// Add some randomness to the direction.
+		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
+		comet.Rotation = direction;
+
+		// Choose the velocity.
+		var velocity = new Vector2((float)GD.RandRange(100.0, 300.0), 0);
+		comet.LinearVelocity = velocity.Rotated(direction);
+
+		// Spawn the mob by adding it to the Main scene.
+		AddChild(comet);
+	}
 
 	// After each timer tick spawn a new child object and fling it in random direction.
 	private void OnObjectTimerTimeout()
