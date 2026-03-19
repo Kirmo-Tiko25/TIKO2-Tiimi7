@@ -1,0 +1,150 @@
+[gd_scene load_steps=5 format=3 uid="uid://07ssi72rve26"]
+
+[ext_resource type="Script" uid="uid://11lbgfw23ydj" path="res://Scripts/Leaderboard.cs" id="1_oxn4a"]
+[ext_resource type="LabelSettings" uid="uid://dwr1ii23eiqdj" path="res://Text_Settings/Leaderboard_Labels.tres" id="2_0uewc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oxn4a"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_0uewc"]
+font_size = 40
+
+[node name="Leaderboard" type="Node2D"]
+
+[node name="Leaderboard UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_oxn4a")
+
+[node name="VisibleLeaderboard" type="Control" parent="Leaderboard UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeaderboardLabel" type="Label" parent="Leaderboard UI/VisibleLeaderboard"]
+top_level = true
+layout_mode = 0
+offset_left = 188.0
+offset_top = 65.0
+offset_right = 808.0
+offset_bottom = 202.0
+text = "Leaderboard"
+label_settings = SubResource("LabelSettings_oxn4a")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Leaderboard UI/VisibleLeaderboard"]
+layout_mode = 1
+offset_left = 198.0
+offset_top = 191.0
+offset_right = 818.0
+offset_bottom = 482.0
+columns = 3
+
+[node name="1_" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "1:"
+label_settings = ExtResource("2_0uewc")
+
+[node name="1_Name" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+label_settings = ExtResource("2_0uewc")
+
+[node name="1_Score" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+label_settings = ExtResource("2_0uewc")
+
+[node name="2_" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "2:"
+label_settings = SubResource("LabelSettings_0uewc")
+
+[node name="2_Name" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+label_settings = ExtResource("2_0uewc")
+
+[node name="2_Score" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+label_settings = ExtResource("2_0uewc")
+
+[node name="3_" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+text = "3:"
+label_settings = SubResource("LabelSettings_0uewc")
+
+[node name="3_Name" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+label_settings = ExtResource("2_0uewc")
+
+[node name="3_Score" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+label_settings = ExtResource("2_0uewc")
+
+[node name="4_" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+text = "4:"
+label_settings = SubResource("LabelSettings_0uewc")
+
+[node name="4_Name" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+label_settings = ExtResource("2_0uewc")
+
+[node name="4_Score" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+label_settings = ExtResource("2_0uewc")
+
+[node name="5_" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+text = "5:"
+label_settings = SubResource("LabelSettings_0uewc")
+
+[node name="5_Name" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+label_settings = ExtResource("2_0uewc")
+
+[node name="5_Score" type="Label" parent="Leaderboard UI/VisibleLeaderboard/GridContainer"]
+layout_mode = 2
+label_settings = ExtResource("2_0uewc")
+
+[node name="IfGoodScore" type="Control" parent="Leaderboard UI"]
+anchors_preset = 0
+offset_left = 150.0
+offset_top = 485.0
+offset_right = 190.0
+offset_bottom = 525.0
+
+[node name="NameInput" type="LineEdit" parent="Leaderboard UI/IfGoodScore"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 69.0
+offset_right = 416.0
+offset_bottom = 122.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Enter your name here..."
+max_length = 24
+expand_to_text_length = true
+
+[node name="EnterName" type="Button" parent="Leaderboard UI/IfGoodScore"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 140.0
+offset_right = 186.0
+offset_bottom = 189.0
+text = "CONFIRM NAME"
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Leaderboard UI/IfGoodScore"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 5.0
+offset_right = 832.0
+offset_bottom = 85.0
+text = "Your points qualify for the leaderboard!!!"
+label_settings = ExtResource("2_0uewc")
