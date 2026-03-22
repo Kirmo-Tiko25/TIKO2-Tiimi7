@@ -4,14 +4,14 @@ using System;
 public partial class Damagetest : Area2D
 {
     // Reference to the HeartPointsUI script
-    private HeartPointsUI heartUI;
+    private HeartsPointsUI heartUI;
 
     public override void _Ready()
     {
         BodyEntered += OnBodyEntered;
 
         // Assuming HeartPointsUI is somewhere in the scene tree
-        heartUI = GetNode<HeartPointsUI>("/MoveTest/HeartsPointsUI");
+        heartUI = GetNode<HeartsPointsUI>("/MoveTest/HeartsPointsUI");
         // Adjust the path above to where your HeartPointsUI actually is in the scene
     }
 

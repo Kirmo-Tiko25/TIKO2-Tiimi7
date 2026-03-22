@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class HeartPointsUI : Control
+public partial class HeartsPointsUI : Control
 {
     private TextureRect[] hearts;
 
