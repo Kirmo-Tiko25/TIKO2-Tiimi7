@@ -18,9 +18,6 @@ public partial class HeartsPointsUI : Control
     public void HideHeart(int currentHealth)
 {
     // Hide the heart at the index equal to current health
-    // Example: if health drops from 3 -> 2, hide Heart3 (index 2)
-    int heartIndex = currentHealth;
-    if (heartIndex >= 0 && heartIndex < hearts.Length)
-        hearts[heartIndex].Visible = false;
+        hearts[currentHealth].Visible = false;
 }
 }

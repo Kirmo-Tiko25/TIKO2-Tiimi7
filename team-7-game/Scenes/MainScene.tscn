@@ -89,7 +89,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("10_4b75m")
-textContainerPath = NodePath("Hearts")
 
 [node name="Hearts" type="HBoxContainer" parent="HeartPointsUI"]
 layout_mode = 0

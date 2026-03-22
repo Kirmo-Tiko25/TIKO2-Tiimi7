@@ -10,9 +10,7 @@ public partial class Damagetest : Area2D
     {
         BodyEntered += OnBodyEntered;
 
-        // Assuming HeartPointsUI is somewhere in the scene tree
         heartUI = GetNode<HeartsPointsUI>("/MoveTest/HeartsPointsUI");
-        // Adjust the path above to where your HeartPointsUI actually is in the scene
     }
 
     private void OnBodyEntered(Node body)
@@ -23,7 +21,7 @@ public partial class Damagetest : Area2D
             snorp.TakeDamage(1);
 
             // Hide a heart when damage occurs
-            heartUI.HideHeart(snorp.CurrentHealth); // assuming Health decreases by 1
+            heartUI.HideHeart(snorp.CurrentHealth);
         }
     }
 }
