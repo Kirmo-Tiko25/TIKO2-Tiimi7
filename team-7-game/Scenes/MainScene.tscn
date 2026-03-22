@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=13 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 [ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]
 [ext_resource type="Script" uid="uid://best7mddoga28" path="res://Scenes/GameManager.cs" id="8_f140w"]
+[ext_resource type="Script" uid="uid://bjknpsylnrna7" path="res://Scripts/HeartsPointsUI.cs" id="10_4b75m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
@@ -81,6 +82,31 @@ texture = ExtResource("6_q68mp")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("8_f140w")
+
+[node name="HeartPointsUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_4b75m")
+textContainerPath = NodePath("Hearts")
+
+[node name="Hearts" type="HBoxContainer" parent="HeartPointsUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="TextureRect" parent="HeartPointsUI/Hearts"]
+layout_mode = 2
+texture = ExtResource("6_q68mp")
+
+[node name="Heart2" type="TextureRect" parent="HeartPointsUI/Hearts"]
+layout_mode = 2
+texture = ExtResource("6_q68mp")
+
+[node name="Heart3" type="TextureRect" parent="HeartPointsUI/Hearts"]
+layout_mode = 2
+texture = ExtResource("6_q68mp")
 
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
