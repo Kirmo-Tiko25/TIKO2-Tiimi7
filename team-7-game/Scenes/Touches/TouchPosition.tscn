@@ -7,8 +7,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pj1k1"]
 
 [node name="Node2D" type="Node2D"]
+z_index = 70
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="TouchEffect" type="Sprite2D" parent="."]
 modulate = Color(0.25490198, 0.3137255, 0.8, 0.49019608)
 self_modulate = Color(0.56295663, 0.67222387, 0.910986, 1)
 show_behind_parent = true
@@ -18,7 +19,7 @@ rotation = 0.7853982
 scale = Vector2(204.25, 204.25)
 texture = SubResource("PlaceholderTexture2D_p3wvx")
 
-[node name="Text" type="RichTextLabel" parent="."]
+[node name="TouchNuber" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 z_index = 91
 offset_left = -104.0
@@ -30,7 +31,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="ForcePush" type="CharacterBody2D" parent="."]
 scale = Vector2(10, 10)
 disable_mode = 2
 collision_layer = 4
@@ -39,5 +40,16 @@ motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 4294967040
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForcePush"]
+shape = SubResource("CircleShape2D_pj1k1")
+
+[node name="GravDrag" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+gravity_space_override = 1
+gravity_point = true
+gravity = 500.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GravDrag"]
+scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_pj1k1")

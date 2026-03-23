@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv3c8vetd4iqi"]
+
+[ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_ln1nw"]
+[ext_resource type="Texture2D" uid="uid://bs4fpvh3wep2s" path="res://Art/asteroid2.png" id="2_o813l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7o5tt"]
+radius = 27.0
+
+[node name="asteroid_small" type="RigidBody2D" groups=["Hazards"]]
+position = Vector2(46, 33)
+collision_layer = 5
+collision_mask = 5
+mass = 20.0
+can_sleep = false
+linear_damp_mode = 1
+script = ExtResource("1_ln1nw")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_o813l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Hazards"]]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_7o5tt")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+z_index = 33
+rect = Rect2(-30, -24, 58, 52)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]

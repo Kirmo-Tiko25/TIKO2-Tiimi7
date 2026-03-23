@@ -3,10 +3,13 @@ using System;
 
 public partial class Spawner : Node
 {
-	// Don't forget to rebuild the project so the editor knows about the new export variable.
-
+	[Export] private int Difficulty = 1;
 	[Export]
-	public PackedScene AsteroidScene { get; set; }
+	public PackedScene SmallAsteroidScene { get; set; }
+	[Export]
+	public PackedScene BigAsteroidScene { get; set; }
+	[Export]
+	public PackedScene CometScene { get; set; }
 
 	//TODO score system.
 	// private int _score;
@@ -48,19 +51,63 @@ public partial class Spawner : Node
 	private void OnStartTimerTimeout()
 	{
 		GetNode<Timer>("ObjectTimer").Start();
-		//GetNode<Timer>("ScoreTimer").Start();
+		GetNode<Timer>("DistracTimer").Start();
 
 		// for Logging.
-		GD.Print("Start Timer timeout: Started ObjectTimer");
+		GD.Print("Start Timer timeout: Started ObjectTimer and DistracTimer");
+	}
+
+	int objectsSpawned = 0;
+	int dangerLevel = 1;
+
+	private void OnDistracTimerTimeout()
+	{
+		// Create a new instance of the Asteroid scene.
+		Comet comet = CometScene.Instantiate<Comet>();
+
+		// Choose a random location on Path2D.
+		var SpawnLocation = GetNode<PathFollow2D>("LeftPath/LeftSpawnLocation");
+		SpawnLocation.ProgressRatio = GD.Randf();
+
+		// Set the Object's direction perpendicular to the path direction.
+		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+
+		// Set the Object's position to a random location.
+		comet.Position = SpawnLocation.Position;
+
+		// Add some randomness to the direction.
+		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
+		comet.Rotation = direction;
+
+		// Choose the velocity.
+		var velocity = new Vector2((float)GD.RandRange(100.0, 300.0), 0);
+		comet.LinearVelocity = velocity.Rotated(direction);
+
+		// Spawn the mob by adding it to the Main scene.
+		AddChild(comet);
 	}
 
 	// After each timer tick spawn a new child object and fling it in random direction.
 	private void OnObjectTimerTimeout()
 	{
+		if (GD.RandRange(1, (Difficulty + dangerLevel)) > 2)
+		{
+			SpawnAsteroidBig();
+		}
+		else
+		{
+			SpawnAsteroidSmall();
+		}
+		objectsSpawned++;
+		dangerLevel++;
 		// for Logging.
-		GD.Print("Object timer tick");
+		GD.Print("Objects spawned: " + objectsSpawned);
+	}
+
+	private void SpawnAsteroidSmall()
+	{
 		// Create a new instance of the Asteroid scene.
-		Asteroid asteroid = AsteroidScene.Instantiate<Asteroid>();
+		Asteroid asteroidS = SmallAsteroidScene.Instantiate<Asteroid>();
 
 		// Choose a random location on Path2D.
 		var SpawnLocation = GetNode<PathFollow2D>("ObjectPath/ObjectSpawnLocation");
@@ -70,18 +117,44 @@ public partial class Spawner : Node
 		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
 
 		// Set the Object's position to a random location.
-		asteroid.Position = SpawnLocation.Position;
+		asteroidS.Position = SpawnLocation.Position;
 
 		// Add some randomness to the direction.
 		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
-		asteroid.Rotation = direction;
+		asteroidS.Rotation = direction;
 
 		// Choose the velocity.
 		var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
-		asteroid.LinearVelocity = velocity.Rotated(direction);
+		asteroidS.LinearVelocity = velocity.Rotated(direction);
 
 		// Spawn the mob by adding it to the Main scene.
-		AddChild(asteroid);
+		AddChild(asteroidS);
+	}
+	private void SpawnAsteroidBig()
+	{
+		// Create a new instance of the Asteroid scene.
+		Asteroid asteroidB = BigAsteroidScene.Instantiate<Asteroid>();
+
+		// Choose a random location on Path2D.
+		var SpawnLocation = GetNode<PathFollow2D>("ObjectPath/ObjectSpawnLocation");
+		SpawnLocation.ProgressRatio = GD.Randf();
+
+		// Set the Object's direction perpendicular to the path direction.
+		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+
+		// Set the Object's position to a random location.
+		asteroidB.Position = SpawnLocation.Position;
+
+		// Add some randomness to the direction.
+		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
+		asteroidB.Rotation = direction;
+
+		// Choose the velocity.
+		var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
+		asteroidB.LinearVelocity = velocity.Rotated(direction);
+
+		// Spawn the mob by adding it to the Main scene.
+		AddChild(asteroidB);
 	}
 }
 

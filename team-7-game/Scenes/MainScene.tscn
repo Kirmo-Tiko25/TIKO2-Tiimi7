@@ -1,15 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=15 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
-[ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Background/1.jpg" id="3_nhkr4"]
+[ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="3_0iob3"]
 [ext_resource type="Script" uid="uid://ckujsir53050v" path="res://Scripts/Spawner.cs" id="5_qxria"]
-[ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/asteroid.tscn" id="5_y4jh7"]
+[ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/Obstacles/asteroid_small.tscn" id="5_y4jh7"]
 [ext_resource type="PackedScene" uid="uid://bo7aisp40hvdd" path="res://Scenes/Touches/Touch_scene.tscn" id="6_0iob3"]
+[ext_resource type="PackedScene" uid="uid://bs6oihemqwhgr" path="res://Scenes/Obstacles/asteroid_big.tscn" id="6_4b75m"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 [ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]
 [ext_resource type="Script" uid="uid://best7mddoga28" path="res://Scenes/GameManager.cs" id="8_f140w"]
 [ext_resource type="PackedScene" uid="uid://bylmnutb5inpb" path="res://Scenes/heart_points_ui.tscn" id="10_4b75m"]
+[ext_resource type="PackedScene" uid="uid://djxfohaq2vfqh" path="res://Scenes/Obstacles/Comet.tscn" id="9_8ju71"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
@@ -21,14 +23,33 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Curve2D" id="Curve2D_4b75m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8, -8, 0, 0, 0, 0, 8, 2144, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, -8)
+}
+point_count = 4
+
 [node name="MoveTest" type="Node2D"]
 
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("8_f140w")
+
+[node name="background" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(1920.4999, 1080.5)
+scale = Vector2(2.133889, 1.8008333)
+texture = ExtResource("3_0iob3")
+
+[node name="BorderWalls" parent="." instance=ExtResource("7_q68mp")]
+
 [node name="Snorp" type="CharacterBody2D" parent="."]
+z_index = 88
 collision_layer = 3
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_tr2i4")
 Speed = 500.0
+speedDecrease = 0.9
 canMove = true
 
 [node name="SnorpUfo" type="Sprite2D" parent="Snorp"]
@@ -44,24 +65,19 @@ shape = SubResource("CapsuleShape2D_tx7fy")
 [node name="ImmuneTimer" type="Timer" parent="Snorp"]
 one_shot = true
 
-[node name="background" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(1920.4999, 1080.5)
-scale = Vector2(2.133889, 1.8008333)
-texture = ExtResource("3_nhkr4")
-
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("5_qxria")
-AsteroidScene = ExtResource("5_y4jh7")
+SmallAsteroidScene = ExtResource("5_y4jh7")
+BigAsteroidScene = ExtResource("6_4b75m")
+CometScene = ExtResource("9_8ju71")
 
 [node name="TouchScene" parent="Spawner" instance=ExtResource("6_0iob3")]
 
-[node name="Asteroid" parent="Spawner" instance=ExtResource("5_y4jh7")]
-position = Vector2(600, 1024)
-scale = Vector2(0.9678769, 0.9951271)
-
 [node name="ObjectTimer" type="Timer" parent="Spawner"]
 wait_time = 2.0
+
+[node name="DistracTimer" type="Timer" parent="Spawner"]
+wait_time = 8.0
 
 [node name="StartTimer" type="Timer" parent="Spawner"]
 one_shot = true
@@ -78,13 +94,20 @@ position = Vector2(-122.82941, -153.72055)
 visible = false
 texture = ExtResource("6_q68mp")
 
-[node name="BorderWalls" parent="." instance=ExtResource("7_q68mp")]
+[node name="LeftPath" type="Path2D" parent="Spawner"]
+curve = SubResource("Curve2D_4b75m")
 
-[node name="GameManager" type="Node2D" parent="."]
-script = ExtResource("8_f140w")
+[node name="LeftSpawnLocation" type="PathFollow2D" parent="Spawner/LeftPath"]
+position = Vector2(8, -8)
+rotation = 1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="Spawner/LeftPath/LeftSpawnLocation"]
+visible = false
+texture = ExtResource("6_q68mp")
 
 [node name="HeartPointsUI" parent="." instance=ExtResource("10_4b75m")]
 
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
+[connection signal="timeout" from="Spawner/DistracTimer" to="Spawner" method="OnDistracTimerTimeout"]
 [connection signal="timeout" from="Spawner/StartTimer" to="Spawner" method="OnStartTimerTimeout"]

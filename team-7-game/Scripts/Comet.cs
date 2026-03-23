@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Asteroid : RigidBody2D
+public partial class Comet : RigidBody2D
 {
 	public override void _Ready()
 	{
@@ -16,8 +16,6 @@ public partial class Asteroid : RigidBody2D
 
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{
-		// TODO send points to score before deleting the object
-		// SendPoints();
 		QueueFree(); //this 'frees', or deletes, the node at the end of the frame.
 	}
 }
