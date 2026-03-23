@@ -3,17 +3,25 @@ using System;
 
 public partial class Damagetest : Area2D
 {
-	private void OnBodyEntered(Node body)
+    // Reference to the HeartPointsUI script
+    private HeartsPointsUI heartUI;
+
+    public override void _Ready()
     {
-		// Every time when player body snorp and Area2D body collides
-		// this method is called and it check if its true and then it calls TakeDamage method from snorp
+        BodyEntered += OnBodyEntered;
+
+        heartUI = GetNode<HeartsPointsUI>("/MoveTest/HeartsPointsUI");
+    }
+
+    private void OnBodyEntered(Node body)
+    {
         if (body is Snorp snorp)
         {
+            // Tell the player to take damage
             snorp.TakeDamage(1);
+
+            // Hide a heart when damage occurs
+            heartUI.HideHeart(snorp.CurrentHealth);
         }
     }
-	public override void _Ready()
-	{
-		BodyEntered += OnBodyEntered;
-	}
 }
