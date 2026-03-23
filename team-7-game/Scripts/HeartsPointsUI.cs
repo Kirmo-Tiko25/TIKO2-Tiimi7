@@ -18,6 +18,6 @@ public partial class HeartsPointsUI : Control
     public void HideHeart(int currentHealth)
 {
     // Hide the heart at the index equal to current health
-        hearts[currentHealth].Visible = false;
+        hearts[currentHealth +1].Visible = false;
 }
 }

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bylmnutb5inpb"]
+
+[ext_resource type="Script" uid="uid://bjknpsylnrna7" path="res://Scripts/HeartsPointsUI.cs" id="1_o5me0"]
+[ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="2_j357t"]
+
+[node name="HeartPointsUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_o5me0")
+
+[node name="Hearts" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("2_j357t")
+
+[node name="Heart2" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("2_j357t")
+
+[node name="Heart3" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("2_j357t")
