@@ -32,6 +32,7 @@ point_count = 4
 [node name="MoveTest" type="Node2D"]
 
 [node name="GameManager" type="Node2D" parent="."]
+process_mode = 3
 script = ExtResource("8_f140w")
 
 [node name="background" type="Sprite2D" parent="."]
@@ -107,7 +108,6 @@ texture = ExtResource("6_q68mp")
 
 [node name="HeartPointsUI" parent="." instance=ExtResource("10_4b75m")]
 
-[connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
 [connection signal="timeout" from="Spawner/DistracTimer" to="Spawner" method="OnDistracTimerTimeout"]
