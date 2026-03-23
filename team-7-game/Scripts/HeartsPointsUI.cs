@@ -13,6 +13,11 @@ public partial class HeartsPointsUI : Control
         hearts[1] = GetNode<TextureRect>("Hearts/Heart2");
         hearts[2] = GetNode<TextureRect>("Hearts/Heart3");
     }
+    public override void _Process(double delta)
+    {
+        var PointsLabel = GetNode<Label>("PointsLabel");
+        PointsLabel.Text = GameManager.Points.ToString();
+    }
 
     // Hide a specific heart by index (0 = Heart1, 1 = Heart2, 2 = Heart3)
     public void HideHeart(int currentHealth)
