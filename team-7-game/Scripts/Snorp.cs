@@ -11,6 +11,7 @@ public partial class Snorp : CharacterBody2D
 	private Vector2 direction;
 	[Export] private bool canMove = false;
 	[Export] private int maxhealth = 3;
+	[Signal] delegate void HealthUIEventHandler(int CurrentHealth);
 	public int CurrentHealth;
 	private bool immune = false;
 	public override async void _Ready()
@@ -77,6 +78,7 @@ public partial class Snorp : CharacterBody2D
 
 			// Damage taking system every time this method is used it takes 1 of your HP away
 			CurrentHealth -= damage;
+			EmitSignal(SignalName.HealthUI, CurrentHealth);
 			GD.Print("Player HP: " + CurrentHealth);
 			// This checks that if you have 0 HP after taking damage the game ends and you die
 
