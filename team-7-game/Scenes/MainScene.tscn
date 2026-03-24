@@ -25,9 +25,9 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_4b75m"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 8, -8, 0, 0, 0, 0, 8, 2144, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, -8)
+"points": PackedVector2Array(0, 0, 0, 0, 8, -8, 0, 0, 0, 0, 8, 2144, 0, 0, 0, 0, 8, -8)
 }
-point_count = 4
+point_count = 3
 
 [node name="MoveTest" type="Node2D"]
 
@@ -78,12 +78,13 @@ CometScene = ExtResource("9_8ju71")
 wait_time = 2.0
 
 [node name="DistracTimer" type="Timer" parent="Spawner"]
-wait_time = 8.0
+wait_time = 10.0
 
 [node name="StartTimer" type="Timer" parent="Spawner"]
 one_shot = true
 
 [node name="ObjectPath" type="Path2D" parent="Spawner"]
+visible = false
 position = Vector2(139.20824, 144.76186)
 scale = Vector2(1.0030842, 0.94172114)
 curve = SubResource("Curve2D_qxria")
@@ -96,6 +97,9 @@ visible = false
 texture = ExtResource("6_q68mp")
 
 [node name="LeftPath" type="Path2D" parent="Spawner"]
+visible = false
+position = Vector2(-280, 270)
+scale = Vector2(36.125, 0.79182154)
 curve = SubResource("Curve2D_4b75m")
 
 [node name="LeftSpawnLocation" type="PathFollow2D" parent="Spawner/LeftPath"]

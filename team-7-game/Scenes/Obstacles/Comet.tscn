@@ -25,7 +25,6 @@ animations = [{
 [node name="Comet" type="RigidBody2D"]
 show_behind_parent = true
 z_index = 22
-scale = Vector2(0.5, 0.5)
 mass = 100.0
 gravity_scale = 0.0
 linear_velocity = Vector2(10, 0)
@@ -34,10 +33,12 @@ angular_damp_mode = 1
 script = ExtResource("1_d15f1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_rwthi")
 autoplay = "default"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.3, 0.3)
 rect = Rect2(-176, -112, 336, 208)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]

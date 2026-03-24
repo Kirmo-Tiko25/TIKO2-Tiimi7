@@ -58,6 +58,7 @@ public partial class Spawner : Node
 	}
 
 	int objectsSpawned = 0;
+	int timerTick = 0;
 	int dangerLevel = 1;
 
 	private void OnDistracTimerTimeout()
@@ -80,7 +81,7 @@ public partial class Spawner : Node
 		comet.Rotation = direction;
 
 		// Choose the velocity.
-		var velocity = new Vector2((float)GD.RandRange(100.0, 300.0), 0);
+		var velocity = new Vector2((float)GD.RandRange(50.0, 100.0), 0);
 		comet.LinearVelocity = velocity.Rotated(direction);
 
 		// Spawn the mob by adding it to the Main scene.
@@ -90,18 +91,23 @@ public partial class Spawner : Node
 	// After each timer tick spawn a new child object and fling it in random direction.
 	private void OnObjectTimerTimeout()
 	{
-		if (GD.RandRange(1, (Difficulty + dangerLevel)) > 2)
+		timerTick++;
+		if ((timerTick - dangerLevel) > objectsSpawned)
 		{
-			SpawnAsteroidBig();
+			if (GD.RandRange(1, (Difficulty - dangerLevel + objectsSpawned)) > 5)
+			{
+				SpawnAsteroidBig();
+				dangerLevel++;
+			}
+			else
+			{
+				SpawnAsteroidSmall();
+			}
+			objectsSpawned++;
+
+			// for Logging.
+			GD.Print("Objects spawned: " + objectsSpawned);
 		}
-		else
-		{
-			SpawnAsteroidSmall();
-		}
-		objectsSpawned++;
-		dangerLevel++;
-		// for Logging.
-		GD.Print("Objects spawned: " + objectsSpawned);
 	}
 
 	private void SpawnAsteroidSmall()
