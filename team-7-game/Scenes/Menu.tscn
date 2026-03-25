@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2scnpeoidmyf"]
+[gd_scene load_steps=7 format=3 uid="uid://b2scnpeoidmyf"]
 
-[ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Background/1.jpg" id="1_3kf3n"]
+[ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://dd6wwwplcusbd" path="res://Scripts/Menu.cs" id="2_6pedr"]
+[ext_resource type="FontFile" uid="uid://dj6qxmqbd5d36" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="3_s2c3o"]
+[ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="4_ma218"]
+
+[sub_resource type="FontVariation" id="FontVariation_idohh"]
+base_font = ExtResource("3_s2c3o")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wfhf6"]
+font = SubResource("FontVariation_idohh")
+font_size = 200
 
 [node name="Menu" type="Node2D"]
 
@@ -22,18 +31,20 @@ script = ExtResource("2_6pedr")
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -31.0
-offset_top = -565.0
-offset_right = 896.0
-offset_bottom = -288.0
+offset_left = -118.0
+offset_top = -573.0
+offset_right = 971.0
+offset_bottom = -296.0
 theme_override_font_sizes/font_size = 100
 text = "Suojelupeli"
+label_settings = SubResource("LabelSettings_wfhf6")
 horizontal_alignment = 1
 
 [node name="Nappi" type="Button" parent="Control"]
 layout_mode = 0
 offset_right = 881.0
 offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("4_ma218")
 theme_override_font_sizes/font_size = 100
 text = "Play"
 
@@ -43,6 +54,7 @@ offset_left = -5.0
 offset_top = 230.0
 offset_right = 890.0
 offset_bottom = 431.0
+theme_override_fonts/font = ExtResource("4_ma218")
 theme_override_font_sizes/font_size = 100
 text = "Options"
 
@@ -52,6 +64,7 @@ offset_left = -9.0
 offset_top = 476.0
 offset_right = 886.0
 offset_bottom = 677.0
+theme_override_fonts/font = ExtResource("4_ma218")
 theme_override_font_sizes/font_size = 100
 text = "Quit
 "
