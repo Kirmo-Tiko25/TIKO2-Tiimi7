@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://baagsn5jkyln5"]
+
+[ext_resource type="PackedScene" uid="uid://cwpm1jnf5exi3" path="res://Scenes/MainScene.tscn" id="1_tqb5v"]
+[ext_resource type="Script" uid="uid://cv5qsfnyy5jo7" path="res://Tuntitehtävät/Pelaajan Respawnaus/SnorpRespawn.cs" id="2_iupa7"]
+
+[node name="MoveTest" instance=ExtResource("1_tqb5v")]
+
+[node name="StartPosition" type="Marker2D" parent="." index="3"]
+physics_interpolation_mode = 2
+
+[node name="Snorp" parent="." index="4"]
+script = ExtResource("2_iupa7")
+Speed = 300.0
+speedDecrease = 1.2
+canMove = false
+
+[node name="TouchScene" parent="Spawner" index="0"]
+position = Vector2(5, -5)
