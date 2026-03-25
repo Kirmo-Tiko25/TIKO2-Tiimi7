@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=17 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bo7aisp40hvdd" path="res://Scenes/Touches/Touch_scene.tscn" id="6_0iob3"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 [ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]
+[ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/Obstacles/asteroid_small.tscn" id="7_xb4mg"]
+[ext_resource type="PackedScene" uid="uid://bs6oihemqwhgr" path="res://Scenes/Obstacles/asteroid_big.tscn" id="8_6t1o7"]
 [ext_resource type="Script" uid="uid://best7mddoga28" path="res://Scenes/GameManager.cs" id="8_f140w"]
+[ext_resource type="PackedScene" uid="uid://djxfohaq2vfqh" path="res://Scenes/Obstacles/Comet.tscn" id="9_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://bylmnutb5inpb" path="res://Scenes/heart_points_ui.tscn" id="10_4b75m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
@@ -67,6 +70,9 @@ one_shot = true
 
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("5_qxria")
+SmallAsteroidScene = ExtResource("7_xb4mg")
+BigAsteroidScene = ExtResource("8_6t1o7")
+CometScene = ExtResource("9_5qxwa")
 
 [node name="TouchScene" parent="Spawner" instance=ExtResource("6_0iob3")]
 z_index = 99
@@ -121,6 +127,7 @@ texture = ExtResource("6_q68mp")
 
 [node name="HeartPointsUI" parent="." instance=ExtResource("10_4b75m")]
 
+[connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
 [connection signal="timeout" from="Spawner/DistracTimer" to="Spawner" method="OnDistracTimerTimeout"]

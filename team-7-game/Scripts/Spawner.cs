@@ -103,7 +103,7 @@ public partial class Spawner : Node
 		asteroidS.Rotation = direction;
 
 		// Choose the velocity.
-		var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
+		var velocity = new Vector2((float)GD.RandRange(200.0, 400.0), 0);
 		asteroidS.LinearVelocity = velocity.Rotated(direction);
 
 		// Spawn the mob by adding it to the Main scene.
@@ -129,7 +129,7 @@ public partial class Spawner : Node
 		asteroidB.Rotation = direction;
 
 		// Choose the velocity.
-		var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
+		var velocity = new Vector2((float)GD.RandRange(50.0, 250.0), 0);
 		asteroidB.LinearVelocity = velocity.Rotated(direction);
 
 		// Spawn the mob by adding it to the Main scene.
