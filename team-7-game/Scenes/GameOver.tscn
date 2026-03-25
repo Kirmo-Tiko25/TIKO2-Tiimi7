@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgmlfgy5yi5rb"]
+[gd_scene load_steps=5 format=3 uid="uid://cgmlfgy5yi5rb"]
 
-[ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Background/1.jpg" id="1_m5628"]
+[ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_m5628"]
 [ext_resource type="Script" uid="uid://ciohg0gx8xy4i" path="res://Scripts/GameOver.cs" id="2_k52d1"]
 [ext_resource type="PackedScene" uid="uid://07ssi72rve26" path="res://Scenes/leaderboard.tscn" id="3_ktc4i"]
+[ext_resource type="FontFile" uid="uid://dj681rw682mqk" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_uib17"]
 
 [node name="GameOver" type="Node2D"]
 
@@ -26,6 +27,7 @@ offset_left = -419.0
 offset_top = -587.0
 offset_right = 699.0
 offset_bottom = -192.0
+theme_override_fonts/font = ExtResource("3_uib17")
 theme_override_font_sizes/font_size = 100
 text = "Game Over"
 horizontal_alignment = 1
@@ -36,6 +38,7 @@ offset_left = -258.0
 offset_top = -217.0
 offset_right = 511.0
 offset_bottom = -47.0
+theme_override_fonts/font = ExtResource("3_uib17")
 theme_override_font_sizes/font_size = 100
 text = "Retry"
 
@@ -45,6 +48,7 @@ offset_left = -272.0
 offset_top = 48.0
 offset_right = 506.0
 offset_bottom = 198.0
+theme_override_fonts/font = ExtResource("3_uib17")
 theme_override_font_sizes/font_size = 100
 text = "Menu"
 

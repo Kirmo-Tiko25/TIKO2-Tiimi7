@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=17 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
@@ -23,6 +23,8 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xb4mg"]
+
 [sub_resource type="Curve2D" id="Curve2D_4b75m"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 8, -8, 0, 0, 0, 0, 8, 2144, 0, 0, 0, 0, 8, -8)
@@ -45,8 +47,8 @@ texture = ExtResource("3_0iob3")
 
 [node name="Snorp" type="CharacterBody2D" parent="."]
 z_index = 88
-collision_layer = 3
-collision_mask = 3
+collision_layer = 19
+collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_tr2i4")
 Speed = 500.0
@@ -73,6 +75,7 @@ BigAsteroidScene = ExtResource("6_4b75m")
 CometScene = ExtResource("9_8ju71")
 
 [node name="TouchScene" parent="Spawner" instance=ExtResource("6_0iob3")]
+z_index = 99
 
 [node name="ObjectTimer" type="Timer" parent="Spawner"]
 wait_time = 2.0
@@ -84,17 +87,29 @@ wait_time = 10.0
 one_shot = true
 
 [node name="ObjectPath" type="Path2D" parent="Spawner"]
-visible = false
+z_index = 55
 position = Vector2(139.20824, 144.76186)
 scale = Vector2(1.0030842, 0.94172114)
 curve = SubResource("Curve2D_qxria")
 
 [node name="ObjectSpawnLocation" type="PathFollow2D" parent="Spawner/ObjectPath"]
+visible = false
+z_index = 50
 position = Vector2(-122.82941, -153.72055)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spawner/ObjectPath/ObjectSpawnLocation"]
-visible = false
 texture = ExtResource("6_q68mp")
+
+[node name="Area2D" type="Area2D" parent="Spawner/ObjectPath/ObjectSpawnLocation"]
+z_index = 55
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawner/ObjectPath/ObjectSpawnLocation/Area2D"]
+top_level = true
+z_index = 50
+scale = Vector2(80, 80)
+shape = SubResource("CircleShape2D_xb4mg")
 
 [node name="LeftPath" type="Path2D" parent="Spawner"]
 visible = false

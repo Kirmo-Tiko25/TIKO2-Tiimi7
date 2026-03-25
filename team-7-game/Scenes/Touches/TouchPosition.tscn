@@ -41,6 +41,7 @@ platform_on_leave = 2
 platform_floor_layers = 4294967040
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForcePush"]
+visible = false
 shape = SubResource("CircleShape2D_pj1k1")
 
 [node name="GravDrag" type="Area2D" parent="."]
@@ -51,5 +52,6 @@ gravity_point = true
 gravity = 500.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GravDrag"]
+visible = false
 scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_pj1k1")
