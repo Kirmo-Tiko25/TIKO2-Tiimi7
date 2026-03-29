@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=20 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://best7mddoga28" path="res://Scenes/GameManager.cs" id="8_f140w"]
 [ext_resource type="PackedScene" uid="uid://djxfohaq2vfqh" path="res://Scenes/Obstacles/Comet.tscn" id="9_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://bylmnutb5inpb" path="res://Scenes/heart_points_ui.tscn" id="10_4b75m"]
+[ext_resource type="Texture2D" uid="uid://18ts67smqmrk" path="res://Art/asteroid3.png" id="13_xc4hf"]
+[ext_resource type="FontFile" uid="uid://dj6qxmqbd5d36" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="14_6rnll"]
+[ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="15_enc0b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
@@ -126,6 +129,68 @@ visible = false
 texture = ExtResource("6_q68mp")
 
 [node name="HeartPointsUI" parent="." instance=ExtResource("10_4b75m")]
+
+[node name="PauseUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1151.0
+offset_top = 210.0
+offset_right = 2645.0
+offset_bottom = 2074.0
+
+[node name="TextureRect" type="TextureRect" parent="PauseUI"]
+layout_mode = 0
+offset_right = 1492.0
+offset_bottom = 1853.0
+texture = ExtResource("13_xc4hf")
+
+[node name="Label" type="Label" parent="PauseUI"]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 424.0
+offset_right = 1046.0
+offset_bottom = 654.0
+theme_override_fonts/font = ExtResource("14_6rnll")
+theme_override_font_sizes/font_size = 100
+text = "Game paused"
+
+[node name="Continue" type="Button" parent="PauseUI"]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 1014.0
+offset_right = 1008.0
+offset_bottom = 1188.0
+theme_override_fonts/font = ExtResource("15_enc0b")
+theme_override_font_sizes/font_size = 100
+text = "Continue"
+
+[node name="Quit" type="Button" parent="PauseUI"]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 1218.0
+offset_right = 997.0
+offset_bottom = 1386.0
+theme_override_fonts/font = ExtResource("14_6rnll")
+theme_override_font_sizes/font_size = 100
+text = "Quit"
+
+[node name="PauseButton" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3584.0
+offset_top = 3.0
+offset_right = 3841.0
+offset_bottom = 143.0
+
+[node name="Pause" type="Button" parent="PauseButton"]
+layout_mode = 0
+offset_left = -72.0
+offset_top = 6.0
+offset_right = 234.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("15_enc0b")
+theme_override_font_sizes/font_size = 100
+text = "Pause"
 
 [connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
