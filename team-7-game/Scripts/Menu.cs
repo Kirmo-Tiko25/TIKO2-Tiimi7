@@ -10,7 +10,8 @@ public partial class Menu : Control
         Button nappi = GetNode<Button>("Nappi");
         nappi.Pressed += OnPlayPressed;
 
-
+        Button Options = GetNode<Button>("Options");
+        Options.Pressed += OnOptionsPressed;
 
         // When button nappi pressed it class the method OnPlayPressed and that method opens new scene
         Button quit = GetNode<Button>("Quit");
@@ -21,6 +22,11 @@ public partial class Menu : Control
     {
         // When this method is called it opens the games MainScene where the main game is running
         GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
+    }
+
+    private void OnOptionsPressed()
+    {
+        AddChild(GD.Load<PackedScene>("res://Scenes/Settings.tscn").Instantiate());
     }
 
     private void OnQuitPressed()

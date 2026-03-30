@@ -16,6 +16,13 @@ public partial class Leaderboard : Control
 	{
 		GD.Print("Points at leaderboard load: ", GameManager.Points);
 
+		// Check if the leaderboard should be visible, if not hide it and return early
+		if (!GameManager.LeaderboardVisible)
+		{
+			this.Visible = false;
+			return;
+		}
+
 		// hide unnecessary UI elements until we know if the player has a high score or not
 		GetNode<Control>("IfGoodScore").Visible = false;
 

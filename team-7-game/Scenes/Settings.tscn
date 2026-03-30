@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://boki0f6je4w8g"]
+
+[ext_resource type="FontFile" uid="uid://c1dkw20n1rdm3" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="1_4hxq3"]
+[ext_resource type="Script" uid="uid://1i1hclo546b4" path="res://Scripts/Settings.cs" id="1_yrknh"]
+[ext_resource type="FontFile" uid="uid://dj681rw682mqk" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="2_w1nw0"]
+
+[node name="Settings" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yrknh")
+
+[node name="SettingsBackground" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -462.0
+offset_top = -853.0
+offset_right = 1475.0
+offset_bottom = 789.0
+color = Color(0, 0, 0, 0.54509807)
+
+[node name="PointsVisibleButton" type="Button" parent="Control/SettingsBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.1
+offset_left = 151.0
+offset_top = 192.0
+offset_right = 764.3
+offset_bottom = 411.0
+theme_override_fonts/font = ExtResource("2_w1nw0")
+theme_override_font_sizes/font_size = 40
+text = "Points Visible:"
+alignment = 0
+
+[node name="PointsVisibleLabel" type="Label" parent="Control/SettingsBackground"]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 219.0
+offset_right = 901.0
+offset_bottom = 398.0
+theme_override_fonts/font = ExtResource("2_w1nw0")
+theme_override_font_sizes/font_size = 80
+text = "ON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeaderboardVisibleButton" type="Button" parent="Control/SettingsBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.1
+offset_left = 151.0
+offset_top = 419.0
+offset_right = 765.3
+offset_bottom = 626.0
+theme_override_fonts/font = ExtResource("2_w1nw0")
+theme_override_font_sizes/font_size = 40
+text = "Leaderboard Visible:"
+alignment = 0
+
+[node name="LeaderboardVisibleLabel" type="Label" parent="Control/SettingsBackground"]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 440.0
+offset_right = 892.0
+offset_bottom = 607.0
+theme_override_fonts/font = ExtResource("1_4hxq3")
+theme_override_font_sizes/font_size = 80
+text = "ON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="Control/SettingsBackground"]
+layout_mode = 0
+offset_left = 1670.0
+offset_top = 51.0
+offset_right = 1883.0
+offset_bottom = 226.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_w1nw0")
+theme_override_font_sizes/font_size = 100
+text = "X"

@@ -12,11 +12,23 @@ public partial class HeartsPointsUI : Control
         hearts[0] = GetNode<TextureRect>("Hearts/Heart1");
         hearts[1] = GetNode<TextureRect>("Hearts/Heart2");
         hearts[2] = GetNode<TextureRect>("Hearts/Heart3");
+
+        // Hide points if setting off
+        if (!GameManager.PointsVisible)
+        {
+            GetNode<Label>("PointsLabel").Visible = false;
+        }
     }
+
     public override void _Process(double delta)
     {
         var PointsLabel = GetNode<Label>("PointsLabel");
-        PointsLabel.Text = GameManager.Points.ToString();
+
+        // Update points if they are visible
+        if (GameManager.PointsVisible)
+        {
+            PointsLabel.Text = GameManager.Points.ToString();
+        }
     }
 
     // Hide a specific heart by index (0 = Heart1, 1 = Heart2, 2 = Heart3)
