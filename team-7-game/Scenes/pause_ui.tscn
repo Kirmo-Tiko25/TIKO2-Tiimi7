@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://5fkyp58irv8y"]
+
+[ext_resource type="Script" uid="uid://b66b5oqppycpk" path="res://Scripts/PauseUI.cs" id="1_cf5hy"]
+[ext_resource type="Texture2D" uid="uid://18ts67smqmrk" path="res://Art/asteroid3.png" id="2_w3mym"]
+[ext_resource type="FontFile" uid="uid://dj6qxmqbd5d36" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="3_36amk"]
+[ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="4_knkv6"]
+
+[node name="PauseUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2445.0
+offset_top = 118.0
+offset_right = -951.0
+offset_bottom = 1982.0
+script = ExtResource("1_cf5hy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -74.0
+offset_right = 1498.0
+offset_bottom = 1779.0
+texture = ExtResource("2_w3mym")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 424.0
+offset_right = 1046.0
+offset_bottom = 654.0
+theme_override_fonts/font = ExtResource("3_36amk")
+theme_override_font_sizes/font_size = 100
+text = "Game paused"
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 1014.0
+offset_right = 1008.0
+offset_bottom = 1188.0
+theme_override_fonts/font = ExtResource("4_knkv6")
+theme_override_font_sizes/font_size = 100
+text = "Continue"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 1218.0
+offset_right = 997.0
+offset_bottom = 1386.0
+theme_override_fonts/font = ExtResource("3_36amk")
+theme_override_font_sizes/font_size = 100
+text = "Quit"
