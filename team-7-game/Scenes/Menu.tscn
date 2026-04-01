@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2scnpeoidmyf"]
+[gd_scene load_steps=8 format=3 uid="uid://b2scnpeoidmyf"]
 
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://dd6wwwplcusbd" path="res://Scripts/Menu.cs" id="2_6pedr"]
 [ext_resource type="FontFile" uid="uid://dj6qxmqbd5d36" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="3_s2c3o"]
 [ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="4_ma218"]
+[ext_resource type="AudioStream" uid="uid://dsus7aug5288x" path="res://Audio/Music/Project Ex - Neo Nebula (freetouse.com).mp3" id="5_ma218"]
 
 [sub_resource type="FontVariation" id="FontVariation_idohh"]
 base_font = ExtResource("3_s2c3o")
@@ -68,3 +69,8 @@ theme_override_fonts/font = ExtResource("4_ma218")
 theme_override_font_sizes/font_size = 100
 text = "Quit
 "
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ma218")
+autoplay = true
+parameters/looping = true
