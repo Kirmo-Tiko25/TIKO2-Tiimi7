@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=19 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://best7mddoga28" path="res://Scenes/GameManager.cs" id="8_f140w"]
 [ext_resource type="PackedScene" uid="uid://djxfohaq2vfqh" path="res://Scenes/Obstacles/Comet.tscn" id="9_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://bylmnutb5inpb" path="res://Scenes/heart_points_ui.tscn" id="10_4b75m"]
+[ext_resource type="Script" uid="uid://cla8cpua8hxm5" path="res://Scenes/PauseButton.cs" id="14_6rnll"]
+[ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="15_enc0b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
@@ -126,6 +128,25 @@ visible = false
 texture = ExtResource("6_q68mp")
 
 [node name="HeartPointsUI" parent="." instance=ExtResource("10_4b75m")]
+
+[node name="PauseButton" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3599.0
+offset_top = 3.0
+offset_right = 3841.0
+offset_bottom = 135.0
+script = ExtResource("14_6rnll")
+
+[node name="PauseButton" type="Button" parent="PauseButton"]
+layout_mode = 0
+offset_left = -72.0
+offset_top = 6.0
+offset_right = 234.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("15_enc0b")
+theme_override_font_sizes/font_size = 100
+text = "Pause"
 
 [connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
