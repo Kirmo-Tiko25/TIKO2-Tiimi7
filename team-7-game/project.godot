@@ -66,6 +66,10 @@ pause={
 
 pointing/emulate_touch_from_mouse=true
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation")
+
 [physics]
 
 2d/run_on_separate_thread=true
@@ -74,7 +78,7 @@ pointing/emulate_touch_from_mouse=true
 2d/default_linear_damp=0.0
 2d/default_angular_damp=0.0
 2d/sleep_threshold_linear=0.1
-2d/sleep_threshold_angular=0.017453292519943295
+2d/sleep_threshold_angular=0.01745329251994329
 2d/solver/solver_iterations=18
 
 [rendering]

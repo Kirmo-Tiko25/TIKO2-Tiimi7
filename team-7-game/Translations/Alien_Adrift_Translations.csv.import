@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://brj8gdhiyq14l"
+
+[deps]
+
+files=["res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation"]
+
+source_file="res://Translations/Alien_Adrift_Translations.csv"
+dest_files=["res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation"]
+
+[params]
+
+compress=true
+delimiter=0
