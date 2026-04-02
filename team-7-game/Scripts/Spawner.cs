@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection;
 
 public partial class Spawner : Node
 {
@@ -66,13 +67,27 @@ public partial class Spawner : Node
 	// After each timer tick spawn a new child object and fling it in random direction.
 	private void OnObjectTimerTimeout()
 	{
-		SpawnBoulder(); // used for quick testing
+		// used for quick testing
 		timerTick++;
 		if ((timerTick - dangerLevel) >= objectsSpawned)
 		{
 			if (GD.RandRange(1, (Difficulty - dangerLevel + objectsSpawned)) > 5)
 			{
-				SpawnAsteroidBig();
+				var foe = GD.RandRange(0, 2);
+
+				if (foe == 0)
+				{
+					SpawnAsteroidBig();
+				}
+				else if (foe == 1)
+				{
+					SpawnBoulder();
+				}
+				else if (foe == 2)
+				{
+					SpawnBoulder();
+				}
+
 				dangerLevel++;
 			}
 			else
