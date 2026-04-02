@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://5fkyp58irv8y"]
+[gd_scene load_steps=7 format=3 uid="uid://5fkyp58irv8y"]
 
 [ext_resource type="Script" uid="uid://b66b5oqppycpk" path="res://Scripts/PauseUI.cs" id="1_cf5hy"]
 [ext_resource type="Texture2D" uid="uid://18ts67smqmrk" path="res://Art/asteroid3.png" id="2_w3mym"]
 [ext_resource type="FontFile" uid="uid://dj6qxmqbd5d36" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="3_36amk"]
-[ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="4_knkv6"]
+[ext_resource type="Texture2D" uid="uid://oa01mdo0t1ex" path="res://Art/Buttons/buttonPressed_416.png" id="4_cf5hy"]
+[ext_resource type="Texture2D" uid="uid://dm5c35ahfr33s" path="res://Art/Buttons/button_416x192.png" id="5_w3mym"]
+[ext_resource type="LabelSettings" uid="uid://6at33e43ruuu" path="res://Text_Settings/pause_uiLabels.tres" id="6_36amk"]
 
 [node name="PauseUI" type="Control"]
 layout_mode = 3
@@ -32,22 +34,38 @@ theme_override_fonts/font = ExtResource("3_36amk")
 theme_override_font_sizes/font_size = 100
 text = "Game paused"
 
-[node name="Continue" type="Button" parent="."]
+[node name="Continue" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 483.0
-offset_top = 1014.0
-offset_right = 1008.0
-offset_bottom = 1188.0
-theme_override_fonts/font = ExtResource("4_knkv6")
-theme_override_font_sizes/font_size = 100
-text = "Continue"
+offset_left = 515.0
+offset_top = 970.0
+offset_right = 931.0
+offset_bottom = 1162.0
+texture_normal = ExtResource("4_cf5hy")
+texture_pressed = ExtResource("5_w3mym")
 
-[node name="Quit" type="Button" parent="."]
+[node name="continueLabel" type="Label" parent="Continue"]
 layout_mode = 0
-offset_left = 484.0
-offset_top = 1218.0
-offset_right = 997.0
-offset_bottom = 1386.0
-theme_override_fonts/font = ExtResource("3_36amk")
-theme_override_font_sizes/font_size = 100
+offset_left = 43.0
+offset_top = 49.0
+offset_right = 377.0
+offset_bottom = 139.0
+text = "Continue"
+label_settings = ExtResource("6_36amk")
+
+[node name="Quit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 1212.0
+offset_right = 931.0
+offset_bottom = 1404.0
+texture_normal = ExtResource("4_cf5hy")
+texture_pressed = ExtResource("5_w3mym")
+
+[node name="quitLabel" type="Label" parent="Quit"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 55.0
+offset_right = 279.0
+offset_bottom = 145.0
 text = "Quit"
+label_settings = ExtResource("6_36amk")

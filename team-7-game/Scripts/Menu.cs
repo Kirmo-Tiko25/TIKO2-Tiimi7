@@ -6,15 +6,15 @@ public partial class Menu : Control
 {
     public override void _Ready()
     {
-        // When button nappi pressed it class the method OnPlayPressed and that method opens new scene
-        Button nappi = GetNode<Button>("Nappi");
-        nappi.Pressed += OnPlayPressed;
+        // When button Play pressed it class the method OnPlayPressed and that method opens new scene
+        TextureButton play = GetNode<TextureButton>("play");
+        play.Pressed += OnPlayPressed;
 
-        Button Options = GetNode<Button>("Options");
-        Options.Pressed += OnOptionsPressed;
+        TextureButton options = GetNode<TextureButton>("options");
+        options.Pressed += OnOptionsPressed;
 
-        // When button nappi pressed it class the method OnPlayPressed and that method opens new scene
-        Button quit = GetNode<Button>("Quit");
+        // When button quit pressed it class the method OnQuitPressed and that method quits the game
+        TextureButton quit = GetNode<TextureButton>("quit");
         quit.Pressed += OnQuitPressed;
     }
 

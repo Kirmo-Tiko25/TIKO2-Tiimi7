@@ -8,10 +8,10 @@ public partial class PauseUI : Control
 	public override void _Ready()
 	{
 		ProcessMode = ProcessModeEnum.Always;
-		Button continueButton = GetNode<Button>("Continue");
+		TextureButton continueButton = GetNode<TextureButton>("Continue");
 		continueButton.Pressed += OnContinuePressed;
 
-		Button quitButton = GetNode<Button>("Quit");
+		TextureButton quitButton = GetNode<TextureButton>("Quit");
 		quitButton.Pressed += OnQuitPressed;
 
 	}
