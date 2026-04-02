@@ -32,9 +32,8 @@ offset_top = 65.0
 offset_right = 808.0
 offset_bottom = 202.0
 theme_override_fonts/font = ExtResource("2_fjik7")
-text = "Leaderboard"
+text = "LEADERBOARD"
 label_settings = SubResource("LabelSettings_oxn4a")
-horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="Leaderboard UI/VisibleLeaderboard"]
 layout_mode = 1
@@ -145,7 +144,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_fjik7")
 theme_override_font_sizes/font_size = 32
-placeholder_text = "Enter your name here..."
+placeholder_text = "ENTER_NAME"
 max_length = 24
 expand_to_text_length = true
 
@@ -156,7 +155,7 @@ offset_top = 140.0
 offset_right = 186.0
 offset_bottom = 189.0
 theme_override_fonts/font = ExtResource("2_fjik7")
-text = "CONFIRM NAME"
+text = "CONFIRM_NAME"
 icon_alignment = 1
 
 [node name="Label" type="Label" parent="Leaderboard UI/IfGoodScore"]
@@ -166,5 +165,5 @@ offset_top = 5.0
 offset_right = 832.0
 offset_bottom = 85.0
 theme_override_fonts/font = ExtResource("2_fjik7")
-text = "Your points qualify for the leaderboard!!!"
+text = "POINTS_QUALIFY"
 label_settings = ExtResource("2_0uewc")

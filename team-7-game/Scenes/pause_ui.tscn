@@ -26,13 +26,14 @@ texture = ExtResource("2_w3mym")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 414.0
+offset_left = 294.0
 offset_top = 424.0
-offset_right = 1046.0
-offset_bottom = 654.0
+offset_right = 1193.0
+offset_bottom = 547.0
 theme_override_fonts/font = ExtResource("3_36amk")
 theme_override_font_sizes/font_size = 100
-text = "Game paused"
+text = "GAME_PAUSED"
+horizontal_alignment = 1
 
 [node name="Continue" type="TextureButton" parent="."]
 layout_mode = 0
@@ -45,12 +46,13 @@ texture_pressed = ExtResource("5_w3mym")
 
 [node name="continueLabel" type="Label" parent="Continue"]
 layout_mode = 0
-offset_left = 43.0
+offset_left = 17.0
 offset_top = 49.0
-offset_right = 377.0
+offset_right = 400.0
 offset_bottom = 139.0
-text = "Continue"
+text = "CONTINUE"
 label_settings = ExtResource("6_36amk")
+horizontal_alignment = 1
 
 [node name="Quit" type="TextureButton" parent="."]
 layout_mode = 0
@@ -63,9 +65,10 @@ texture_pressed = ExtResource("5_w3mym")
 
 [node name="quitLabel" type="Label" parent="Quit"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 55.0
-offset_right = 279.0
+offset_left = 26.0
+offset_top = 44.0
+offset_right = 385.0
 offset_bottom = 145.0
-text = "Quit"
+text = "MENU"
 label_settings = ExtResource("6_36amk")
+horizontal_alignment = 1

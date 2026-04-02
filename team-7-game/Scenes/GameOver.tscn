@@ -26,13 +26,13 @@ script = ExtResource("2_k52d1")
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -351.0
-offset_top = -587.0
-offset_right = 699.0
-offset_bottom = -346.0
+offset_left = -332.0
+offset_top = -585.0
+offset_right = 573.0
+offset_bottom = -391.0
 theme_override_fonts/font = ExtResource("3_uib17")
 theme_override_font_sizes/font_size = 150
-text = "Game Over"
+text = "GAME_OVER"
 horizontal_alignment = 1
 
 [node name="retry" type="TextureButton" parent="Control"]
@@ -46,12 +46,13 @@ texture_pressed = ExtResource("5_8710x")
 
 [node name="retryLabel" type="Label" parent="Control/retry"]
 layout_mode = 0
-offset_left = 132.0
+offset_left = 49.0
 offset_top = 67.0
-offset_right = 586.0
+offset_right = 651.0
 offset_bottom = 247.0
-text = "Retry"
+text = "RETRY"
 label_settings = ExtResource("6_a14ly")
+horizontal_alignment = 1
 
 [node name="menu" type="TextureButton" parent="Control"]
 layout_mode = 0
@@ -64,11 +65,12 @@ texture_pressed = ExtResource("5_8710x")
 
 [node name="menuLabel" type="Label" parent="Control/menu"]
 layout_mode = 0
-offset_left = 171.0
+offset_left = 33.0
 offset_top = 73.0
-offset_right = 550.0
+offset_right = 668.0
 offset_bottom = 253.0
-text = "Menu"
+text = "MENU"
 label_settings = ExtResource("6_a14ly")
+horizontal_alignment = 1
 
 [node name="Leaderboard" parent="." instance=ExtResource("3_ktc4i")]
