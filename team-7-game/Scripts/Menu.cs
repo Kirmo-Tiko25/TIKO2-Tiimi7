@@ -16,6 +16,12 @@ public partial class Menu : Control
         // When button quit pressed it class the method OnQuitPressed and that method quits the game
         TextureButton quit = GetNode<TextureButton>("quit");
         quit.Pressed += OnQuitPressed;
+
+        TextureButton finnish = GetNode<TextureButton>("Translation/Finnish");
+        finnish.Pressed += OnFinnishPressed;
+
+        TextureButton english = GetNode<TextureButton>("Translation/English");
+        english.Pressed += OnEnglishPressed;
     }
 
     private void OnPlayPressed()
@@ -33,5 +39,15 @@ public partial class Menu : Control
     {
         // quits
         GetTree().Quit();
+    }
+
+    private void OnFinnishPressed()
+    {
+        TranslationServer.SetLocale("fi");
+    }
+
+    private void OnEnglishPressed()
+    {
+        TranslationServer.SetLocale("en");
     }
 }
