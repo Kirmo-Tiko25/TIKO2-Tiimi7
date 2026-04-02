@@ -14,8 +14,6 @@ collision_mask = 9
 mass = 300.0
 can_sleep = false
 linear_damp_mode = 1
-angular_velocity = 0.87266463
-angular_damp_mode = 1
 script = ExtResource("1_xmiyx")
 metadata/_edit_group_ = true
 

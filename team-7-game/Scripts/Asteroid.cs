@@ -13,6 +13,7 @@ public partial class Asteroid : RigidBody2D
 		// here is the randomaizer version for later:
 		// animatedSprite2D.Play(asteroidTypes[GD.Randi() % asteroidTypes.Length]);
 
+		AngularVelocity = GD.RandRange(-5, 5);
 	}
 
 	private void OnVisibleOnScreenNotifier2DScreenExited()

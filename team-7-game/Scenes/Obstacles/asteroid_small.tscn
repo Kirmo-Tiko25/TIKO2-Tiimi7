@@ -14,8 +14,6 @@ collision_mask = 5
 mass = 100.0
 can_sleep = false
 linear_damp_mode = 1
-angular_velocity = 1.7453293
-angular_damp_mode = 1
 script = ExtResource("1_ln1nw")
 metadata/_edit_group_ = true
 

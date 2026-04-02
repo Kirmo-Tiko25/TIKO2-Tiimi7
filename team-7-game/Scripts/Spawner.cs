@@ -104,7 +104,7 @@ public partial class Spawner : Node
 	private void SpawnBoulder()
 	{
 		// Create a new instance of the test scene.
-		Boulder boulder = BoulderScene.Instantiate<Boulder>();
+		Asteroid boulder = BoulderScene.Instantiate<Asteroid>();
 
 		// Choose a random location on Path2D.
 		var SpawnLocation = GetNode<PathFollow2D>("ObjectPath/ObjectSpawnLocation");
