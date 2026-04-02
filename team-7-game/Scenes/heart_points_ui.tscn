@@ -52,20 +52,20 @@ expand_mode = 1
 [node name="PointsLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 944.0
-offset_top = 16.0
-offset_right = 1181.0
-offset_bottom = 153.0
+offset_left = 1047.0
+offset_top = 25.0
+offset_right = 1284.0
+offset_bottom = 162.0
 text = "6000"
 label_settings = SubResource("LabelSettings_o5me0")
 
 [node name="Label" type="Label" parent="PointsLabel"]
 layout_mode = 0
-offset_left = -328.0
-offset_top = -8.0
-offset_right = -9.0
-offset_bottom = 112.0
+offset_left = -437.0
+offset_top = -5.0
+offset_right = -118.0
+offset_bottom = 115.0
 theme_override_fonts/font = ExtResource("3_j357t")
 theme_override_font_sizes/font_size = 100
-text = "Score:"
+text = "SCORE"
 label_settings = SubResource("LabelSettings_j357t")

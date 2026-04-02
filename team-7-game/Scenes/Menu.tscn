@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2scnpeoidmyf"]
+[gd_scene load_steps=15 format=3 uid="uid://b2scnpeoidmyf"]
 
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://dd6wwwplcusbd" path="res://Scripts/Menu.cs" id="2_6pedr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bn4x4hn2yohf2" path="res://Art/Buttons/buttonPressed_700.png" id="5_3jcrr"]
 [ext_resource type="AudioStream" uid="uid://dsus7aug5288x" path="res://Audio/Music/Project Ex - Neo Nebula (freetouse.com).mp3" id="5_ma218"]
 [ext_resource type="LabelSettings" uid="uid://b54pqob210473" path="res://Text_Settings/MenuLabels.tres" id="6_wfhf6"]
+[ext_resource type="FontFile" uid="uid://c1dkw20n1rdm3" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="7_qki4b"]
 [ext_resource type="Texture2D" uid="uid://cchdp374fwcuv" path="res://Art/Flags/Finland_Flag.png" id="7_sjh0l"]
 [ext_resource type="Texture2D" uid="uid://cmuu77nwu0tp" path="res://Art/Flags/Finland_Flag_Pressed.png" id="8_qki4b"]
 [ext_resource type="Texture2D" uid="uid://ph54iejbn4se" path="res://Art/Flags/United_Kingdom_Flag.png" id="9_byewe"]
@@ -58,9 +59,9 @@ texture_pressed = ExtResource("5_3jcrr")
 
 [node name="playLabel" type="Label" parent="MenuControl/play"]
 layout_mode = 0
-offset_left = 193.0
+offset_left = 94.0
 offset_top = 69.0
-offset_right = 491.0
+offset_right = 617.0
 offset_bottom = 249.0
 text = "PLAY"
 label_settings = ExtResource("6_wfhf6")
@@ -78,11 +79,14 @@ texture_pressed = ExtResource("5_3jcrr")
 [node name="optionsLabel" type="Label" parent="MenuControl/options"]
 layout_mode = 0
 offset_left = 73.0
-offset_top = 66.0
+offset_top = 104.0
 offset_right = 648.0
-offset_bottom = 246.0
+offset_bottom = 284.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_qki4b")
+theme_override_font_sizes/font_size = 100
 text = "SETTINGS"
-label_settings = ExtResource("6_wfhf6")
+horizontal_alignment = 1
 
 [node name="quit" type="TextureButton" parent="MenuControl"]
 layout_mode = 0
@@ -95,12 +99,13 @@ texture_pressed = ExtResource("5_3jcrr")
 
 [node name="quitLabel" type="Label" parent="MenuControl/quit"]
 layout_mode = 0
-offset_left = 200.0
+offset_left = 90.0
 offset_top = 69.0
-offset_right = 510.0
+offset_right = 628.0
 offset_bottom = 249.0
-text = "Quit"
+text = "QUIT"
 label_settings = ExtResource("6_wfhf6")
+horizontal_alignment = 1
 
 [node name="Translation" type="Control" parent="MenuControl"]
 anchors_preset = 0
