@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Asteroid : RigidBody2D
+public partial class Boulder : RigidBody2D
 {
 	public override void _Ready()
 	{
@@ -12,7 +12,6 @@ public partial class Asteroid : RigidBody2D
 
 		// here is the randomaizer version for later:
 		// animatedSprite2D.Play(asteroidTypes[GD.Randi() % asteroidTypes.Length]);
-
 	}
 
 	private void OnVisibleOnScreenNotifier2DScreenExited()

@@ -10,6 +10,8 @@ public partial class Spawner : Node
 	public PackedScene BigAsteroidScene { get; set; }
 	[Export]
 	public PackedScene CometScene { get; set; }
+	[Export]
+	public PackedScene BoulderScene { get; set; }
 
 	//TODO score system.
 	// private int _score;
@@ -64,6 +66,7 @@ public partial class Spawner : Node
 	// After each timer tick spawn a new child object and fling it in random direction.
 	private void OnObjectTimerTimeout()
 	{
+		SpawnBoulder(); // used for quick testing
 		timerTick++;
 		if ((timerTick - dangerLevel) >= objectsSpawned)
 		{
@@ -81,6 +84,33 @@ public partial class Spawner : Node
 			// for Logging.
 			GD.Print("Objects spawned: " + objectsSpawned);
 		}
+	}
+
+	private void SpawnBoulder()
+	{
+		// Create a new instance of the test scene.
+		Boulder boulder = BoulderScene.Instantiate<Boulder>();
+
+		// Choose a random location on Path2D.
+		var SpawnLocation = GetNode<PathFollow2D>("ObjectPath/ObjectSpawnLocation");
+		SpawnLocation.ProgressRatio = GD.Randf();
+
+		// Set the Object's direction perpendicular to the path direction.
+		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+
+		// Set the Object's position to a random location.
+		boulder.Position = SpawnLocation.Position;
+
+		// Add some randomness to the direction.
+		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
+		boulder.Rotation = direction;
+
+		// Choose the velocity.
+		var velocity = new Vector2((float)GD.RandRange(200.0, 400.0), 0);
+		boulder.LinearVelocity = velocity.Rotated(direction);
+
+		// Spawn the mob by adding it to the Main scene.
+		AddChild(boulder);
 	}
 
 	private void SpawnAsteroidSmall()
