@@ -37,7 +37,7 @@ offset_top = -573.0
 offset_right = 971.0
 offset_bottom = -296.0
 theme_override_font_sizes/font_size = 100
-text = "Suojelupeli"
+text = "Alien Adrift"
 label_settings = SubResource("LabelSettings_wfhf6")
 horizontal_alignment = 1
 
