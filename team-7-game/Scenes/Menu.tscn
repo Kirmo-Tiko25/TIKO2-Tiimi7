@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2scnpeoidmyf"]
+[gd_scene load_steps=10 format=3 uid="uid://b2scnpeoidmyf"]
 
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://dd6wwwplcusbd" path="res://Scripts/Menu.cs" id="2_6pedr"]
 [ext_resource type="FontFile" uid="uid://dj6qxmqbd5d36" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="3_s2c3o"]
-[ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="4_ma218"]
+[ext_resource type="Texture2D" uid="uid://d2vdp6dqkxrty" path="res://Art/Buttons/button_700.png" id="4_wfhf6"]
+[ext_resource type="Texture2D" uid="uid://bn4x4hn2yohf2" path="res://Art/Buttons/buttonPressed_700.png" id="5_3jcrr"]
 [ext_resource type="AudioStream" uid="uid://dsus7aug5288x" path="res://Audio/Music/Project Ex - Neo Nebula (freetouse.com).mp3" id="5_ma218"]
+[ext_resource type="LabelSettings" uid="uid://b54pqob210473" path="res://Text_Settings/MenuLabels.tres" id="6_wfhf6"]
 
 [sub_resource type="FontVariation" id="FontVariation_idohh"]
 base_font = ExtResource("3_s2c3o")
@@ -30,45 +32,71 @@ offset_right = 2406.0
 offset_bottom = 1356.0
 script = ExtResource("2_6pedr")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="AlienAdrift" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -118.0
-offset_top = -573.0
-offset_right = 971.0
-offset_bottom = -296.0
+offset_left = -122.0
+offset_top = -707.0
+offset_right = 981.0
+offset_bottom = -430.0
 theme_override_font_sizes/font_size = 100
 text = "Alien Adrift"
 label_settings = SubResource("LabelSettings_wfhf6")
 horizontal_alignment = 1
 
-[node name="Nappi" type="Button" parent="Control"]
+[node name="play" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_right = 881.0
-offset_bottom = 195.0
-theme_override_fonts/font = ExtResource("4_ma218")
-theme_override_font_sizes/font_size = 100
+offset_left = 68.0
+offset_top = -340.0
+offset_right = 768.0
+offset_bottom = -17.0
+texture_normal = ExtResource("4_wfhf6")
+texture_pressed = ExtResource("5_3jcrr")
+
+[node name="playLabel" type="Label" parent="Control/play"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 69.0
+offset_right = 491.0
+offset_bottom = 249.0
 text = "Play"
+label_settings = ExtResource("6_wfhf6")
+horizontal_alignment = 1
 
-[node name="Options" type="Button" parent="Control"]
+[node name="options" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = -5.0
-offset_top = 230.0
-offset_right = 890.0
-offset_bottom = 431.0
-theme_override_fonts/font = ExtResource("4_ma218")
-theme_override_font_sizes/font_size = 100
+offset_left = 75.0
+offset_top = 32.0
+offset_right = 775.0
+offset_bottom = 355.0
+texture_normal = ExtResource("4_wfhf6")
+texture_pressed = ExtResource("5_3jcrr")
+
+[node name="optionsLabel" type="Label" parent="Control/options"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 66.0
+offset_right = 648.0
+offset_bottom = 246.0
 text = "Options"
+label_settings = ExtResource("6_wfhf6")
 
-[node name="Quit" type="Button" parent="Control"]
+[node name="quit" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = -9.0
-offset_top = 476.0
-offset_right = 886.0
-offset_bottom = 677.0
-theme_override_fonts/font = ExtResource("4_ma218")
-theme_override_font_sizes/font_size = 100
-text = "Quit
-"
+offset_left = 82.0
+offset_top = 415.0
+offset_right = 782.0
+offset_bottom = 738.0
+texture_normal = ExtResource("4_wfhf6")
+texture_pressed = ExtResource("5_3jcrr")
+
+[node name="quitLabel" type="Label" parent="Control/quit"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 69.0
+offset_right = 510.0
+offset_bottom = 249.0
+text = "Quit"
+label_settings = ExtResource("6_wfhf6")
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ma218")
