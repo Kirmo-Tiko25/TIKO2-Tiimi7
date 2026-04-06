@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cka5tq47kapya"]
+
+[ext_resource type="Script" uid="uid://cba62w3fnk3j6" path="res://Scripts/BlackHole.cs" id="1_5lrqs"]
+[ext_resource type="Texture2D" uid="uid://4nh5mc4y6va0" path="res://Art/black_hole.png" id="1_u2mvx"]
+[ext_resource type="PackedScene" uid="uid://d16uba7r24jmd" path="res://Scenes/killZone.tscn" id="3_17lj0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17lj0"]
+radius = 1000.0
+
+[node name="BlackHole" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+mass = 1000.0
+gravity_scale = 0.0
+can_sleep = false
+angular_velocity = 0.34906584
+script = ExtResource("1_5lrqs")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 16)
+scale = Vector2(1.0066667, 1)
+texture = ExtResource("1_u2mvx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-128, -128, 256, 256)
+
+[node name="GravityWell" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+gravity_space_override = 4
+gravity_point = true
+gravity_point_unit_distance = 200.0
+gravity = 4000.0
+
+[node name="Succ" type="CollisionShape2D" parent="GravityWell"]
+shape = SubResource("CircleShape2D_17lj0")
+
+[node name="KillZone" parent="." instance=ExtResource("3_17lj0")]
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]
