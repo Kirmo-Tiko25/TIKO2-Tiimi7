@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2scnpeoidmyf"]
+[gd_scene load_steps=16 format=3 uid="uid://b2scnpeoidmyf"]
 
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://dd6wwwplcusbd" path="res://Scripts/Menu.cs" id="2_6pedr"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cmuu77nwu0tp" path="res://Art/Flags/Finland_Flag_Pressed.png" id="8_qki4b"]
 [ext_resource type="Texture2D" uid="uid://ph54iejbn4se" path="res://Art/Flags/United_Kingdom_Flag.png" id="9_byewe"]
 [ext_resource type="Texture2D" uid="uid://oa7jh53kb683" path="res://Art/Flags/United_Kingdom_Flag_Pressed.png" id="10_a8aa6"]
+[ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="12_byewe"]
 
 [sub_resource type="FontVariation" id="FontVariation_idohh"]
 base_font = ExtResource("3_s2c3o")
@@ -129,6 +130,9 @@ offset_right = -1009.0
 offset_bottom = 889.0
 texture_normal = ExtResource("9_byewe")
 texture_pressed = ExtResource("10_a8aa6")
+
+[node name="MenuClick" type="AudioStreamPlayer" parent="MenuControl"]
+stream = ExtResource("12_byewe")
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ma218")
