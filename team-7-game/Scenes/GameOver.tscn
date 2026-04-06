@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgmlfgy5yi5rb"]
+[gd_scene load_steps=9 format=3 uid="uid://cgmlfgy5yi5rb"]
 
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_m5628"]
 [ext_resource type="Script" uid="uid://ciohg0gx8xy4i" path="res://Scripts/GameOver.cs" id="2_k52d1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d2vdp6dqkxrty" path="res://Art/Buttons/button_700.png" id="4_5mu6e"]
 [ext_resource type="Texture2D" uid="uid://bn4x4hn2yohf2" path="res://Art/Buttons/buttonPressed_700.png" id="5_8710x"]
 [ext_resource type="LabelSettings" uid="uid://b54pqob210473" path="res://Text_Settings/MenuLabels.tres" id="6_a14ly"]
+[ext_resource type="AudioStream" uid="uid://dsus7aug5288x" path="res://Audio/Music/Project Ex - Neo Nebula (freetouse.com).mp3" id="8_8710x"]
 
 [node name="GameOver" type="Node2D"]
 
@@ -74,3 +75,8 @@ label_settings = ExtResource("6_a14ly")
 horizontal_alignment = 1
 
 [node name="Leaderboard" parent="." instance=ExtResource("3_ktc4i")]
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8710x")
+autoplay = true
+parameters/looping = true

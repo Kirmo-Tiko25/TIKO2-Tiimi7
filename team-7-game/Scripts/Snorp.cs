@@ -14,6 +14,7 @@ public partial class Snorp : CharacterBody2D
 	[Signal] delegate void HealthUIEventHandler(int CurrentHealth);
 	public int CurrentHealth;
 	private bool immune = false;
+	private AudioStreamPlayer _hitSound;
 	public override async void _Ready()
 	{
 		// Randomize start movement direction
@@ -37,6 +38,8 @@ public partial class Snorp : CharacterBody2D
 
 		// Gives you maxhealth in the start
 		CurrentHealth = maxhealth;
+		// Gets the node hitsound
+		_hitSound = GetNode<AudioStreamPlayer>("HitSound");
 
 	}
 
@@ -84,6 +87,8 @@ public partial class Snorp : CharacterBody2D
 
 			// Decreases speed by speedDecrease amount
 			Speed *= speedDecrease;
+			//When the player takes damage it plays the hit sound
+			_hitSound.Play();
 		}
 
 		if (CurrentHealth <= 0)

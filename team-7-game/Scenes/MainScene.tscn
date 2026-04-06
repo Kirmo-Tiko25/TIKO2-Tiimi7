@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=23 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="3_0iob3"]
 [ext_resource type="Script" uid="uid://ckujsir53050v" path="res://Scripts/Spawner.cs" id="5_qxria"]
 [ext_resource type="PackedScene" uid="uid://bo7aisp40hvdd" path="res://Scenes/Touches/Touch_scene.tscn" id="6_0iob3"]
+[ext_resource type="AudioStream" uid="uid://dl53lje8for0k" path="res://Audio/Effects/floraphonic-metal-hit-10-193281.mp3" id="6_6rnll"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 [ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]
 [ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/Obstacles/asteroid_small.tscn" id="7_xb4mg"]
@@ -15,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dc4cgc5j1g3n8" path="res://Scenes/Obstacles/Boulder.tscn" id="10_xc4hf"]
 [ext_resource type="Script" uid="uid://cla8cpua8hxm5" path="res://Scenes/PauseButton.cs" id="14_6rnll"]
 [ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="15_enc0b"]
+[ext_resource type="AudioStream" uid="uid://bfcrocsevhc7q" path="res://Audio/Music/audiodollar-metal-so-metal-182263.mp3" id="17_enc0b"]
+[ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="17_hx8n4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
@@ -70,6 +73,9 @@ shape = SubResource("CapsuleShape2D_tx7fy")
 
 [node name="ImmuneTimer" type="Timer" parent="Snorp"]
 one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Snorp"]
+stream = ExtResource("6_6rnll")
 
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("5_qxria")
@@ -149,6 +155,14 @@ offset_bottom = 146.0
 theme_override_fonts/font = ExtResource("15_enc0b")
 theme_override_font_sizes/font_size = 100
 text = "Pause"
+
+[node name="PauseClick" type="AudioStreamPlayer" parent="PauseButton"]
+stream = ExtResource("17_hx8n4")
+
+[node name="GameBackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_enc0b")
+autoplay = true
+parameters/looping = true
 
 [connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
