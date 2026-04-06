@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://u7o4xfn62ukj" path="res://Scripts/KillZone.cs" id="1_3dr54"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pilnb"]
-radius = 70.0
+radius = 50.0
 
 [node name="KillZone" type="Area2D"]
 collision_layer = 0
-collision_mask = 33
+collision_mask = 32
 gravity_space_override = 3
 gravity_point = true
 gravity = 4000.0

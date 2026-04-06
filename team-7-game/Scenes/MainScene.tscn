@@ -31,9 +31,9 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_4b75m"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 8, -8, 0, 0, 0, 0, 8, 2144, 0, 0, 0, 0, 8, -8)
+"points": PackedVector2Array(0, 0, 0, 0, 8, 200, 0, 0, 0, 0, 8, 2000)
 }
-point_count = 3
+point_count = 2
 
 [node name="MoveTest" type="Node2D"]
 
@@ -51,7 +51,7 @@ texture = ExtResource("3_0iob3")
 
 [node name="Snorp" type="CharacterBody2D" parent="."]
 z_index = 88
-collision_layer = 19
+collision_layer = 51
 collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_tr2i4")
@@ -117,13 +117,12 @@ scale = Vector2(80, 80)
 shape = SubResource("CircleShape2D_xb4mg")
 
 [node name="LeftPath" type="Path2D" parent="Spawner"]
-visible = false
 position = Vector2(-280, 270)
 scale = Vector2(36.125, 0.79182154)
 curve = SubResource("Curve2D_4b75m")
 
 [node name="LeftSpawnLocation" type="PathFollow2D" parent="Spawner/LeftPath"]
-position = Vector2(8, -8)
+position = Vector2(8, 200)
 rotation = 1.5707964
 
 [node name="Sprite2D" type="Sprite2D" parent="Spawner/LeftPath/LeftSpawnLocation"]

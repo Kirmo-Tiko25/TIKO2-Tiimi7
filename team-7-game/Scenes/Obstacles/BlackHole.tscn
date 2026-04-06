@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://d16uba7r24jmd" path="res://Scenes/killZone.tscn" id="3_17lj0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17lj0"]
-radius = 800.0
+radius = 1000.0
 
 [node name="BlackHole" type="RigidBody2D"]
-collision_layer = 32
+collision_layer = 0
 collision_mask = 0
 mass = 1000.0
 gravity_scale = 0.0
@@ -27,14 +27,12 @@ texture = ExtResource("1_u2mvx")
 rect = Rect2(-128, -128, 256, 256)
 
 [node name="GravityWell" type="Area2D" parent="."]
-collision_layer = 32
+collision_layer = 0
 collision_mask = 32
 gravity_space_override = 4
 gravity_point = true
-gravity_point_unit_distance = 300.0
-gravity_point_center = Vector2(0, 0)
-gravity_direction = Vector2(0, 0)
-gravity = 3000.0
+gravity_point_unit_distance = 200.0
+gravity = 4000.0
 
 [node name="Succ" type="CollisionShape2D" parent="GravityWell"]
 shape = SubResource("CircleShape2D_17lj0")

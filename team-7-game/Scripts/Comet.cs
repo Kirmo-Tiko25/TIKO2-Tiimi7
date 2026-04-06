@@ -13,13 +13,16 @@ public partial class Comet : RigidBody2D
 		// here is the randomaizer version for later:
 		// animatedSprite2D.Play(asteroidTypes[GD.Randi() % asteroidTypes.Length]);
 	}
-
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{
+		// TODO send points to score before deleting the object
+		// SendPoints();
 		Spawner.noDistract = true;
-
-		QueueFree(); //this 'frees', or deletes, the node at the end of the frame.
+		Removed();
 	}
 
-
+	public void Removed()
+	{
+		QueueFree(); //this 'frees', or deletes, the node at the end of the frame.
+	}
 }

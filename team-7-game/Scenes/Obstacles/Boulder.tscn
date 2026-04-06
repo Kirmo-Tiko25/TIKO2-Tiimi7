@@ -18,8 +18,7 @@ specular_texture = ExtResource("4_7wl32")
 specular_shininess = 0.5
 
 [node name="Boulder" type="RigidBody2D" groups=["Hazards"]]
-collision_layer = 9
-collision_mask = 9
+collision_layer = 41
 mass = 1000.0
 script = ExtResource("1_pobn3")
 
