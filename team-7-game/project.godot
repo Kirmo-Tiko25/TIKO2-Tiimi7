@@ -70,6 +70,14 @@ pointing/emulate_touch_from_mouse=true
 
 locale/translations=PackedStringArray("res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation")
 
+[layer_names]
+
+2d_physics/layer_1="crash"
+2d_physics/layer_2="wall"
+2d_physics/layer_3="pushing"
+2d_physics/layer_4="dragging"
+2d_physics/layer_6="succ"
+
 [physics]
 
 2d/run_on_separate_thread=true

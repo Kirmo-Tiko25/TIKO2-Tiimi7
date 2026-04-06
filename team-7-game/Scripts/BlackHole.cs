@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Asteroid : RigidBody2D
+public partial class BlackHole : RigidBody2D
 {
 	public override void _Ready()
 	{
@@ -12,19 +12,12 @@ public partial class Asteroid : RigidBody2D
 
 		// here is the randomaizer version for later:
 		// animatedSprite2D.Play(asteroidTypes[GD.Randi() % asteroidTypes.Length]);
-
-		AngularVelocity = GD.RandRange(-5, 5);
 	}
 
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{
-		// TODO send points to score before deleting the object
-		// SendPoints();
-		Removed();
-	}
+		Spawner.noDistract = true;
 
-	public void Removed()
-	{
 		QueueFree(); //this 'frees', or deletes, the node at the end of the frame.
 	}
 }

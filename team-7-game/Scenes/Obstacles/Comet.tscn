@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://djxfohaq2vfqh"]
+[gd_scene load_steps=7 format=3 uid="uid://djxfohaq2vfqh"]
 
 [ext_resource type="Script" uid="uid://dew0vrvcnc7fp" path="res://Scripts/Comet.cs" id="1_d15f1"]
 [ext_resource type="Texture2D" uid="uid://bw0dsk8ocrmdp" path="res://Art/Comet2.png" id="2_lj3x0"]
@@ -22,12 +22,15 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d15f1"]
+
 [node name="Comet" type="RigidBody2D"]
 show_behind_parent = true
 z_index = 22
 rotation = -0.08726646
+collision_layer = 32
+collision_mask = 0
 mass = 100.0
-gravity_scale = 0.0
 linear_velocity = Vector2(300, 0)
 linear_damp_mode = 1
 angular_damp_mode = 1
@@ -41,5 +44,9 @@ autoplay = "default"
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(0.3, 0.3)
 rect = Rect2(-176, -112, 362.66666, 208)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(23.908672, 2.0917377)
+shape = SubResource("CircleShape2D_d15f1")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]

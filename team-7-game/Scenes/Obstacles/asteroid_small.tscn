@@ -9,8 +9,8 @@ radius = 27.0
 [node name="asteroid_small" type="RigidBody2D" groups=["Hazards"]]
 z_index = 33
 position = Vector2(46, 33)
-collision_layer = 5
-collision_mask = 5
+collision_layer = 37
+collision_mask = 37
 mass = 100.0
 can_sleep = false
 linear_damp_mode = 1
