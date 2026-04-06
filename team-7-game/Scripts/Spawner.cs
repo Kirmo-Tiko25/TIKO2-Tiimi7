@@ -13,13 +13,14 @@ public partial class Spawner : Node
 	public PackedScene CometScene { get; set; }
 	[Export]
 	public PackedScene BoulderScene { get; set; }
-
+	public static bool noDistract { get; set; } = true;
 	//TODO score system.
 	// private int _score;
 
 	public override void _Ready()
 	{
 		NewGame();
+
 	}
 	public void GameOver()
 	{
@@ -63,6 +64,7 @@ public partial class Spawner : Node
 	int objectsSpawned = 0;
 	int timerTick = 0;
 	int dangerLevel = 1;
+
 
 	// After each timer tick spawn a new child object and fling it in random direction.
 	private void OnObjectTimerTimeout()
@@ -183,29 +185,33 @@ public partial class Spawner : Node
 
 	private void OnDistracTimerTimeout()
 	{
-		// Create a new instance of the comet scene.
-		Comet comet = CometScene.Instantiate<Comet>();
+		if (noDistract)
+		{
+			// Create a new instance of the comet scene.
+			Comet comet = CometScene.Instantiate<Comet>();
 
-		// Choose a random location on Path2D.
-		var SpawnLocation = GetNode<PathFollow2D>("LeftPath/LeftSpawnLocation");
-		SpawnLocation.ProgressRatio = GD.Randf();
+			// Choose a random location on Path2D.
+			var SpawnLocation = GetNode<PathFollow2D>("LeftPath/LeftSpawnLocation");
+			SpawnLocation.ProgressRatio = GD.Randf();
 
-		// Set the Object's direction perpendicular to the path direction.
-		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+			// Set the Object's direction perpendicular to the path direction.
+			//float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
 
-		// Set the Object's position to a random location.
-		comet.Position = SpawnLocation.Position;
+			// Set the Object's position to a random location.
+			comet.Position = SpawnLocation.Position;
 
-		// Add some randomness to the direction.
-		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
-		comet.Rotation = direction;
+			// Add some randomness to the direction.
+			//direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
+			//comet.Rotation = direction;
 
-		// Choose the velocity.
-		var velocity = new Vector2((float)GD.RandRange(100.0, 200.0), 0);
-		comet.LinearVelocity = velocity.Rotated(direction);
+			// Choose the velocity.
+			//var velocity = new Vector2((float)GD.RandRange(100.0, 200.0), 0);
+			//comet.LinearVelocity = velocity.Rotated(direction);
 
-		// Spawn the mob by adding it to the Main scene.
-		AddChild(comet);
+			// Spawn the mob by adding it to the Main scene.
+			AddChild(comet);
+			noDistract = false;
+		}
 	}
 }
 
