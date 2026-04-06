@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=23 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://djxfohaq2vfqh" path="res://Scenes/Obstacles/Comet.tscn" id="9_5qxwa"]
 [ext_resource type="PackedScene" uid="uid://bylmnutb5inpb" path="res://Scenes/heart_points_ui.tscn" id="10_4b75m"]
 [ext_resource type="PackedScene" uid="uid://dc4cgc5j1g3n8" path="res://Scenes/Obstacles/Boulder.tscn" id="10_xc4hf"]
+[ext_resource type="PackedScene" uid="uid://vkua5o8nb47n" path="res://Scenes/Obstacles/satellite.tscn" id="12_enc0b"]
 [ext_resource type="PackedScene" uid="uid://cka5tq47kapya" path="res://Scenes/Obstacles/BlackHole.tscn" id="13_6rnll"]
+[ext_resource type="PackedScene" uid="uid://bggbssnkt3vmb" path="res://Scenes/Obstacles/planet.tscn" id="13_hx8n4"]
 [ext_resource type="Script" uid="uid://cla8cpua8hxm5" path="res://Scenes/PauseButton.cs" id="14_6rnll"]
 [ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="15_enc0b"]
 
@@ -78,6 +80,9 @@ SmallAsteroidScene = ExtResource("7_xb4mg")
 BigAsteroidScene = ExtResource("8_6t1o7")
 CometScene = ExtResource("9_5qxwa")
 BoulderScene = ExtResource("10_xc4hf")
+BHScene = ExtResource("13_6rnll")
+SatelliteScene = ExtResource("12_enc0b")
+PlanetScene = ExtResource("13_hx8n4")
 
 [node name="TouchScene" parent="Spawner" instance=ExtResource("6_0iob3")]
 z_index = 99
@@ -128,9 +133,6 @@ rotation = 1.5707964
 [node name="Sprite2D" type="Sprite2D" parent="Spawner/LeftPath/LeftSpawnLocation"]
 visible = false
 texture = ExtResource("6_q68mp")
-
-[node name="BlackHole" parent="Spawner" instance=ExtResource("13_6rnll")]
-position = Vector2(650, 865)
 
 [node name="HeartPointsUI" parent="." instance=ExtResource("10_4b75m")]
 

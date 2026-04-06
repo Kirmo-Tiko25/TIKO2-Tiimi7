@@ -13,7 +13,14 @@ public partial class Spawner : Node
 	public PackedScene CometScene { get; set; }
 	[Export]
 	public PackedScene BoulderScene { get; set; }
+	[Export]
+	public PackedScene BHScene { get; set; }
+	[Export]
+	public PackedScene SatelliteScene { get; set; }
+	[Export]
+	public PackedScene PlanetScene { get; set; }
 	public static bool noDistract { get; set; } = true;
+	public static bool satellitePassed { get; set; } = false;
 	//TODO score system.
 	// private int _score;
 
@@ -64,7 +71,7 @@ public partial class Spawner : Node
 	int objectsSpawned = 0;
 	int timerTick = 0;
 	int dangerLevel = 1;
-
+	int cometSpawned = 0;
 
 	// After each timer tick spawn a new child object and fling it in random direction.
 	private void OnObjectTimerTimeout()
@@ -185,33 +192,117 @@ public partial class Spawner : Node
 
 	private void OnDistracTimerTimeout()
 	{
+
 		if (noDistract)
 		{
-			// Create a new instance of the comet scene.
-			Comet comet = CometScene.Instantiate<Comet>();
+			if (satellitePassed)
+			{
+				SpawnPlanet();
+			}
+			else if (cometSpawned == 0)
+			{
+				SpawnComet();
+				cometSpawned++;
+			}
+			else if (cometSpawned > 0)
+			{
+				int i = GD.RandRange(0, 2);
+				GD.Print("Spawn Number: " + i);
+				if (i == 0)
+				{
+					SpawnBlackHole();
+				}
+				else if (i == 1)
+				{
+					SpawnSatellite();
+				}
+				else if (i == 2)
+				{
+					cometSpawned--;
+				}
+			}
 
-			// Choose a random location on Path2D.
-			var SpawnLocation = GetNode<PathFollow2D>("LeftPath/LeftSpawnLocation");
-			SpawnLocation.ProgressRatio = GD.Randf();
-
-			// Set the Object's direction perpendicular to the path direction.
-			//float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
-
-			// Set the Object's position to a random location.
-			comet.Position = SpawnLocation.Position;
-
-			// Add some randomness to the direction.
-			//direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
-			//comet.Rotation = direction;
-
-			// Choose the velocity.
-			//var velocity = new Vector2((float)GD.RandRange(100.0, 200.0), 0);
-			//comet.LinearVelocity = velocity.Rotated(direction);
-
-			// Spawn the mob by adding it to the Main scene.
-			AddChild(comet);
-			noDistract = false;
 		}
+	}
+
+	private void SpawnPlanet()
+	{
+		// Create a new instance of the planet scene.
+		Planet planet = PlanetScene.Instantiate<Planet>();
+
+		// Choose a random location on Path2D.
+		var SpawnLocation = GetNode<PathFollow2D>("LeftPath/LeftSpawnLocation");
+		SpawnLocation.ProgressRatio = GD.Randf();
+
+		// Set the Object's position to a random location.
+		planet.Position = SpawnLocation.Position;
+
+		// Choose the velocity.
+		//planet.LinearVelocity = new Vector2((float)GD.RandRange(100.0, 400.0), 0);
+
+		// Spawn it by adding it to the Main scene.
+		AddChild(planet);
+		noDistract = false;
+	}
+
+	private void SpawnSatellite()
+	{
+		// Create a new instance of the satellite scene.
+		Satellite sat = SatelliteScene.Instantiate<Satellite>();
+
+		// Choose a random location on Path2D.
+		var SpawnLocation = GetNode<PathFollow2D>("LeftPath/LeftSpawnLocation");
+		SpawnLocation.ProgressRatio = GD.Randf();
+
+		// Set the Object's position to a random location.
+		sat.Position = SpawnLocation.Position;
+
+		// Choose the velocity.
+		sat.LinearVelocity = new Vector2((float)GD.RandRange(100.0, 400.0), 0);
+
+		// Spawn it by adding it to the Main scene.
+		AddChild(sat);
+		noDistract = false;
+	}
+
+	private void SpawnBlackHole()
+	{
+		// Create a new instance of the Black Hole scene.
+		BlackHole succ = BHScene.Instantiate<BlackHole>();
+
+		// Choose a random location on Path2D.
+		var SpawnLocation = GetNode<PathFollow2D>("LeftPath/LeftSpawnLocation");
+		SpawnLocation.ProgressRatio = GD.Randf();
+
+		// Set the Object's position to a random location.
+		succ.Position = SpawnLocation.Position;
+
+		// Choose the velocity.
+		succ.LinearVelocity = new Vector2((float)GD.RandRange(100.0, 400.0), 0);
+
+		// Spawn it by adding it to the Main scene.
+		AddChild(succ);
+		noDistract = false;
+	}
+
+	private void SpawnComet()
+	{
+		// Create a new instance of the comet scene.
+		Comet comet = CometScene.Instantiate<Comet>();
+
+		// Choose a random location on Path2D.
+		var SpawnLocation = GetNode<PathFollow2D>("LeftPath/LeftSpawnLocation");
+		SpawnLocation.ProgressRatio = GD.Randf();
+
+		// Set the Object's position to a random location.
+		comet.Position = SpawnLocation.Position;
+
+		// Choose the velocity.
+		comet.LinearVelocity = new Vector2((float)GD.RandRange(300.0, 400.0), 0);
+
+		// Spawn it by adding it to the Main scene.
+		AddChild(comet);
+		noDistract = false;
 	}
 }
 
