@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://boki0f6je4w8g"]
+[gd_scene load_steps=6 format=3 uid="uid://boki0f6je4w8g"]
 
 [ext_resource type="FontFile" uid="uid://c1dkw20n1rdm3" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="1_4hxq3"]
 [ext_resource type="Script" uid="uid://1i1hclo546b4" path="res://Scripts/Settings.cs" id="1_yrknh"]
 [ext_resource type="FontFile" uid="uid://dj681rw682mqk" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="2_w1nw0"]
+[ext_resource type="FontFile" uid="uid://dj6qxmqbd5d36" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="4_mjqtt"]
+[ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="5_ppjuv"]
 
 [node name="Settings" type="Node2D"]
 
@@ -81,3 +83,44 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_w1nw0")
 theme_override_font_sizes/font_size = 100
 text = "X"
+
+[node name="Music" type="HSlider" parent="Control/SettingsBackground"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 725.0
+offset_right = 900.0
+offset_bottom = 821.0
+max_value = 1.0
+step = 0.01
+
+[node name="SFX" type="HSlider" parent="Control/SettingsBackground"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 904.0
+offset_right = 903.0
+offset_bottom = 1042.0
+max_value = 1.0
+step = 0.01
+
+[node name="MusicLabel" type="Label" parent="Control/SettingsBackground"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 649.0
+offset_right = 514.0
+offset_bottom = 769.0
+theme_override_fonts/font = ExtResource("4_mjqtt")
+theme_override_font_sizes/font_size = 75
+text = "Music"
+
+[node name="SFXLabel" type="Label" parent="Control/SettingsBackground"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 835.0
+offset_right = 556.0
+offset_bottom = 949.0
+theme_override_fonts/font = ExtResource("5_ppjuv")
+theme_override_font_sizes/font_size = 75
+text = "Effects"
+
+[connection signal="value_changed" from="Control/SettingsBackground/Music" to="Control" method="OnMusicVolumeChanged"]
+[connection signal="value_changed" from="Control/SettingsBackground/SFX" to="Control" method="OnSfxVolumeChanged"]

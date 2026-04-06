@@ -7,6 +7,8 @@ public partial class Settings : Control
 	[Export] private Button leaderboardVisibilityButton;
 	[Export] private Label	pointsVisibilityLabel;
 	[Export] private Label	leaderboardVisibilityLabel;
+	private int _musicBus;
+    private int _sfxBus;
 	public override void _Ready()
 	{
 		// Get nodes for naming convenience
@@ -23,6 +25,10 @@ public partial class Settings : Control
 		leaderboardVisibilityButton.Pressed += ChangeLeaderboardVisibility;
 
 		GetNode<Button>("SettingsBackground/ExitButton").Pressed += OnExitButtonPressed;
+
+		//Gets the music and sfx bus nodes.
+		_musicBus = AudioServer.GetBusIndex("Music");
+        _sfxBus = AudioServer.GetBusIndex("SFX");
 	}
 
 	private void ChangePointVisibility()
@@ -63,8 +69,24 @@ public partial class Settings : Control
 		}
 	}
 
+	public void OnMusicVolumeChanged(double value)
+    {
+        AudioServer.SetBusVolumeDb(_musicBus, LinearToDb((float)value));
+    }
+
+    public void OnSfxVolumeChanged(double value)
+    {
+        AudioServer.SetBusVolumeDb(_sfxBus, LinearToDb((float)value));
+    }
+
+    private float LinearToDb(float linear)
+    {
+        return Mathf.LinearToDb(linear);
+    }
+
 	private void OnExitButtonPressed()
 	{
 		QueueFree();
 	}
+
 }
