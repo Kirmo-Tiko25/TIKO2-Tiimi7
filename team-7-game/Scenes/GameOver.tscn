@@ -77,10 +77,12 @@ horizontal_alignment = 1
 
 [node name="GameOverClick" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource("7_a14ly")
+bus = &"SFX"
 
 [node name="Leaderboard" parent="." instance=ExtResource("3_ktc4i")]
 
 [node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8710x")
 autoplay = true
+bus = &"Music"
 parameters/looping = true

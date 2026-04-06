@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bo7aisp40hvdd" path="res://Scenes/Touches/Touch_scene.tscn" id="6_0iob3"]
 [ext_resource type="AudioStream" uid="uid://dl53lje8for0k" path="res://Audio/Effects/floraphonic-metal-hit-10-193281.mp3" id="6_6rnll"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
+[ext_resource type="AudioStream" uid="uid://mmmp5xjxxwtf" path="res://Audio/Effects/freesound_community-spaceship-cruising-ufo-7176.mp3" id="7_hx8n4"]
 [ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]
 [ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/Obstacles/asteroid_small.tscn" id="7_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://bs6oihemqwhgr" path="res://Scenes/Obstacles/asteroid_big.tscn" id="8_6t1o7"]
@@ -16,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://dc4cgc5j1g3n8" path="res://Scenes/Obstacles/Boulder.tscn" id="10_xc4hf"]
 [ext_resource type="Script" uid="uid://cla8cpua8hxm5" path="res://Scenes/PauseButton.cs" id="14_6rnll"]
 [ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="15_enc0b"]
-[ext_resource type="AudioStream" uid="uid://bfcrocsevhc7q" path="res://Audio/Music/audiodollar-metal-so-metal-182263.mp3" id="17_enc0b"]
 [ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="17_hx8n4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
@@ -76,6 +76,14 @@ one_shot = true
 
 [node name="HitSound" type="AudioStreamPlayer" parent="Snorp"]
 stream = ExtResource("6_6rnll")
+bus = &"SFX"
+
+[node name="UFOSound" type="AudioStreamPlayer" parent="Snorp"]
+stream = ExtResource("7_hx8n4")
+volume_db = -17.174
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
 
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("5_qxria")
@@ -158,11 +166,11 @@ text = "Pause"
 
 [node name="PauseClick" type="AudioStreamPlayer" parent="PauseButton"]
 stream = ExtResource("17_hx8n4")
+bus = &"SFX"
 
 [node name="GameBackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_enc0b")
 autoplay = true
-parameters/looping = true
+bus = &"Music"
 
 [connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]

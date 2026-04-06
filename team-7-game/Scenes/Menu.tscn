@@ -133,8 +133,10 @@ texture_pressed = ExtResource("10_a8aa6")
 
 [node name="MenuClick" type="AudioStreamPlayer" parent="MenuControl"]
 stream = ExtResource("12_byewe")
+bus = &"SFX"
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ma218")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
