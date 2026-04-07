@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=26 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
@@ -102,10 +102,10 @@ PlanetScene = ExtResource("13_hx8n4")
 z_index = 99
 
 [node name="ObjectTimer" type="Timer" parent="Spawner"]
-wait_time = 3.0
+wait_time = 2.0
 
 [node name="DistracTimer" type="Timer" parent="Spawner"]
-wait_time = 5.0
+wait_time = 7.0
 
 [node name="StartTimer" type="Timer" parent="Spawner"]
 one_shot = true
