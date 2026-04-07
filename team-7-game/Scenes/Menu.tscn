@@ -102,13 +102,14 @@ texture_pressed = ExtResource("5_3jcrr")
 
 [node name="quitLabel" type="Label" parent="MenuControl/quit"]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 69.0
+offset_left = 46.0
+offset_top = 56.0
 offset_right = 628.0
-offset_bottom = 249.0
+offset_bottom = 271.0
 text = "QUIT"
 label_settings = ExtResource("6_wfhf6")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Translation" type="Control" parent="MenuControl"]
 anchors_preset = 0

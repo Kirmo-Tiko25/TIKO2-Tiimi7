@@ -12,8 +12,8 @@ ENTER_NAME,Enter your name here…,Kirjoita nimesi tänne…,Skriv ditt namn hä
 CONFIRM_NAME,CONFIRM NAME!,VAHVISTA NIMI!,BEKRÄFTA NAMN!
 SETTING_POINT,Points Visible:,Pisteet näkyvissä:,Poäng synliga
 SETTING_LEADERBOARD,Leaderboard Visible:,Tulostaulu näkyvissä:,Topplista synlig:
-GAME_PAUSED, Game paused, Peli keskeytetty,Spelet pausat
-GAME_OVER, Game Over, Peli ohi,Game Over
-RETRY, Retry, Uusinta,Igen
-MUSIC, Music, Musiikki,Musik
-SFX, Effects, Effektit,Effekter
+GAME_PAUSED,Game paused,Peli keskeytetty,Spelet pausat
+GAME_OVER,Game Over,Peli ohi,Game Over
+RETRY,Retry,Uusinta,Igen
+MUSIC,Music,Musiikki,Musik
+SFX,Effects,Effektit,Effekter
