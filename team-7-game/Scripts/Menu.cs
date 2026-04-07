@@ -24,6 +24,9 @@ public partial class Menu : Control
         TextureButton english = GetNode<TextureButton>("Translation/English");
         english.Pressed += OnEnglishPressed;
 
+        TextureButton swedish = GetNode<TextureButton>("Translation/Swedish");
+        swedish.Pressed += OnSwedishPressed;
+
         // Gets the node MenuClick
         _buttonSound = GetNode<AudioStreamPlayer>("MenuClick");
     }
@@ -59,5 +62,12 @@ public partial class Menu : Control
     {
         _buttonSound.Play();
         TranslationServer.SetLocale("en");
+    }
+
+    private void OnSwedishPressed()
+    {
+        GD.Print("Swedish pressed");
+        _buttonSound.Play();
+        TranslationServer.SetLocale("sv");
     }
 }

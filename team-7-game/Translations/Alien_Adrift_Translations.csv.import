@@ -6,10 +6,10 @@ uid="uid://brj8gdhiyq14l"
 
 [deps]
 
-files=["res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation"]
+files=["res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation", "res://Translations/Alien_Adrift_Translations.sv.translation"]
 
 source_file="res://Translations/Alien_Adrift_Translations.csv"
-dest_files=["res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation"]
+dest_files=["res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation", "res://Translations/Alien_Adrift_Translations.sv.translation"]
 
 [params]
 

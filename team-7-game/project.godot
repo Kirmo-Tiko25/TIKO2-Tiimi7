@@ -68,7 +68,7 @@ pointing/emulate_touch_from_mouse=true
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation")
+locale/translations=PackedStringArray("res://Translations/Alien_Adrift_Translations.en.translation", "res://Translations/Alien_Adrift_Translations.fi.translation", "res://Translations/Alien_Adrift_Translations.sv.translation")
 
 [layer_names]
 
