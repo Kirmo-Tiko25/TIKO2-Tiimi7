@@ -25,38 +25,39 @@ public partial class Menu : Control
         english.Pressed += OnEnglishPressed;
 
         // Gets the node MenuClick
-		_buttonSound = GetNode<AudioStreamPlayer>("MenuClick");
+        _buttonSound = GetNode<AudioStreamPlayer>("MenuClick");
     }
 
     private void OnPlayPressed()
     {
         // When this method is called it opens the games MainScene where the main game is running
-        GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
         _buttonSound.Play();
+        GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
+
     }
 
     private void OnOptionsPressed()
     {
-        AddChild(GD.Load<PackedScene>("res://Scenes/Settings.tscn").Instantiate());
         _buttonSound.Play();
+        AddChild(GD.Load<PackedScene>("res://Scenes/Settings.tscn").Instantiate());
     }
 
     private void OnQuitPressed()
     {
         // quits
-        GetTree().Quit();
         _buttonSound.Play();
+        GetTree().Quit();
     }
 
     private void OnFinnishPressed()
     {
-        TranslationServer.SetLocale("fi");
         _buttonSound.Play();
+        TranslationServer.SetLocale("fi");
     }
 
     private void OnEnglishPressed()
     {
-        TranslationServer.SetLocale("en");
         _buttonSound.Play();
+        TranslationServer.SetLocale("en");
     }
 }
