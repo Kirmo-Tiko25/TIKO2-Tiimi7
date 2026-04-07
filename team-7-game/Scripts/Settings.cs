@@ -18,6 +18,7 @@ public partial class Settings : Control
 		pointsVisibilityLabel = GetNode<Label>("SettingsBackground/PointsVisibleLabel");
 		leaderboardVisibilityLabel = GetNode<Label>("SettingsBackground/LeaderboardVisibleLabel");
 
+		//GetNode<HSlider>("SettingsBackground/Music")
 
 		ButtonUpdate();
 

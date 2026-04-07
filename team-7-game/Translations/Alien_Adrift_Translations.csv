@@ -7,7 +7,7 @@ CONTINUE,Continue,Jatka
 PAUSE,Pause,Tauko
 SCORE,Score:,Pisteet:
 LEADERBOARD,Leaderboard,Tulostaulu
-POINTS_QUALIFY,Your points qualify for the leaderboard!!!,Pisteesi riittävät tulostauluun!!! 
+POINTS_QUALIFY,Your points qualify for the leaderboard!!!,Pisteesi riittävät tulostauluun!!!
 ENTER_NAME,Enter your name here…,Kirjoita nimesi tänne…
 CONFIRM_NAME,CONFIRM NAME!,VAHVISTA NIMI!
 SETTING_POINT,Points Visible:,Pisteet näkyvissä:
@@ -15,3 +15,5 @@ SETTING_LEADERBOARD,Leaderboard Visible:,Tulostaulu näkyvissä:
 GAME_PAUSED, Game paused, Peli keskeytetty
 GAME_OVER, Game Over, Peli ohi
 RETRY, Retry, Uusinta
+MUSIC, Music, Musiikki
+SFX, Effects, Effektit
