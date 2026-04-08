@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgmlfgy5yi5rb"]
+[gd_scene load_steps=11 format=3 uid="uid://cgmlfgy5yi5rb"]
 
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_m5628"]
 [ext_resource type="Script" uid="uid://ciohg0gx8xy4i" path="res://Scripts/GameOver.cs" id="2_k52d1"]
@@ -9,6 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://b54pqob210473" path="res://Text_Settings/MenuLabels.tres" id="6_a14ly"]
 [ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="7_a14ly"]
 [ext_resource type="AudioStream" uid="uid://dsus7aug5288x" path="res://Audio/Music/Project Ex - Neo Nebula (freetouse.com).mp3" id="8_8710x"]
+[ext_resource type="FontFile" uid="uid://c1dkw20n1rdm3" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="8_tr7xh"]
 
 [node name="GameOver" type="Node2D"]
 
@@ -26,12 +27,12 @@ offset_right = 2033.0
 offset_bottom = 1351.0
 script = ExtResource("2_k52d1")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="GameOver" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = -332.0
-offset_top = -585.0
+offset_top = -751.0
 offset_right = 624.0
-offset_bottom = -391.0
+offset_bottom = -557.0
 theme_override_fonts/font = ExtResource("3_uib17")
 theme_override_font_sizes/font_size = 150
 text = "GAME_OVER"
@@ -77,6 +78,26 @@ horizontal_alignment = 1
 
 [node name="GameOverClick" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource("7_a14ly")
+
+[node name="PointsText" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -206.0
+offset_top = -506.0
+offset_right = 90.0
+offset_bottom = -386.0
+theme_override_fonts/font = ExtResource("8_tr7xh")
+theme_override_font_sizes/font_size = 100
+text = "SCORE"
+
+[node name="PointsNum" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = -506.0
+offset_right = 496.0
+offset_bottom = -338.0
+theme_override_fonts/font = ExtResource("3_uib17")
+theme_override_font_sizes/font_size = 100
+text = "0"
 
 [node name="Leaderboard" parent="." instance=ExtResource("3_ktc4i")]
 
