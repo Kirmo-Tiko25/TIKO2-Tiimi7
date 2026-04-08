@@ -66,9 +66,11 @@ public partial class Snorp : CharacterBody2D
 				HandleWallCollision(collision);
 			}
 		}
+		// TODO shaking system to make it appear unctrolloed.
+		// Rotate(0.1f);
 	}
 	public void TakeDamage(int damage)
-    {
+	{
 		if (immune)
 		{
 			GD.Print("Crashed while Immune");
@@ -98,13 +100,13 @@ public partial class Snorp : CharacterBody2D
 	}
 
 	private void Die()
-    {
+	{
 		// When this method is called it means you have died and the game ends
-        GD.Print("You Died!");
-		GD.Print("You got "+ GameManager.Points +" Points!");
-        QueueFree();
+		GD.Print("You Died!");
+		GD.Print("You got " + GameManager.Points + " Points!");
+		QueueFree();
 		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
-    }
+	}
 
 	private void HandleWallCollision(KinematicCollision2D collision)
 	{
@@ -124,16 +126,16 @@ public partial class Snorp : CharacterBody2D
 		Vector2 bounce = direction.Bounce(collision.GetNormal());
 
 		// Checks the direction of the bounce and changes the movement direction accordingly
-		if      (bounce.X > 0 && bounce.Y > 0)  direction = new Vector2(1, 1).Normalized();
-		else if (bounce.X > 0 && bounce.Y < 0)  direction = new Vector2(1, -1).Normalized();
-		else if (bounce.X < 0 && bounce.Y > 0)  direction = new Vector2(-1, 1).Normalized();
-		else if (bounce.X < 0 && bounce.Y < 0)  direction = new Vector2(-1, -1).Normalized();
+		if (bounce.X > 0 && bounce.Y > 0) direction = new Vector2(1, 1).Normalized();
+		else if (bounce.X > 0 && bounce.Y < 0) direction = new Vector2(1, -1).Normalized();
+		else if (bounce.X < 0 && bounce.Y > 0) direction = new Vector2(-1, 1).Normalized();
+		else if (bounce.X < 0 && bounce.Y < 0) direction = new Vector2(-1, -1).Normalized();
 
 		GD.Print("You crashed into a hazard!");
 	}
 	private void OnImmuneTimerTimeout()
 	{
-	immune = false;
-	GD.Print("Immunity ended");
+		immune = false;
+		GD.Print("Immunity ended");
 	}
 }

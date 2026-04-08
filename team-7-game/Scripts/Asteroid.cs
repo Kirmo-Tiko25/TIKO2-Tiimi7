@@ -3,7 +3,7 @@ using System;
 
 public partial class Asteroid : RigidBody2D
 {
-	private int _health = 3;
+	private int _health = 2;
 	public override void _Ready()
 	{
 		// select one of the (1) animation types and plays it (good for later).
@@ -22,7 +22,8 @@ public partial class Asteroid : RigidBody2D
 		var collision = MoveAndCollide(LinearVelocity * (float)delta);
 
 		// Checks if a collision happened.
-		if (collision != null && collision.GetCollider() is Node collider && collider.IsInGroup("Hazards"))
+		if (collision != null && collision.GetCollider() is Node collider
+		&& (collider.IsInGroup("Hazards") || collider.IsInGroup("player")))
 		{
 			TakeDamage(1);
 		}
@@ -30,19 +31,17 @@ public partial class Asteroid : RigidBody2D
 
 	private void TakeDamage(int amount)
 	{
-		GD.Print("Asteroid took damage. Current healht " + _health);
+		GD.Print("Asteroid took damage. Current health " + _health);
 		_health -= amount;
 
 		if (_health <= 0)
 		{
-			OnVisibleOnScreenNotifier2DScreenExited();
+			Removed();
 		}
 	}
 
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{
-		// TODO send points to score before deleting the object
-		// SendPoints();
 		Removed();
 	}
 

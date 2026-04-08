@@ -10,8 +10,12 @@ public partial class KillZone : Area2D
 	}
 	private void HandleOverlap(Node2D body)
 	{
+		if (body.IsInGroup("Hazards"))
+		{
+			body.QueueFree();
+		}
 
-		body.QueueFree();
+
 
 	}
 
