@@ -21,8 +21,6 @@ public partial class Spawner : Node
 	public PackedScene PlanetScene { get; set; }
 	public static bool noDistract { get; set; } = true;
 	public static bool satellitePassed { get; set; } = false;
-	//TODO score system.
-	// private int _score;
 
 	public override void _Ready()
 	{
@@ -33,14 +31,11 @@ public partial class Spawner : Node
 	{
 		// stops object timer
 		GetNode<Timer>("ObjectTimer").Stop();
-		// stops score timer
-		//GetNode<Timer>("ScoreTimer").Stop();
+
 	}
 
 	public void NewGame()
 	{
-		// TODO score system.
-		//_score = 0;
 
 		/* Optional Player start if we want different starting positions.
 			var player = GetNode<Player>("Player");
@@ -51,13 +46,7 @@ public partial class Spawner : Node
 		// start counting time, that triggers other things like spawning.
 		GetNode<Timer>("StartTimer").Start();
 	}
-	/* SCORE TODO
-		// Score counter from time lapsed.
-		private void OnScoreTimerTimeout()
-		{
-			_score++;
-		}
-	*/
+
 	// After (2) seconds from Game Start: starts the other timers.
 	private void OnStartTimerTimeout()
 	{

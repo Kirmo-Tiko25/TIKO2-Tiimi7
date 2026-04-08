@@ -20,7 +20,7 @@ script = ExtResource("1_5lrqs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 16)
-scale = Vector2(1.0066667, 1)
+scale = Vector2(2, 1.986)
 texture = ExtResource("1_u2mvx")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

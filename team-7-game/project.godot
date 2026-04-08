@@ -33,6 +33,7 @@ version_control/autoload_on_startup=true
 [global_group]
 
 Hazards="For space dangers that do damage"
+player="player character(s)"
 
 [input]
 
