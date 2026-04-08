@@ -3,6 +3,7 @@ using System;
 
 public partial class Asteroid : RigidBody2D
 {
+	private int _health = 3;
 	public override void _Ready()
 	{
 		// select one of the (1) animation types and plays it (good for later).
@@ -16,12 +17,36 @@ public partial class Asteroid : RigidBody2D
 		AngularVelocity = GD.RandRange(-5, 5);
 	}
 
+	public override void _PhysicsProcess(double delta)
+	{
+		var collision = MoveAndCollide(LinearVelocity * (float)delta);
+
+		// Checks if a collision happened.
+		if (collision != null && collision.GetCollider() is Node collider && collider.IsInGroup("Hazards"))
+		{
+			TakeDamage(1);
+		}
+	}
+
+	private void TakeDamage(int amount)
+	{
+		GD.Print("Asteroid took damage. Current healht " + _health);
+		_health -= amount;
+
+		if (_health <= 0)
+		{
+			OnVisibleOnScreenNotifier2DScreenExited();
+		}
+	}
+
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{
 		// TODO send points to score before deleting the object
 		// SendPoints();
 		Removed();
 	}
+
+
 
 	public void Removed()
 	{
