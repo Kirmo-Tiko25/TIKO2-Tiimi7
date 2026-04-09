@@ -187,9 +187,6 @@ bus = &"SFX"
 autoplay = true
 bus = &"Music"
 
-[node name="Planet" parent="." instance=ExtResource("13_hx8n4")]
-position = Vector2(993, 1464)
-
 [connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
