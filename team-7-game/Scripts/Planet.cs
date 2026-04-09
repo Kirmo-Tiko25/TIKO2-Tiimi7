@@ -4,22 +4,21 @@ using System;
 public partial class Planet : CharacterBody2D
 {
 	private int _health = 100;
-	public override void _PhysicsProcess(double delta)
+	public override void _Ready()
 	{
-		var collision = MoveAndCollide(Velocity * (float)delta);
-
-		// Checks if a collision happened.
-		if (collision != null && collision.GetCollider() is Node collider
-		&& (collider.IsInGroup("Hazards") || collider.IsInGroup("player")))
-		{
-			TakeDamage(1);
-		}
+		var area = GetNode<Area2D>("Surface");
+		area.BodyEntered += OnAreaBodyEntered;
 	}
 
+	private void OnAreaBodyEntered(Node body)
+	{
+		GD.Print("Planet surface was hit by: " + body.Name);
+		TakeDamage(1);
+	}
 	private void TakeDamage(int amount)
 	{
-		GD.Print("Planet took damage. Current health " + _health);
 		_health -= amount;
+		GD.Print("Planet took damage. Current health " + _health);
 
 		if (_health <= 0)
 		{

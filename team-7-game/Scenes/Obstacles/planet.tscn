@@ -8,14 +8,22 @@
 radius = 180.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xaqp"]
-radius = 400.0
+radius = 350.0
 
 [node name="Planet" type="CharacterBody2D" groups=["player"]]
 z_index = 22
+collision_layer = 0
+collision_mask = 0
 motion_mode = 1
+wall_min_slide_angle = 0.0
+platform_on_leave = 2
+platform_floor_layers = 4294967040
 script = ExtResource("1_r7clh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Surface" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surface"]
 shape = SubResource("CircleShape2D_r7clh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,7 +33,6 @@ texture = ExtResource("1_4k3g3")
 [node name="KillZone" parent="." instance=ExtResource("2_0xaqp")]
 
 [node name="Gravity" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 32
 gravity_space_override = 4
