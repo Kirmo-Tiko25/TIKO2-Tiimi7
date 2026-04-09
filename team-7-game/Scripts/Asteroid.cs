@@ -3,7 +3,7 @@ using System;
 
 public partial class Asteroid : RigidBody2D
 {
-	private int _health = 2;
+	private int _health = 200;
 	public override void _Ready()
 	{
 		// select one of the (1) animation types and plays it (good for later).
@@ -31,7 +31,7 @@ public partial class Asteroid : RigidBody2D
 
 	private void TakeDamage(int amount)
 	{
-		GD.Print("Asteroid took damage. Current health " + _health);
+		GD.Print(Name + " Asteroid took damage. Current health " + _health);
 		_health -= amount;
 
 		if (_health <= 0)

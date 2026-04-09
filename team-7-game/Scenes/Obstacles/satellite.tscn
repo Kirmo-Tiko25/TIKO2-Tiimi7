@@ -34,6 +34,7 @@ animations = [{
 radius = 110.0
 
 [node name="Satellite" type="RigidBody2D"]
+z_index = 34
 collision_layer = 9
 mass = 200.0
 script = ExtResource("1_ua58u")

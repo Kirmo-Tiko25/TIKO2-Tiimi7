@@ -52,6 +52,13 @@ position = Vector2(1920.4999, 1080.5)
 scale = Vector2(2.133889, 1.8008333)
 texture = ExtResource("3_0iob3")
 
+[node name="backgroundMask" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.47058824)
+z_index = 10
+position = Vector2(1920.4999, 1080.5)
+scale = Vector2(2.133889, 1.8008333)
+texture = ExtResource("3_0iob3")
+
 [node name="BorderWalls" parent="." instance=ExtResource("7_q68mp")]
 
 [node name="Snorp" type="CharacterBody2D" parent="."]
@@ -150,8 +157,10 @@ visible = false
 texture = ExtResource("6_q68mp")
 
 [node name="HeartPointsUI" parent="." instance=ExtResource("10_4b75m")]
+z_index = 90
 
 [node name="PauseButton" type="Control" parent="."]
+z_index = 90
 layout_mode = 3
 anchors_preset = 0
 offset_left = 3599.0
