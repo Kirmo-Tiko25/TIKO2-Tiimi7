@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkwelyufdt65p"]
+
+[ext_resource type="Script" uid="uid://i3b2dnenwb5d" path="res://Scripts/Orlop.cs" id="1_cy0k7"]
+[ext_resource type="Texture2D" uid="uid://dggjcmhr308y4" path="res://Art/orlop1.png" id="1_kms7p"]
+[ext_resource type="Texture2D" uid="uid://ce3wu7o6lodk1" path="res://Art/orlop2.png" id="2_cy0k7"]
+[ext_resource type="Texture2D" uid="uid://blf5ox04sdk5k" path="res://Art/orlop3.png" id="3_kkd04"]
+[ext_resource type="Texture2D" uid="uid://v3clepru0lgk" path="res://Art/orlop4.png" id="4_bvqua"]
+[ext_resource type="Texture2D" uid="uid://c1al1poqfesds" path="res://Art/orlop5.png" id="5_gsbb8"]
+[ext_resource type="Texture2D" uid="uid://u7v2ul0b8576" path="res://Art/orlop6.png" id="6_xlkjn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_omgxl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kms7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cy0k7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kkd04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bvqua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gsbb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xlkjn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kkd04"]
+radius = 130.0
+
+[node name="Orlop" type="RigidBody2D" groups=["Hazards"]]
+z_index = 89
+collision_layer = 104
+collision_mask = 0
+mass = 100.0
+script = ExtResource("1_cy0k7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_omgxl")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kkd04")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-178, -174, 360, 370)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]

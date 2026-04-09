@@ -1,23 +1,32 @@
 using Godot;
 using System;
 
-public partial class Asteroid : RigidBody2D
+public partial class Orlop : RigidBody2D
 {
-	private int _health = 2;
+	private int _health = 6;
+
 	public override void _Ready()
 	{
-		// select one of the (1) animation types and plays it (good for later).
-		//var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		//string[] asteroidTypes = animatedSprite2D.SpriteFrames.GetAnimationNames();
-		//animatedSprite2D.Play(asteroidTypes[0]); //currently only plays the one.
-
-		// here is the randomaizer version for later:
-		// animatedSprite2D.Play(asteroidTypes[GD.Randi() % asteroidTypes.Length]);
-
-		AngularVelocity = GD.RandRange(-5, 5);
+		// declares its presense and rights itself.
+		GD.Print(Name + "I'm Hunting here");
+		Rotation = 0f;
 	}
+
+
+	// Rotates Orlop upright constantly
+	public float UpForce = 10f;
 	public override void _PhysicsProcess(double delta)
 	{
+		//self righting bit
+		// upright target
+		float upright = 0f;
+		float currentRot = Rotation;
+		float angleError = Mathf.AngleDifference(currentRot, upright);
+
+		float torque = -angleError * UpForce - AngularVelocity * 2f;
+		ApplyTorque(torque);
+
+		// collision bit
 		var collision = MoveAndCollide(LinearVelocity * (float)delta);
 
 		// Checks if a collision happened.
@@ -31,13 +40,12 @@ public partial class Asteroid : RigidBody2D
 	private void TakeDamage(int amount)
 	{
 		_health -= amount;
-		GD.Print(Name + " Asteroid took damage. Current health " + _health);
+		GD.Print(Name + " Orlop took damage. Current health " + _health);
 		if (_health <= 0)
 		{
 			Removed();
 		}
 	}
-
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{
 		Removed();
@@ -48,6 +56,4 @@ public partial class Asteroid : RigidBody2D
 		QueueFree(); // removes object
 	}
 
-
 }
-

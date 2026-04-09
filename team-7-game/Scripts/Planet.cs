@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Planet : CharacterBody2D
+public partial class Planet : RigidBody2D
 {
 	private int _health = 100;
 	public override void _Ready()

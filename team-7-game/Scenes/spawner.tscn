@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci3iwq4vlben5"]
+[gd_scene load_steps=10 format=3 uid="uid://ci3iwq4vlben5"]
 
 [ext_resource type="Script" uid="uid://ckujsir53050v" path="res://Scripts/Spawner.cs" id="1_kypai"]
 [ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/Obstacles/asteroid_small.tscn" id="2_mdv8j"]
 [ext_resource type="PackedScene" uid="uid://bs6oihemqwhgr" path="res://Scenes/Obstacles/asteroid_big.tscn" id="3_xhbpr"]
 [ext_resource type="PackedScene" uid="uid://djxfohaq2vfqh" path="res://Scenes/Obstacles/Comet.tscn" id="4_f333s"]
+[ext_resource type="PackedScene" uid="uid://dkwelyufdt65p" path="res://Scenes/Obstacles/orlop.tscn" id="4_kh5ph"]
 [ext_resource type="PackedScene" uid="uid://dc4cgc5j1g3n8" path="res://Scenes/Obstacles/Boulder.tscn" id="5_f333s"]
 [ext_resource type="PackedScene" uid="uid://cka5tq47kapya" path="res://Scenes/Obstacles/BlackHole.tscn" id="6_t512v"]
 [ext_resource type="PackedScene" uid="uid://vkua5o8nb47n" path="res://Scenes/Obstacles/satellite.tscn" id="7_yocef"]
@@ -13,6 +14,7 @@
 script = ExtResource("1_kypai")
 SmallAsteroidScene = ExtResource("2_mdv8j")
 BigAsteroidScene = ExtResource("3_xhbpr")
+OrlopScene = ExtResource("4_kh5ph")
 CometScene = ExtResource("4_f333s")
 BoulderScene = ExtResource("5_f333s")
 BHScene = ExtResource("6_t512v")

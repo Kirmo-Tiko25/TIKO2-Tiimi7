@@ -4,11 +4,13 @@ using System.Reflection;
 
 public partial class Spawner : Node
 {
-	[Export] private int Difficulty = 1;
+	[Export] private int Difficulty = 3;
 	[Export]
 	public PackedScene SmallAsteroidScene { get; set; }
 	[Export]
 	public PackedScene BigAsteroidScene { get; set; }
+	[Export]
+	public PackedScene OrlopScene { get; set; }
 	[Export]
 	public PackedScene CometScene { get; set; }
 	[Export]
@@ -21,12 +23,12 @@ public partial class Spawner : Node
 	public PackedScene PlanetScene { get; set; }
 	public static bool noDistract { get; set; } = true;
 	public static bool satellitePassed { get; set; } = false;
-
 	public override void _Ready()
 	{
 		NewGame();
 
 	}
+
 	public void GameOver()
 	{
 		// stops object timer
@@ -65,6 +67,7 @@ public partial class Spawner : Node
 	// After each timer tick spawn a new child object and fling it in random direction.
 	private void OnObjectTimerTimeout()
 	{
+
 		// used for quick testing
 		timerTick++;
 		if ((timerTick - dangerLevel) >= objectsSpawned)
@@ -83,7 +86,7 @@ public partial class Spawner : Node
 				}
 				else if (foe == 2)
 				{
-					SpawnBoulder();
+					SpawnOrlop();
 				}
 
 				dangerLevel++;
@@ -97,6 +100,33 @@ public partial class Spawner : Node
 			// for Logging.
 			GD.Print("Objects spawned: " + objectsSpawned);
 		}
+	}
+
+	public void SpawnOrlop()
+	{
+		// Create a new instance of the test scene.
+		Orlop orlop = OrlopScene.Instantiate<Orlop>();
+
+		// Choose a random location on Path2D.
+		var SpawnLocation = GetNode<PathFollow2D>("ObjectPath/ObjectSpawnLocation");
+		SpawnLocation.ProgressRatio = GD.Randf();
+
+		// Set the Object's direction perpendicular to the path direction.
+		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+
+		// Set the Object's position to a random location.
+		orlop.Position = SpawnLocation.Position;
+
+		// Add some randomness to the direction.
+		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
+		orlop.Rotation = direction;
+
+		// Choose the velocity.
+		var velocity = new Vector2((float)GD.RandRange(100.0, 200.0), 0);
+		orlop.LinearVelocity = velocity.Rotated(direction);
+
+		// Spawn the mob by adding it to the Main scene.
+		AddChild(orlop);
 	}
 
 	private void SpawnBoulder()
@@ -214,7 +244,7 @@ public partial class Spawner : Node
 		}
 	}
 
-	private void SpawnPlanet()
+	public void SpawnPlanet()
 	{
 		// Create a new instance of the planet scene.
 		Planet planet = PlanetScene.Instantiate<Planet>();
@@ -227,7 +257,7 @@ public partial class Spawner : Node
 		planet.Position = SpawnLocation.Position;
 
 		// Choose the velocity.
-		planet.Velocity = new Vector2((float)GD.RandRange(100.0, 200.0), 0);
+		planet.LinearVelocity = new Vector2((float)GD.RandRange(100.0, 200.0), 0);
 
 		// Spawn it by adding it to the Main scene.
 		AddChild(planet);
@@ -254,7 +284,7 @@ public partial class Spawner : Node
 		noDistract = false;
 	}
 
-	private void SpawnBlackHole()
+	public void SpawnBlackHole()
 	{
 		// Create a new instance of the Black Hole scene.
 		BlackHole succ = BHScene.Instantiate<BlackHole>();
