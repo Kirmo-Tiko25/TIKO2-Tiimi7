@@ -3,13 +3,46 @@ using System;
 
 public partial class Orlop : RigidBody2D
 {
-	private int _health = 6;
+	[Export] public int MaxHealth = 2;
+	[Export] public int DamageTreshold = 100; // min speed to take damage
+	private int _health;
+	private bool _immune = false;
 
 	public override void _Ready()
 	{
 		// declares its presense and rights itself.
 		GD.Print(Name + "I'm Hunting here");
 		Rotation = 0f;
+		_health = MaxHealth;
+		BodyEntered += OnBodyEntered;
+		BodyExited += OnBodyExited;
+	}
+	private void OnBodyEntered(Node body)
+	{
+		if (body is not RigidBody2D other)
+			return;
+
+		// Check relative velocity
+		Vector2 relativeVelocity = LinearVelocity - other.LinearVelocity;
+		float impactSpeed = relativeVelocity.Length();
+		GD.Print("Impact speed of collision: " + impactSpeed);
+		// if over threshold then apply damage
+		if (impactSpeed > DamageTreshold && !_immune)
+		{
+			_immune = true;
+			if (impactSpeed - DamageTreshold < 10)
+				TakeDamage(1);
+			else
+			{
+				TakeDamage(2);
+			}
+		}
+
+	}
+	private void OnBodyExited(Node body)
+	{
+		// allow damage again
+		_immune = false;
 	}
 
 

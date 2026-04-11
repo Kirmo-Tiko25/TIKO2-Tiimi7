@@ -43,6 +43,7 @@ collision_layer = 104
 collision_mask = 0
 mass = 100.0
 script = ExtResource("1_cy0k7")
+MaxHealth = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_omgxl")

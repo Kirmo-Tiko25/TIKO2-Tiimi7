@@ -13,7 +13,7 @@ public partial class KillZone : Area2D
 	{
 		if (body.IsInGroup("Hazards"))
 
-			// Only shrink nodes that have a scale property (Node2D or RigidBody2D)
+			// Only shrink nodes that have a scale property
 			if (body is Node2D node)
 			{
 				// Stop physics if it's a RigidBody2D

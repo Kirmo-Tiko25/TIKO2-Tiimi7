@@ -14,7 +14,7 @@ public partial class GameManager : Node2D
 
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionPressed("pause"))
+		if (Input.IsActionJustReleased("pause"))
 		{
 			PauseGame();
 		}

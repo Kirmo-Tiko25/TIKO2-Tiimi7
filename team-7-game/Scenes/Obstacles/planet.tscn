@@ -14,6 +14,7 @@ radius = 350.0
 z_index = 22
 collision_layer = 0
 collision_mask = 0
+mass = 1000.0
 script = ExtResource("1_r7clh")
 
 [node name="Surface" type="Area2D" parent="."]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs6oihemqwhgr"]
+[gd_scene load_steps=5 format=3 uid="uid://bs6oihemqwhgr"]
 
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_xmiyx"]
+[ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisA.tscn" id="2_0vtb3"]
 [ext_resource type="Texture2D" uid="uid://18ts67smqmrk" path="res://Art/asteroid3.png" id="2_xmiyx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7o5tt"]
@@ -10,10 +11,15 @@ radius = 80.0
 z_index = 32
 position = Vector2(532, 248)
 collision_layer = 41
-mass = 300.0
+mass = 100.0
 can_sleep = false
+contact_monitor = true
+max_contacts_reported = 4
 linear_damp_mode = 1
 script = ExtResource("1_xmiyx")
+DamageTreshold = 200
+DebrisAScene = ExtResource("2_0vtb3")
+DebrisCount = 2
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -27,4 +33,5 @@ shape = SubResource("CircleShape2D_7o5tt")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-87, -75, 167, 154)
 
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]
