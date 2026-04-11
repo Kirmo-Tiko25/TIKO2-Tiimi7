@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1jvlvd22wnrn"
-path="res://.godot/imported/SnorpUfo.png-0a4dc3735c0b199066c57df2e3cfec8d.ctex"
+uid="uid://bs7fperl74ath"
+path="res://.godot/imported/PlayerDamage5.png-3bb8079118effb95cddad2c34147862f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/SnorpUfo.png"
-dest_files=["res://.godot/imported/SnorpUfo.png-0a4dc3735c0b199066c57df2e3cfec8d.ctex"]
+source_file="res://Art/Characters/PlayerDamage5.png"
+dest_files=["res://.godot/imported/PlayerDamage5.png-3bb8079118effb95cddad2c34147862f.ctex"]
 
 [params]
 

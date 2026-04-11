@@ -79,6 +79,9 @@ public partial class Snorp : CharacterBody2D
 		{
 			// 1 sec immunity
 			immune = true;
+			// switch to damage animation
+			GetNode<AnimatedSprite2D>("SnorpUfo").Play("damage");
+			// start immune timer
 			GetNode<Timer>("ImmuneTimer").Start();
 
 			// Damage taking system every time this method is used it takes 1 of your HP away
@@ -137,5 +140,6 @@ public partial class Snorp : CharacterBody2D
 	{
 		immune = false;
 		GD.Print("Immunity ended");
+		GetNode<AnimatedSprite2D>("SnorpUfo").Play("default");
 	}
 }
