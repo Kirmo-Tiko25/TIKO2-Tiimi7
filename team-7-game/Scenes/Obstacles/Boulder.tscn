@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc4cgc5j1g3n8"]
+[gd_scene load_steps=10 format=3 uid="uid://dc4cgc5j1g3n8"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_mfoax"]
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_pobn3"]
 [ext_resource type="Texture2D" uid="uid://s0bdscee75ua" path="res://Art/boulder.png" id="2_iquer"]
 [ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisA.tscn" id="2_mfoax"]
@@ -22,6 +23,8 @@ specular_shininess = 0.5
 z_index = 31
 collision_layer = 41
 mass = 300.0
+physics_material_override = ExtResource("1_mfoax")
+inertia = 100.0
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 4

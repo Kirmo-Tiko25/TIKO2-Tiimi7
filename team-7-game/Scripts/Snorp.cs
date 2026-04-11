@@ -8,6 +8,7 @@ public partial class Snorp : CharacterBody2D
 	[Export] public float Speed = 300.0f;
 	[Export] public float speedIncrease = 50.0f;
 	[Export] public float speedDecrease = 0.5f;
+	[Export] public float maxSpeed = 600f;
 	private Vector2 direction;
 	[Export] private bool canMove = false;
 	[Export] private int maxhealth = 3;
@@ -47,8 +48,17 @@ public partial class Snorp : CharacterBody2D
 	{
 		if (!canMove) return;
 
+		GetNode<Label>("SpeedLabel").Text = $"S: {Speed:F0}";
+
 		// Create Velocity and local _velocity
 		Vector2 Velocity = direction * Speed;
+
+		// downgrade speed to maxspeed
+		if (Speed > maxSpeed)
+		{
+			GetNode<Label>("SpeedLabel").AddThemeColorOverride("font_color",
+			new Color(1, 0, 0, 1));
+		}
 
 		// Create Movement and enables colliding instead of MoveAndSlide sliding
 		var collision = MoveAndCollide(Velocity * (float)delta);

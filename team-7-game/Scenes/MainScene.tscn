@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=36 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Art/Characters/SnorpUFO.png" id="2_nhkr4"]
@@ -70,6 +70,8 @@ height = 176.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyaec"]
 radius = 1000.0
 
+[sub_resource type="Theme" id="Theme_r0vnq"]
+
 [sub_resource type="Curve2D" id="Curve2D_qxria"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -122.82941, -153.72055, 0, 0, 0, 0, 3665.4866, -153.72052, 0, 0, 0, 0, 3665.4868, 2122.9622, 0, 0, 0, 0, -122.82941, 2131.4573, 0, 0, 0, 0, -122.82941, -153.72055)
@@ -114,6 +116,7 @@ motion_mode = 1
 script = ExtResource("1_tr2i4")
 Speed = 500.0
 speedDecrease = 0.9
+maxSpeed = 1000.0
 canMove = true
 
 [node name="SnorpUfo" type="AnimatedSprite2D" parent="Snorp"]
@@ -150,6 +153,16 @@ gravity = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snorp/ChaseME"]
 shape = SubResource("CircleShape2D_gyaec")
+
+[node name="SpeedLabel" type="Label" parent="Snorp"]
+offset_left = 76.0
+offset_top = -53.0
+offset_right = 239.0
+offset_bottom = 57.0
+theme = SubResource("Theme_r0vnq")
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
 
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("5_qxria")

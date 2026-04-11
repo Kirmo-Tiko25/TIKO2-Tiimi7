@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs6oihemqwhgr"]
+[gd_scene load_steps=6 format=3 uid="uid://bs6oihemqwhgr"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_w7t3t"]
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_xmiyx"]
 [ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisA.tscn" id="2_0vtb3"]
 [ext_resource type="Texture2D" uid="uid://18ts67smqmrk" path="res://Art/asteroid3.png" id="2_xmiyx"]
@@ -12,6 +13,8 @@ z_index = 32
 position = Vector2(532, 248)
 collision_layer = 41
 mass = 100.0
+physics_material_override = ExtResource("1_w7t3t")
+inertia = 50.0
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 4
