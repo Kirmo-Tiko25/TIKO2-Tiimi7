@@ -28,7 +28,8 @@ script = ExtResource("1_o5me0")
 
 [node name="Hearts" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 521.0
+offset_left = -3.0
+offset_right = 717.0
 offset_bottom = 175.0
 
 [node name="Heart1" type="TextureRect" parent="Hearts"]
@@ -61,9 +62,9 @@ label_settings = SubResource("LabelSettings_o5me0")
 
 [node name="Label" type="Label" parent="PointsLabel"]
 layout_mode = 0
-offset_left = -437.0
+offset_left = -319.0
 offset_top = -5.0
-offset_right = -118.0
+offset_right = -15.0
 offset_bottom = 115.0
 theme_override_fonts/font = ExtResource("3_j357t")
 theme_override_font_sizes/font_size = 100

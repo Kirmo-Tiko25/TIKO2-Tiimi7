@@ -257,7 +257,7 @@ public partial class Spawner : Node
 		planet.Position = SpawnLocation.Position;
 
 		// Choose the velocity.
-		planet.LinearVelocity = new Vector2((float)GD.RandRange(100.0, 200.0), 0);
+		planet.LinearVelocity = new Vector2((float)GD.RandRange(50.0, 100.0), 0);
 
 		// Spawn it by adding it to the Main scene.
 		AddChild(planet);

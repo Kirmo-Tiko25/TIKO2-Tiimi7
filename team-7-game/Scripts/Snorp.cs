@@ -57,7 +57,7 @@ public partial class Snorp : CharacterBody2D
 		if (Speed > maxSpeed)
 		{
 			GetNode<Label>("SpeedLabel").AddThemeColorOverride("font_color",
-			new Color(1, 0, 0, 1));
+			new Color(1, 0, 0, 1)); //colors speed to Red
 		}
 
 		// Create Movement and enables colliding instead of MoveAndSlide sliding
@@ -71,6 +71,10 @@ public partial class Snorp : CharacterBody2D
 			{
 				HandleHazardCollision(collision);
 			}
+			else if (collision.GetCollider() is Node collider2 && collider2.IsInGroup("life"))
+			{
+				HandleLifeCollision(collision);
+			}
 			else
 			{
 				HandleWallCollision(collision);
@@ -79,32 +83,32 @@ public partial class Snorp : CharacterBody2D
 		// TODO shaking system to make it appear unctrolloed.
 		// Rotate(0.1f);
 	}
+
+	private void TakeLife(int damage)
+	{
+		// Damage taking system every time this method is used it takes 1 of your HP away
+		CurrentHealth += damage;
+		EmitSignal(SignalName.HealthUI, CurrentHealth);
+		GD.Print("Bonus life! Player HP: " + CurrentHealth);
+
+		//When the player gets life it plays the hit sound
+		_hitSound.Play();
+	}
+
 	public void TakeDamage(int damage)
 	{
-		if (immune)
-		{
-			GD.Print("Crashed while Immune");
-		}
-		else
-		{
-			// 1 sec immunity
-			immune = true;
-			// switch to damage animation
-			GetNode<AnimatedSprite2D>("SnorpUfo").Play("damage");
-			// start immune timer
-			GetNode<Timer>("ImmuneTimer").Start();
 
-			// Damage taking system every time this method is used it takes 1 of your HP away
-			CurrentHealth -= damage;
-			EmitSignal(SignalName.HealthUI, CurrentHealth);
-			GD.Print("Player HP: " + CurrentHealth);
-			// This checks that if you have 0 HP after taking damage the game ends and you die
 
-			// Decreases speed by speedDecrease amount
-			Speed *= speedDecrease;
-			//When the player takes damage it plays the hit sound
-			_hitSound.Play();
-		}
+		// Damage taking system every time this method is used it takes 1 of your HP away
+		CurrentHealth -= damage;
+		EmitSignal(SignalName.HealthUI, CurrentHealth);
+		GD.Print("Player HP: " + CurrentHealth);
+		// This checks that if you have 0 HP after taking damage the game ends and you die
+
+		// Decreases speed by speedDecrease amount
+		Speed *= speedDecrease;
+		//When the player takes damage it plays the hit sound
+		_hitSound.Play();
 
 		if (CurrentHealth <= 0)
 		{
@@ -121,6 +125,24 @@ public partial class Snorp : CharacterBody2D
 		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
 	}
 
+	private void HandleLifeCollision(KinematicCollision2D collision)
+	{
+		if (immune)
+		{
+			GD.Print("life while Immune");
+		}
+		else
+		{
+			// 1 sec immunity
+			immune = true;
+			// start immune timer
+			GetNode<Timer>("ImmuneTimer").Start();
+
+			GD.Print("Got a Extra Life!");
+			GameManager.AddPoint(5);
+			TakeLife(1);
+		}
+	}
 	private void HandleWallCollision(KinematicCollision2D collision)
 	{
 		direction = direction.Bounce(collision.GetNormal()); // Bounces in the relevant direction.
@@ -134,8 +156,20 @@ public partial class Snorp : CharacterBody2D
 		// Pushes the player slightly away from the hazard to prevent sticking
 		GlobalPosition += collision.GetNormal() * 1f;
 
-		TakeDamage(1);
-
+		if (immune)
+		{
+			GD.Print("collision while Immune");
+		}
+		else
+		{
+			// 1 sec immunity
+			immune = true;
+			// switch to damage animation
+			GetNode<AnimatedSprite2D>("SnorpUfo").Play("damage");
+			// start immune timer
+			GetNode<Timer>("ImmuneTimer").Start();
+			TakeDamage(1);
+		}
 		Vector2 bounce = direction.Bounce(collision.GetNormal());
 
 		// Checks the direction of the bounce and changes the movement direction accordingly

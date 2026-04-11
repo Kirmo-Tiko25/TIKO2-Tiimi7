@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bggbssnkt3vmb"]
+[gd_scene load_steps=9 format=3 uid="uid://bggbssnkt3vmb"]
 
 [ext_resource type="Texture2D" uid="uid://rnqxghdhbnah" path="res://Art/small_planet.png" id="1_4k3g3"]
 [ext_resource type="Script" uid="uid://dbwkxenutvl2y" path="res://Scripts/Planet.cs" id="1_r7clh"]
+[ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_ujr0y"]
 [ext_resource type="PackedScene" uid="uid://d16uba7r24jmd" path="res://Scenes/killZone.tscn" id="2_0xaqp"]
+[ext_resource type="PackedScene" uid="uid://dp00hj8q5tsiq" path="res://Scenes/Obstacles/Life.tscn" id="3_kelae"]
+[ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisA.tscn" id="4_2i65w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r7clh"]
 radius = 180.0
@@ -15,7 +18,11 @@ z_index = 22
 collision_layer = 0
 collision_mask = 0
 mass = 1000.0
+physics_material_override = ExtResource("1_ujr0y")
 script = ExtResource("1_r7clh")
+MaxHealth = 1
+LifeScene = ExtResource("3_kelae")
+DebrisAScene = ExtResource("4_2i65w")
 
 [node name="Surface" type="Area2D" parent="."]
 collision_layer = 0

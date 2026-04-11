@@ -97,7 +97,5 @@ public partial class Asteroid : RigidBody2D
 	{
 		QueueFree(); // removes object
 	}
-
-
 }
 

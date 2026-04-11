@@ -34,6 +34,7 @@ version_control/autoload_on_startup=true
 
 Hazards="For space dangers that do damage"
 player="player character(s)"
+life=""
 
 [input]
 
