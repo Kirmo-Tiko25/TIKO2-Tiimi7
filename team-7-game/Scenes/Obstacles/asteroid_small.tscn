@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv3c8vetd4iqi"]
+[gd_scene load_steps=6 format=3 uid="uid://bv3c8vetd4iqi"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_gwb6y"]
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_ln1nw"]
+[ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisA.tscn" id="2_gwb6y"]
 [ext_resource type="Texture2D" uid="uid://bs4fpvh3wep2s" path="res://Art/asteroid2.png" id="2_o813l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7o5tt"]
@@ -8,13 +10,18 @@ radius = 27.0
 
 [node name="asteroid_small" type="RigidBody2D" groups=["Hazards"]]
 z_index = 33
-position = Vector2(46, 33)
 collision_layer = 33
 collision_mask = 5
-mass = 100.0
+mass = 3.0
+physics_material_override = ExtResource("1_gwb6y")
+inertia = 1.0
 can_sleep = false
+contact_monitor = true
+max_contacts_reported = 4
 linear_damp_mode = 1
 script = ExtResource("1_ln1nw")
+MaxHealth = 1
+DebrisAScene = ExtResource("2_gwb6y")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -29,4 +36,5 @@ shape = SubResource("CircleShape2D_7o5tt")
 z_index = 33
 rect = Rect2(-30, -24, 58, 52)
 
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]

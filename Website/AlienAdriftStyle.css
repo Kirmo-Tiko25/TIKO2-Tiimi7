@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Globally remove margins
+    set background image and font */
+body {
+    margin: 0;
+    background-image: url('Pics/NebulaBackground_Small.jpg');
+    background-size: repeat;
+    background-position: center;
+    font-family:'Pixelify Sans', sans-serif;
+
+}
+
+/* navigation bar styling
+    make it fixed to the top and full width
+    set background color and padding */
+.topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+/* nav links styling
+    set color, spacing, font size and weight
+    change link color on hover */
+.topnav a {
+    color: white;
+    margin: 0 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.topnav a:hover {
+    color: purple;
+}
+
+/* content styling
+    set margin, background color, text alignment and padding */
+.content {
+    margin: 40% 10% 20%;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+/* trailer container styling
+    set max width to stay within borders 
+    center it and keep aspect ratio */
+.trailer-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+}
+
+/* trailer iframe(video) styling
+    make it fill the container and remove borders */
+.trailer-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* pictures container styling
+    set flex display, wrapping, alignment and spacing */
+.pictures {
+    display: flex;
+    flex-wrap: wrap;
+    direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* team member container styling
+    set flex direction, alignment and spacing */
+.team-member-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* team member styling
+    set flex direction, alignment and spacing 
+    
+    remove/set margins from h3 and h4 */
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.team-member h3, h4 {
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+/* logo container and stack styling
+    set flex direction and alignment
+    set background color and limit width */
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+    width: fit-content;
+    margin: 0 auto;
+}
+.logo-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* larger screens styling
+    change background image 
+    change content margin for topnav to look better 
+    remove max width from trailer container
+    change member pictures container to a row
+    change logo container to row, still keep stack stacky */
+@media (min-width: 768px) {
+    body {
+        background-image: url('Pics/NebulaBackground_Big.jpg')
+    }
+
+    .content {
+        margin: 100px 10% 10%;
+    }
+
+    .trailer-container {
+        max-width: none;
+    }
+
+    .team-member-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .logo-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}

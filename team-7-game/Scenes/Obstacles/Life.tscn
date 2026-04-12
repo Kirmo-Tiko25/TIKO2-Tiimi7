@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp00hj8q5tsiq"]
+
+[ext_resource type="Texture2D" uid="uid://bhec03cfdp7aq" path="res://Art/heart.png" id="1_gu0kd"]
+[ext_resource type="Script" uid="uid://cjvlxsed55nii" path="res://Scripts/Life.cs" id="1_xv3dm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xv3dm"]
+radius = 80.0
+
+[node name="Life" type="RigidBody2D" groups=["life"]]
+z_index = 70
+collision_layer = 24
+collision_mask = 16
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 3
+linear_damp_mode = 1
+script = ExtResource("1_xv3dm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_gu0kd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xv3dm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-120, -105, 241, 212)
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]

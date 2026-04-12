@@ -1,22 +1,27 @@
-[gd_scene load_steps=32 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=36 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
-[ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Characters/SnorpUfo.png" id="2_nhkr4"]
+[ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Art/Characters/SnorpUFO.png" id="2_nhkr4"]
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="3_0iob3"]
 [ext_resource type="Script" uid="uid://ckujsir53050v" path="res://Scripts/Spawner.cs" id="5_qxria"]
+[ext_resource type="Texture2D" uid="uid://dbgx6e4frwrat" path="res://Art/Characters/PlayerDamage1.png" id="5_r0vnq"]
 [ext_resource type="PackedScene" uid="uid://bo7aisp40hvdd" path="res://Scenes/Touches/Touch_scene.tscn" id="6_0iob3"]
 [ext_resource type="AudioStream" uid="uid://dl53lje8for0k" path="res://Audio/Effects/floraphonic-metal-hit-10-193281.mp3" id="6_6rnll"]
+[ext_resource type="Texture2D" uid="uid://520rib104su1" path="res://Art/Characters/PlayerDamage2.png" id="6_c3pre"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 [ext_resource type="AudioStream" uid="uid://mmmp5xjxxwtf" path="res://Audio/Effects/freesound_community-spaceship-cruising-ufo-7176.mp3" id="7_hx8n4"]
 [ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]
-[ext_resource type="AudioStream" uid="uid://dubwbfhx6f27t" path="res://Audio/Effects/floraphonic-metal-hit-12-193278.mp3" id="7_wmecs"]
+[ext_resource type="Texture2D" uid="uid://clc5lfcy3cujo" path="res://Art/Characters/PlayerDamage3.png" id="7_u5v48"]
 [ext_resource type="PackedScene" uid="uid://bv3c8vetd4iqi" path="res://Scenes/Obstacles/asteroid_small.tscn" id="7_xb4mg"]
 [ext_resource type="PackedScene" uid="uid://bs6oihemqwhgr" path="res://Scenes/Obstacles/asteroid_big.tscn" id="8_6t1o7"]
 [ext_resource type="Script" uid="uid://best7mddoga28" path="res://Scripts/GameManager.cs" id="8_f140w"]
-[ext_resource type="AudioStream" uid="uid://cs503r0wtc83l" path="res://Audio/Effects/floraphonic-metal-hit-50-193312.mp3" id="8_mymud"]
+[ext_resource type="Texture2D" uid="uid://b72us7mnaketm" path="res://Art/Characters/PlayerDamage4.png" id="8_s1acj"]
 [ext_resource type="PackedScene" uid="uid://djxfohaq2vfqh" path="res://Scenes/Obstacles/Comet.tscn" id="9_5qxwa"]
+[ext_resource type="Texture2D" uid="uid://bs7fperl74ath" path="res://Art/Characters/PlayerDamage5.png" id="9_t8ijv"]
 [ext_resource type="PackedScene" uid="uid://bylmnutb5inpb" path="res://Scenes/heart_points_ui.tscn" id="10_4b75m"]
+[ext_resource type="Texture2D" uid="uid://cjoogr32c0duh" path="res://Art/Characters/PlayerDamage6.png" id="10_rv6c1"]
 [ext_resource type="PackedScene" uid="uid://dc4cgc5j1g3n8" path="res://Scenes/Obstacles/Boulder.tscn" id="10_xc4hf"]
+[ext_resource type="PackedScene" uid="uid://dkwelyufdt65p" path="res://Scenes/Obstacles/orlop.tscn" id="11_bpy1e"]
 [ext_resource type="PackedScene" uid="uid://vkua5o8nb47n" path="res://Scenes/Obstacles/satellite.tscn" id="12_enc0b"]
 [ext_resource type="PackedScene" uid="uid://cka5tq47kapya" path="res://Scenes/Obstacles/BlackHole.tscn" id="13_6rnll"]
 [ext_resource type="PackedScene" uid="uid://bggbssnkt3vmb" path="res://Scenes/Obstacles/planet.tscn" id="13_hx8n4"]
@@ -26,16 +31,48 @@
 [ext_resource type="AudioStream" uid="uid://dq2584qsrvp30" path="res://Audio/Music/hitslab-gaming-game-video-game-music-474671.mp3" id="22_bpy1e"]
 [ext_resource type="AudioStream" uid="uid://bud833n17ej5d" path="res://Audio/Music/the_mountain-game-game-music-508018.mp3" id="22_p5ymy"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtg5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_r0vnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c3pre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u5v48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s1acj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t8ijv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rv6c1")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nhkr4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tx7fy"]
 radius = 31.999939
 height = 176.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4sso6"]
-playback_mode = 1
-streams_count = 3
-stream_0/stream = ExtResource("6_6rnll")
-stream_1/stream = ExtResource("7_wmecs")
-stream_2/stream = ExtResource("8_mymud")
+[sub_resource type="CircleShape2D" id="CircleShape2D_gyaec"]
+radius = 1000.0
+
+[sub_resource type="Theme" id="Theme_r0vnq"]
 
 [sub_resource type="Curve2D" id="Curve2D_qxria"]
 _data = {
@@ -68,25 +105,34 @@ position = Vector2(1920.4999, 1080.5)
 scale = Vector2(2.133889, 1.8008333)
 texture = ExtResource("3_0iob3")
 
+[node name="backgroundMask" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.47058824)
+z_index = 10
+position = Vector2(1920.4999, 1080.5)
+scale = Vector2(2.133889, 1.8008333)
+texture = ExtResource("3_0iob3")
+
 [node name="BorderWalls" parent="." instance=ExtResource("7_q68mp")]
 
-[node name="Snorp" type="CharacterBody2D" parent="."]
+[node name="Snorp" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 88
+position = Vector2(1976, 1288)
 collision_layer = 51
 collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_tr2i4")
 Speed = 500.0
 speedDecrease = 0.9
+maxSpeed = 1000.0
 canMove = true
 
-[node name="SnorpUfo" type="Sprite2D" parent="Snorp"]
-position = Vector2(1904.0001, 1045)
-scale = Vector2(0.1583742, 0.13923799)
-texture = ExtResource("2_nhkr4")
+[node name="SnorpUfo" type="AnimatedSprite2D" parent="Snorp"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_dtg5n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snorp"]
-position = Vector2(1901, 1023)
+visible = false
+position = Vector2(6, -27.874756)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tx7fy")
 
@@ -104,10 +150,32 @@ autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
+[node name="ChaseME" type="Area2D" parent="Snorp"]
+visible = false
+collision_layer = 0
+collision_mask = 64
+gravity_space_override = 3
+gravity_point = true
+gravity = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Snorp/ChaseME"]
+shape = SubResource("CircleShape2D_gyaec")
+
+[node name="SpeedLabel" type="Label" parent="Snorp"]
+offset_left = 76.0
+offset_top = -53.0
+offset_right = 239.0
+offset_bottom = 57.0
+theme = SubResource("Theme_r0vnq")
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
+
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("5_qxria")
 SmallAsteroidScene = ExtResource("7_xb4mg")
 BigAsteroidScene = ExtResource("8_6t1o7")
+OrlopScene = ExtResource("11_bpy1e")
 CometScene = ExtResource("9_5qxwa")
 BoulderScene = ExtResource("10_xc4hf")
 BHScene = ExtResource("13_6rnll")
@@ -164,9 +232,46 @@ rotation = 1.5707964
 visible = false
 texture = ExtResource("6_q68mp")
 
+[node name="SpawnOrlop" type="Button" parent="Spawner"]
+z_index = 90
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_right = 137.0
+offset_bottom = 117.0
+grow_horizontal = 2
+text = "Spawn Orlop"
+
+[node name="SpawnPlanet" type="Button" parent="Spawner"]
+z_index = 90
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 146.0
+offset_top = -3.0
+offset_right = 337.0
+offset_bottom = 114.0
+grow_horizontal = 2
+text = "Spawn Planet"
+
+[node name="SpawnBH" type="Button" parent="Spawner"]
+z_index = 90
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 342.0
+offset_top = -1.0
+offset_right = 533.0
+offset_bottom = 116.0
+grow_horizontal = 2
+text = "Spawn BH"
+
 [node name="HeartPointsUI" parent="." instance=ExtResource("10_4b75m")]
+z_index = 90
 
 [node name="PauseButton" type="Control" parent="."]
+z_index = 90
 layout_mode = 3
 anchors_preset = 0
 offset_left = 3599.0
@@ -200,3 +305,6 @@ playback_type = 1
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
 [connection signal="timeout" from="Spawner/DistracTimer" to="Spawner" method="OnDistracTimerTimeout"]
 [connection signal="timeout" from="Spawner/StartTimer" to="Spawner" method="OnStartTimerTimeout"]
+[connection signal="pressed" from="Spawner/SpawnOrlop" to="Spawner" method="SpawnOrlop"]
+[connection signal="pressed" from="Spawner/SpawnPlanet" to="Spawner" method="SpawnPlanet"]
+[connection signal="pressed" from="Spawner/SpawnBH" to="Spawner" method="SpawnBlackHole"]

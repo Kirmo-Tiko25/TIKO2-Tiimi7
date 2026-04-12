@@ -22,6 +22,7 @@ texture = SubResource("PlaceholderTexture2D_p3wvx")
 
 [node name="TouchNuber" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 91
 offset_left = -104.0
 offset_top = -102.0

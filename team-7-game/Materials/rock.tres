@@ -1,0 +1,6 @@
+[gd_resource type="PhysicsMaterial" format=3 uid="uid://bdqij5acmd5rr"]
+
+[resource]
+resource_name = "rock"
+friction = 0.5
+bounce = 0.2
