@@ -4,6 +4,8 @@ using System;
 public partial class Asteroid : RigidBody2D
 {
 	private int _health = 3;
+
+	//private AudioStreamPlayer2D _hitSound;
 	public override void _Ready()
 	{
 		// select one of the (1) animation types and plays it (good for later).
@@ -15,6 +17,8 @@ public partial class Asteroid : RigidBody2D
 		// animatedSprite2D.Play(asteroidTypes[GD.Randi() % asteroidTypes.Length]);
 
 		AngularVelocity = GD.RandRange(-5, 5);
+
+		//_hitSound = GetNode<AudioStreamPlayer2D>("HitSound");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -25,6 +29,9 @@ public partial class Asteroid : RigidBody2D
 		if (collision != null && collision.GetCollider() is Node collider && collider.IsInGroup("Hazards"))
 		{
 			TakeDamage(1);
+
+			// TODO Cant have same script for 2 objects or it will errors
+			//_hitSound.Play();
 		}
 	}
 
