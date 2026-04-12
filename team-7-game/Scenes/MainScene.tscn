@@ -193,6 +193,7 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_3va76")
 autoplay = true
 bus = &"Music"
+playback_type = 1
 
 [connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]

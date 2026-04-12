@@ -29,6 +29,7 @@ shape = SubResource("CircleShape2D_7o5tt")
 rect = Rect2(-87, -75, 167, 154)
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("3_0vtb3")
 bus = &"SFX"
 
