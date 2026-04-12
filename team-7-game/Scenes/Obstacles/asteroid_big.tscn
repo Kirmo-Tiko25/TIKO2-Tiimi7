@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_xmiyx"]
 [ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisA.tscn" id="2_0vtb3"]
 [ext_resource type="Texture2D" uid="uid://18ts67smqmrk" path="res://Art/asteroid3.png" id="2_xmiyx"]
+[ext_resource type="AudioStream" uid="uid://dxfuq5au8n24y" path="res://Audio/Effects/lordsonny-small-rock-break-194553.mp3" id="3_0vtb3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7o5tt"]
 radius = 80.0

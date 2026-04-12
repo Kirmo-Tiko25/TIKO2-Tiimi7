@@ -30,6 +30,12 @@ public partial class Settings : Control
 		//Gets the music and sfx bus nodes.
 		_musicBus = AudioServer.GetBusIndex("Music");
         _sfxBus = AudioServer.GetBusIndex("SFX");
+
+		var musicSlider = GetNode<HSlider>("SettingsBackground/Music");
+		musicSlider.ValueChanged += OnMusicVolumeChanged;
+
+		var sfxSlider = GetNode<HSlider>("SettingsBackground/SFX");
+		sfxSlider.ValueChanged += OnSfxVolumeChanged;
 	}
 
 	private void ChangePointVisibility()
@@ -80,10 +86,10 @@ public partial class Settings : Control
         AudioServer.SetBusVolumeDb(_sfxBus, LinearToDb((float)value));
     }
 
-    private float LinearToDb(float linear)
-    {
-        return Mathf.LinearToDb(linear);
-    }
+  	private float LinearToDb(float linear)
+	{
+    	return Mathf.LinearToDb(Mathf.Max(linear, 0.0001f));
+	}
 
 	private void OnExitButtonPressed()
 	{

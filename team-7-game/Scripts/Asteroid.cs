@@ -16,6 +16,8 @@ public partial class Asteroid : RigidBody2D
 		BodyExited += OnBodyExited;
 
 		AngularVelocity = GD.RandRange(-5, 5);
+
+		//_hitSound = GetNode<AudioStreamPlayer2D>("HitSound");
 	}
 
 	private void OnBodyEntered(Node body)

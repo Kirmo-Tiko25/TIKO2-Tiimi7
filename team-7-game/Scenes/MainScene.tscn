@@ -28,6 +28,8 @@
 [ext_resource type="Script" uid="uid://cla8cpua8hxm5" path="res://Scenes/PauseButton.cs" id="14_6rnll"]
 [ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="15_enc0b"]
 [ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="17_hx8n4"]
+[ext_resource type="AudioStream" uid="uid://dq2584qsrvp30" path="res://Audio/Music/hitslab-gaming-game-video-game-music-474671.mp3" id="22_bpy1e"]
+[ext_resource type="AudioStream" uid="uid://bud833n17ej5d" path="res://Audio/Music/the_mountain-game-game-music-508018.mp3" id="22_p5ymy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dtg5n"]
 animations = [{
@@ -86,6 +88,11 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3va76"]
+streams_count = 2
+stream_0/stream = ExtResource("22_p5ymy")
+stream_1/stream = ExtResource("22_bpy1e")
+
 [node name="MoveTest" type="Node2D"]
 
 [node name="GameManager" type="Node2D" parent="."]
@@ -133,7 +140,7 @@ shape = SubResource("CapsuleShape2D_tx7fy")
 one_shot = true
 
 [node name="HitSound" type="AudioStreamPlayer" parent="Snorp"]
-stream = ExtResource("6_6rnll")
+stream = SubResource("AudioStreamRandomizer_4sso6")
 bus = &"SFX"
 
 [node name="UFOSound" type="AudioStreamPlayer" parent="Snorp"]
@@ -288,8 +295,10 @@ stream = ExtResource("17_hx8n4")
 bus = &"SFX"
 
 [node name="GameBackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3va76")
 autoplay = true
 bus = &"Music"
+playback_type = 1
 
 [connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
