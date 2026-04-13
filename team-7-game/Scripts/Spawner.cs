@@ -46,7 +46,7 @@ public partial class Spawner : Node
 		*/
 
 		// start counting time, that triggers other things like spawning.
-		GetNode<Timer>("StartTimer").Start();
+		// GetNode<Timer>("StartTimer").Start();
 	}
 
 	// After (2) seconds from Game Start: starts the other timers.

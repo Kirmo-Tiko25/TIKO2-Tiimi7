@@ -1,12 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=38 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
-[ext_resource type="Texture2D" uid="uid://d1jvlvd22wnrn" path="res://Art/Characters/SnorpUFO.png" id="2_nhkr4"]
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="3_0iob3"]
 [ext_resource type="Script" uid="uid://ckujsir53050v" path="res://Scripts/Spawner.cs" id="5_qxria"]
 [ext_resource type="Texture2D" uid="uid://dbgx6e4frwrat" path="res://Art/Characters/PlayerDamage1.png" id="5_r0vnq"]
 [ext_resource type="PackedScene" uid="uid://bo7aisp40hvdd" path="res://Scenes/Touches/Touch_scene.tscn" id="6_0iob3"]
-[ext_resource type="AudioStream" uid="uid://dl53lje8for0k" path="res://Audio/Effects/floraphonic-metal-hit-10-193281.mp3" id="6_6rnll"]
 [ext_resource type="Texture2D" uid="uid://520rib104su1" path="res://Art/Characters/PlayerDamage2.png" id="6_c3pre"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 [ext_resource type="AudioStream" uid="uid://mmmp5xjxxwtf" path="res://Audio/Effects/freesound_community-spaceship-cruising-ufo-7176.mp3" id="7_hx8n4"]
@@ -22,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cjoogr32c0duh" path="res://Art/Characters/PlayerDamage6.png" id="10_rv6c1"]
 [ext_resource type="PackedScene" uid="uid://dc4cgc5j1g3n8" path="res://Scenes/Obstacles/Boulder.tscn" id="10_xc4hf"]
 [ext_resource type="PackedScene" uid="uid://dkwelyufdt65p" path="res://Scenes/Obstacles/orlop.tscn" id="11_bpy1e"]
+[ext_resource type="Texture2D" uid="uid://c7xcwb1jblq5s" path="res://Art/Characters/SnorpUFO.png" id="11_c3pre"]
 [ext_resource type="PackedScene" uid="uid://vkua5o8nb47n" path="res://Scenes/Obstacles/satellite.tscn" id="12_enc0b"]
 [ext_resource type="PackedScene" uid="uid://cka5tq47kapya" path="res://Scenes/Obstacles/BlackHole.tscn" id="13_6rnll"]
 [ext_resource type="PackedScene" uid="uid://bggbssnkt3vmb" path="res://Scenes/Obstacles/planet.tscn" id="13_hx8n4"]
@@ -58,7 +57,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_nhkr4")
+"texture": ExtResource("11_c3pre")
 }],
 "loop": true,
 "name": &"default",
@@ -122,8 +121,9 @@ collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_tr2i4")
 Speed = 500.0
+speedIncrease = 30.0
 speedDecrease = 0.9
-maxSpeed = 1000.0
+maxSpeed = 2000.0
 canMove = true
 
 [node name="SnorpUfo" type="AnimatedSprite2D" parent="Snorp"]
@@ -189,6 +189,7 @@ wait_time = 7.0
 
 [node name="StartTimer" type="Timer" parent="Spawner"]
 one_shot = true
+autostart = true
 
 [node name="ObjectPath" type="Path2D" parent="Spawner"]
 z_index = 55

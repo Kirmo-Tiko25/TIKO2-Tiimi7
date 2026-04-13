@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7xcwb1jblq5s"
-path="res://.godot/imported/SnorpUFO.png-b56c7ee432b631ad350f532a94e58515.ctex"
+uid="uid://nbnwm3dmo3n0"
+path="res://.godot/imported/touch.png-44f17ddbbf5dd656bed093dfd12cc903.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/SnorpUFO.png"
-dest_files=["res://.godot/imported/SnorpUFO.png-b56c7ee432b631ad350f532a94e58515.ctex"]
+source_file="res://Art/touch.png"
+dest_files=["res://.godot/imported/touch.png-44f17ddbbf5dd656bed093dfd12cc903.ctex"]
 
 [params]
 
