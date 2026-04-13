@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://boki0f6je4w8g"]
+[gd_scene load_steps=6 format=3 uid="uid://dp0aqb634qrd4"]
 
 [ext_resource type="FontFile" uid="uid://c1dkw20n1rdm3" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="1_4hxq3"]
 [ext_resource type="Script" uid="uid://1i1hclo546b4" path="res://Scripts/Settings.cs" id="1_yrknh"]
@@ -92,6 +92,7 @@ offset_right = 900.0
 offset_bottom = 821.0
 max_value = 1.0
 step = 0.01
+value = 0.5
 
 [node name="SFX" type="HSlider" parent="Control/SettingsBackground"]
 layout_mode = 0
@@ -101,6 +102,7 @@ offset_right = 900.0
 offset_bottom = 1050.0
 max_value = 1.0
 step = 0.01
+value = 0.5
 
 [node name="MusicLabel" type="Label" parent="Control/SettingsBackground"]
 layout_mode = 0

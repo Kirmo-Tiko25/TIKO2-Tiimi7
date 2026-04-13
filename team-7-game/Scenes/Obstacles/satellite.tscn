@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vkua5o8nb47n"]
+[gd_scene load_steps=11 format=3 uid="uid://vkua5o8nb47n"]
 
 [ext_resource type="Texture2D" uid="uid://cdjhfx6ly4gfw" path="res://Art/satellite_1.png" id="1_nvqtc"]
 [ext_resource type="Script" uid="uid://dlkbwgesr8grb" path="res://Scripts/Satellite.cs" id="1_ua58u"]
@@ -35,7 +35,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvqtc"]
 radius = 110.0
 
-[node name="Satellite" type="RigidBody2D"]
+[node name="Satellite" type="RigidBody2D" groups=["Hazards"]]
 z_index = 34
 collision_layer = 41
 mass = 200.0
