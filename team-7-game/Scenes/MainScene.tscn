@@ -139,10 +139,6 @@ shape = SubResource("CapsuleShape2D_tx7fy")
 [node name="ImmuneTimer" type="Timer" parent="Snorp"]
 one_shot = true
 
-[node name="HitSound" type="AudioStreamPlayer" parent="Snorp"]
-stream = SubResource("AudioStreamRandomizer_4sso6")
-bus = &"SFX"
-
 [node name="UFOSound" type="AudioStreamPlayer" parent="Snorp"]
 stream = ExtResource("7_hx8n4")
 volume_db = -17.174
