@@ -11,7 +11,7 @@ public partial class KillZone : Area2D
 	//Shrink effect when dissapears to a gravity well
 	private void HandleOverlap(Node2D body)
 	{
-		if (body.IsInGroup("Hazards"))
+		if (!body.IsInGroup("player"))
 
 			// Only shrink nodes that have a scale property
 			if (body is Node2D node)
