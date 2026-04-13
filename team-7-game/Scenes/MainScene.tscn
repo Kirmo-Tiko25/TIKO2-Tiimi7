@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=42 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="3_0iob3"]
@@ -24,7 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://vkua5o8nb47n" path="res://Scenes/Obstacles/satellite.tscn" id="12_enc0b"]
 [ext_resource type="PackedScene" uid="uid://cka5tq47kapya" path="res://Scenes/Obstacles/BlackHole.tscn" id="13_6rnll"]
 [ext_resource type="PackedScene" uid="uid://bggbssnkt3vmb" path="res://Scenes/Obstacles/planet.tscn" id="13_hx8n4"]
+[ext_resource type="AudioStream" uid="uid://dl53lje8for0k" path="res://Audio/Effects/floraphonic-metal-hit-10-193281.mp3" id="13_t8ijv"]
 [ext_resource type="Script" uid="uid://cla8cpua8hxm5" path="res://Scenes/PauseButton.cs" id="14_6rnll"]
+[ext_resource type="AudioStream" uid="uid://dubwbfhx6f27t" path="res://Audio/Effects/floraphonic-metal-hit-12-193278.mp3" id="14_rv6c1"]
+[ext_resource type="AudioStream" uid="uid://cs503r0wtc83l" path="res://Audio/Effects/floraphonic-metal-hit-50-193312.mp3" id="15_dtg5n"]
 [ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="15_enc0b"]
 [ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="17_hx8n4"]
 [ext_resource type="AudioStream" uid="uid://dq2584qsrvp30" path="res://Audio/Music/hitslab-gaming-game-video-game-music-474671.mp3" id="22_bpy1e"]
@@ -72,6 +75,12 @@ height = 176.0
 radius = 1000.0
 
 [sub_resource type="Theme" id="Theme_r0vnq"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d0jji"]
+streams_count = 3
+stream_0/stream = ExtResource("13_t8ijv")
+stream_1/stream = ExtResource("14_rv6c1")
+stream_2/stream = ExtResource("15_dtg5n")
 
 [sub_resource type="Curve2D" id="Curve2D_qxria"]
 _data = {
@@ -166,6 +175,10 @@ theme = SubResource("Theme_r0vnq")
 theme_override_font_sizes/font_size = 50
 text = "0"
 vertical_alignment = 1
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Snorp"]
+stream = SubResource("AudioStreamRandomizer_d0jji")
+bus = &"SFX"
 
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("5_qxria")

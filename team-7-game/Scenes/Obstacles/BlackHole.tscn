@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cka5tq47kapya"]
+[gd_scene load_steps=6 format=3 uid="uid://cka5tq47kapya"]
 
 [ext_resource type="Script" uid="uid://cba62w3fnk3j6" path="res://Scripts/BlackHole.cs" id="1_5lrqs"]
 [ext_resource type="Texture2D" uid="uid://ckayi5fqs0gdu" path="res://Art/black_hole2.png" id="2_17lj0"]
 [ext_resource type="PackedScene" uid="uid://d16uba7r24jmd" path="res://Scenes/killZone.tscn" id="3_17lj0"]
+[ext_resource type="AudioStream" uid="uid://cly8fqsp1mixa" path="res://Audio/Effects/freesound_community-portal_idle-34022.mp3" id="4_5h4up"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17lj0"]
 radius = 1000.0
@@ -42,6 +43,11 @@ angular_damp = 2.0
 shape = SubResource("CircleShape2D_17lj0")
 
 [node name="KillZone" parent="." instance=ExtResource("3_17lj0")]
+
+[node name="BlackHoleSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5h4up")
+autoplay = true
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]
