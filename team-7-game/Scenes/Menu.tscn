@@ -29,7 +29,7 @@ texture = ExtResource("1_3kf3n")
 position = Vector2(1926, 546)
 texture = ExtResource("2_x0ao6")
 
-[node name="MenuControl" type="Control" parent="."]
+[node name="MenuControl" type="Control" parent="." node_paths=PackedStringArray("play", "options", "quit", "tutorial", "finnish", "english", "swedish")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 3
 anchors_preset = 0
@@ -38,6 +38,13 @@ offset_top = 1162.0
 offset_right = 2406.0
 offset_bottom = 1356.0
 script = ExtResource("2_6pedr")
+play = NodePath("play")
+options = NodePath("options")
+quit = NodePath("quit")
+tutorial = NodePath("tutorial")
+finnish = NodePath("Translation/Finnish")
+english = NodePath("Translation/English")
+swedish = NodePath("Translation/Swedish")
 
 [node name="play" type="TextureButton" parent="MenuControl"]
 layout_mode = 0

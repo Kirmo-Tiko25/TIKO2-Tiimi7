@@ -22,6 +22,8 @@ public partial class Menu : Control
         // When button quit pressed it class the method OnQuitPressed and that method quits the game
         quit.Pressed += OnQuitPressed;
 
+        tutorial.Pressed += OnTutorialPressed;
+
         finnish.Pressed += OnFinnishPressed;
 
         english.Pressed += OnEnglishPressed;
@@ -51,6 +53,12 @@ public partial class Menu : Control
         // quits
         _buttonSound.Play();
         GetTree().Quit();
+    }
+
+    private void OnTutorialPressed()
+    {
+        _buttonSound.Play();
+        GetTree().CurrentScene.AddChild(GD.Load<PackedScene>("res://Scenes/TutorialPlayer.tscn").Instantiate());
     }
 
     private void OnFinnishPressed()
