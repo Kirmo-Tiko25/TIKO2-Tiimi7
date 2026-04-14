@@ -7,8 +7,8 @@ using System.Drawing;
 public partial class DebrisA : RigidBody2D
 {
 	[Export] public float StartScale = 0.1f;
-	[Export] public float EndScale = 1f;
-	[Export] public float GrowingTime = 0.20f;
+	[Export] public float EndScale = 2.8f;
+	[Export] public float GrowingTime = 6f;
 	public override void _Ready()
 	{
 		// Start from nothing
@@ -18,12 +18,18 @@ public partial class DebrisA : RigidBody2D
 		grow.TweenProperty(this, "scale", new Vector2(EndScale, EndScale), GrowingTime)
 		.SetEase(Tween.EaseType.Out)
 		.SetTrans(Tween.TransitionType.Back);
+		// TODO change opacity to 0%
+
+		var fades = CreateTween();
+		fades.TweenProperty(this, "modulate:a", 0, GrowingTime);
+		fades.Finished += () => QueueFree();
+
 	}
 
 	public void Launch(Vector2 direction, float force)
 	{
 		ApplyImpulse(direction * force);
-		AngularVelocity = GD.RandRange(-2, 2);
+		AngularVelocity = GD.RandRange(-1, 1);
 	}
 	private void OnVisibleOnScreenNotifier2DScreenExited()
 	{

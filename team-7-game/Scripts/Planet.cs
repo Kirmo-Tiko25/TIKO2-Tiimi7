@@ -67,7 +67,7 @@ public partial class Planet : RigidBody2D
 			debris.Position = GlobalPosition;
 
 			Vector2 dir = Vector2.Right.Rotated(GD.Randf() * Mathf.Tau);
-			float force = GD.RandRange(80, 200);
+			float force = GD.RandRange(80, 100);
 
 			debris.Launch(dir, force);
 		}
