@@ -17,7 +17,7 @@ public partial class Touches : Node2D
 		// checks if event is screen touch
 		if (@event is InputEventScreenTouch touch)
 		{
-			// Register touch and show it as a placeholderSprite
+			// Register touch and show it
 			if (touch.IsPressed())
 			{
 				Node2D newTouchPoint = touchPointScene.Instantiate<Node2D>();

@@ -1,16 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgub5trsqi7aj"]
+[gd_scene load_steps=4 format=3 uid="uid://dgub5trsqi7aj"]
 
 [ext_resource type="Texture2D" uid="uid://nbnwm3dmo3n0" path="res://Art/touch.png" id="1_ys4ww"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pj1k1"]
-radius = 144.0
+radius = 160.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ys4ww"]
+radius = 90.0
 
 [node name="Node2D" type="Node2D"]
 z_index = 70
 
 [node name="Touch" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_ys4ww")
 offset = Vector2(-3, 0)
+
+[node name="GravDrag" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+gravity_space_override = 1
+gravity_point = true
+gravity = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravDrag"]
+shape = SubResource("CircleShape2D_pj1k1")
 
 [node name="TouchNuber" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
@@ -35,14 +49,4 @@ platform_on_leave = 2
 platform_floor_layers = 4294967040
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ForcePush"]
-shape = SubResource("CircleShape2D_pj1k1")
-
-[node name="GravDrag" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 8
-gravity_space_override = 1
-gravity_point = true
-gravity = 500.0
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="GravDrag"]
-shape = SubResource("CircleShape2D_pj1k1")
+shape = SubResource("CircleShape2D_ys4ww")
