@@ -159,7 +159,7 @@ parameters/looping = true
 visible = false
 collision_layer = 0
 collision_mask = 64
-gravity_space_override = 3
+gravity_space_override = 1
 gravity_point = true
 gravity = 1000.0
 

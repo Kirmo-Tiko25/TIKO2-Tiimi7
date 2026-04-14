@@ -7,8 +7,8 @@ using System.Drawing;
 public partial class DebrisA : RigidBody2D
 {
 	[Export] public float StartScale = 0.1f;
-	[Export] public float EndScale = 2.8f;
-	[Export] public float GrowingTime = 6f;
+	[Export] public float EndScale = 2f;
+	[Export] public float GrowingTime = 8f;
 	public override void _Ready()
 	{
 		// Start from nothing
