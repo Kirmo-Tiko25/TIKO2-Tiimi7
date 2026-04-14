@@ -136,7 +136,7 @@ offset_right = 771.3
 offset_bottom = 1293.0
 theme_override_fonts/font = ExtResource("2_w1nw0")
 theme_override_font_sizes/font_size = 40
-text = "TUTORIALON?"
+text = "Tutorial?"
 alignment = 0
 
 [node name="TutorialOnLabel" type="Label" parent="Control/SettingsBackground/TutorialOnButton"]
