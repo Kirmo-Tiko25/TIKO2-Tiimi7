@@ -5,7 +5,7 @@ public partial class GameManager : Node2D
 {
 	public static int Points { get; private set; } = 0;
 	public static bool PointsVisible { get; set; } = true;
-	public static bool LeaderboardVisible { get; set; } = false;
+	public static bool LeaderboardVisible { get; set; } = true;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
