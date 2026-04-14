@@ -5,8 +5,11 @@ public partial class Settings : Control
 {
 	[Export] private Button pointsVisibilityButton;
 	[Export] private Button leaderboardVisibilityButton;
+	[Export] private Button tutorialOnButton;
+
 	[Export] private Label	pointsVisibilityLabel;
 	[Export] private Label	leaderboardVisibilityLabel;
+	[Export] private Label tutorialOnLabel;
 	private int _musicBus;
     private int _sfxBus;
 	public override void _Ready()
@@ -24,6 +27,7 @@ public partial class Settings : Control
 
 		pointsVisibilityButton.Pressed += ChangePointVisibility;
 		leaderboardVisibilityButton.Pressed += ChangeLeaderboardVisibility;
+		tutorialOnButton.Pressed += ChangeTutorialOn;
 
 		GetNode<Button>("SettingsBackground/ExitButton").Pressed += OnExitButtonPressed;
 
@@ -50,6 +54,12 @@ public partial class Settings : Control
 		ButtonUpdate();
 	}
 
+	private void ChangeTutorialOn()
+	{
+		GameManager.TutorialToggled();
+		ButtonUpdate();
+	}
+
 	private void ButtonUpdate()
 	{
 		if (GameManager.PointsVisible)
@@ -73,6 +83,17 @@ public partial class Settings : Control
 		{
 			leaderboardVisibilityLabel.Text = "OFF";
 			leaderboardVisibilityLabel.AddThemeColorOverride("font_color", Colors.Red);
+		}
+
+		if (GameManager.TutorialOn)
+		{
+			tutorialOnLabel.Text = "ON";
+			tutorialOnLabel.AddThemeColorOverride("font_color", Colors.Green);
+		}
+		else
+		{
+			tutorialOnLabel.Text = "OFF";
+			tutorialOnLabel.AddThemeColorOverride("font_color", Colors.Red);
 		}
 	}
 

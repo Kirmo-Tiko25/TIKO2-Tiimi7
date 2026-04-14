@@ -4,27 +4,30 @@ using System.Diagnostics.CodeAnalysis;
 
 public partial class Menu : Control
 {
+    [Export] TextureButton play;
+    [Export] TextureButton options;
+    [Export] TextureButton quit;
+    [Export] TextureButton tutorial;
+    [Export] TextureButton finnish;
+    [Export] TextureButton english;
+    [Export] TextureButton swedish;
     private AudioStreamPlayer _buttonSound;
     public override void _Ready()
     {
         // When button Play pressed it class the method OnPlayPressed and that method opens new scene
-        TextureButton play = GetNode<TextureButton>("play");
         play.Pressed += OnPlayPressed;
 
-        TextureButton options = GetNode<TextureButton>("options");
         options.Pressed += OnOptionsPressed;
 
         // When button quit pressed it class the method OnQuitPressed and that method quits the game
-        TextureButton quit = GetNode<TextureButton>("quit");
         quit.Pressed += OnQuitPressed;
 
-        TextureButton finnish = GetNode<TextureButton>("Translation/Finnish");
+        tutorial.Pressed += OnTutorialPressed;
+
         finnish.Pressed += OnFinnishPressed;
 
-        TextureButton english = GetNode<TextureButton>("Translation/English");
         english.Pressed += OnEnglishPressed;
 
-        TextureButton swedish = GetNode<TextureButton>("Translation/Swedish");
         swedish.Pressed += OnSwedishPressed;
 
         // Gets the node MenuClick
@@ -50,6 +53,12 @@ public partial class Menu : Control
         // quits
         _buttonSound.Play();
         GetTree().Quit();
+    }
+
+    private void OnTutorialPressed()
+    {
+        _buttonSound.Play();
+        GetTree().CurrentScene.AddChild(GD.Load<PackedScene>("res://Scenes/TutorialPlayer.tscn").Instantiate());
     }
 
     private void OnFinnishPressed()

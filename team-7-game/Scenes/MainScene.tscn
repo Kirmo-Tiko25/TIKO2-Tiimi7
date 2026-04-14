@@ -1,5 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=43 format=3 uid="uid://cwpm1jnf5exi3"]
 
+[ext_resource type="Script" uid="uid://cq4ldotoom3sh" path="res://Scripts/MainScene.cs" id="1_rv6c1"]
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="3_0iob3"]
 [ext_resource type="Script" uid="uid://ckujsir53050v" path="res://Scripts/Spawner.cs" id="5_qxria"]
@@ -102,6 +103,7 @@ stream_0/stream = ExtResource("22_p5ymy")
 stream_1/stream = ExtResource("22_bpy1e")
 
 [node name="MoveTest" type="Node2D"]
+script = ExtResource("1_rv6c1")
 
 [node name="GameManager" type="Node2D" parent="."]
 process_mode = 3

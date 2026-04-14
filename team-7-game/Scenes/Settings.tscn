@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp0aqb634qrd4"]
+[gd_scene load_steps=6 format=3 uid="uid://boki0f6je4w8g"]
 
 [ext_resource type="FontFile" uid="uid://c1dkw20n1rdm3" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="1_4hxq3"]
 [ext_resource type="Script" uid="uid://1i1hclo546b4" path="res://Scripts/Settings.cs" id="1_yrknh"]
@@ -8,12 +8,14 @@
 
 [node name="Settings" type="Node2D"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("tutorialOnButton", "tutorialOnLabel")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_yrknh")
+tutorialOnButton = NodePath("SettingsBackground/TutorialOnButton")
+tutorialOnLabel = NodePath("SettingsBackground/TutorialOnButton/TutorialOnLabel")
 
 [node name="SettingsBackground" type="ColorRect" parent="Control"]
 layout_mode = 0
@@ -123,6 +125,31 @@ offset_bottom = 949.0
 theme_override_fonts/font = ExtResource("5_ppjuv")
 theme_override_font_sizes/font_size = 75
 text = "SFX"
+
+[node name="TutorialOnButton" type="Button" parent="Control/SettingsBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.1
+offset_left = 158.0
+offset_top = 1074.0
+offset_right = 771.3
+offset_bottom = 1293.0
+theme_override_fonts/font = ExtResource("2_w1nw0")
+theme_override_font_sizes/font_size = 40
+text = "Tutorial?"
+alignment = 0
+
+[node name="TutorialOnLabel" type="Label" parent="Control/SettingsBackground/TutorialOnButton"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 28.0
+offset_right = 738.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("1_4hxq3")
+theme_override_font_sizes/font_size = 80
+text = "ON"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="value_changed" from="Control/SettingsBackground/Music" to="Control" method="OnMusicVolumeChanged"]
 [connection signal="value_changed" from="Control/SettingsBackground/SFX" to="Control" method="OnSfxVolumeChanged"]
