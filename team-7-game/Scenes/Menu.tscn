@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2scnpeoidmyf"]
+[gd_scene load_steps=18 format=3 uid="uid://b2scnpeoidmyf"]
 
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://dd6wwwplcusbd" path="res://Scripts/Menu.cs" id="2_6pedr"]
@@ -10,7 +10,9 @@
 [ext_resource type="FontFile" uid="uid://c1dkw20n1rdm3" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Medium.ttf" id="7_qki4b"]
 [ext_resource type="Texture2D" uid="uid://cchdp374fwcuv" path="res://Art/Flags/Finland_Flag.png" id="7_sjh0l"]
 [ext_resource type="Texture2D" uid="uid://cmuu77nwu0tp" path="res://Art/Flags/Finland_Flag_Pressed.png" id="8_qki4b"]
+[ext_resource type="Texture2D" uid="uid://dm5c35ahfr33s" path="res://Art/Buttons/button_416x192.png" id="8_t8p2w"]
 [ext_resource type="Texture2D" uid="uid://ph54iejbn4se" path="res://Art/Flags/United_Kingdom_Flag.png" id="9_byewe"]
+[ext_resource type="Texture2D" uid="uid://oa01mdo0t1ex" path="res://Art/Buttons/buttonPressed_416.png" id="9_krje8"]
 [ext_resource type="Texture2D" uid="uid://oa7jh53kb683" path="res://Art/Flags/United_Kingdom_Flag_Pressed.png" id="10_a8aa6"]
 [ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="12_byewe"]
 [ext_resource type="Texture2D" uid="uid://yoeqvaggeem3" path="res://Art/Flags/Sweden_Flag.png" id="12_x0ao6"]
@@ -94,6 +96,28 @@ offset_right = 628.0
 offset_bottom = 271.0
 text = "QUIT"
 label_settings = ExtResource("6_wfhf6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tutorial" type="TextureButton" parent="MenuControl"]
+layout_mode = 0
+offset_left = -1419.0
+offset_top = -415.0
+offset_right = -1003.0
+offset_bottom = -223.0
+texture_normal = ExtResource("8_t8p2w")
+texture_pressed = ExtResource("9_krje8")
+
+[node name="tutorialLabel" type="Label" parent="MenuControl/tutorial"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 33.0
+offset_right = 381.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_qki4b")
+theme_override_font_sizes/font_size = 80
+text = "Tutorial"
 horizontal_alignment = 1
 vertical_alignment = 1
 

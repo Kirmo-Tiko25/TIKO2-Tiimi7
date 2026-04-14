@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dox1ot7i0iqqw"]
+
+[node name="TutorialVideo" type="Node2D"]
+
+[node name="TutorialVideoBox" type="VideoStreamPlayer" parent="."]
+layout_direction = 2
+offset_left = 1217.0
+offset_top = 575.0
+offset_right = 2969.0
+offset_bottom = 1630.0
