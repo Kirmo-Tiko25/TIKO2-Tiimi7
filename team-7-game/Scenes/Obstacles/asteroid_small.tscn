@@ -3,10 +3,10 @@
 [ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_gwb6y"]
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_ln1nw"]
 [ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisA.tscn" id="2_gwb6y"]
-[ext_resource type="Texture2D" uid="uid://bs4fpvh3wep2s" path="res://Art/asteroid2.png" id="2_o813l"]
+[ext_resource type="Texture2D" uid="uid://c865xqukjw4iw" path="res://Art/newasteroid2.png" id="4_gwb6y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7o5tt"]
-radius = 27.0
+radius = 46.238514
 
 [node name="asteroid_small" type="RigidBody2D" groups=["Hazards"]]
 z_index = 33
@@ -25,8 +25,8 @@ DebrisAScene = ExtResource("2_gwb6y")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_o813l")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_gwb6y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Hazards"]]
 position = Vector2(0, 1)
@@ -34,7 +34,7 @@ shape = SubResource("CircleShape2D_7o5tt")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 z_index = 33
-rect = Rect2(-30, -24, 58, 52)
+rect = Rect2(-47, -47, 94, 97)
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]

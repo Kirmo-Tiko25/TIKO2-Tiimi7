@@ -3,8 +3,7 @@
 [ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_w7t3t"]
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_xmiyx"]
 [ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisA.tscn" id="2_0vtb3"]
-[ext_resource type="Texture2D" uid="uid://18ts67smqmrk" path="res://Art/asteroid3.png" id="2_xmiyx"]
-[ext_resource type="AudioStream" uid="uid://dxfuq5au8n24y" path="res://Audio/Effects/lordsonny-small-rock-break-194553.mp3" id="3_0vtb3"]
+[ext_resource type="Texture2D" uid="uid://c2e25y3c7js54" path="res://Art/newasteroid3.png" id="4_w7t3t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7o5tt"]
 radius = 80.0
@@ -28,7 +27,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_xmiyx")
+texture = ExtResource("4_w7t3t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Hazards"]]
 position = Vector2(0, 1)
