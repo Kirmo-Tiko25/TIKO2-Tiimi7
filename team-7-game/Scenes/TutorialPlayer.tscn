@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dox1ot7i0iqqw"]
+[gd_scene load_steps=4 format=3 uid="uid://dq8lbldrehbyq"]
 
 [ext_resource type="VideoStream" uid="uid://cwyrg3kiul7vf" path="res://Videos/Bing Chilling.ogv" id="1_epomf"]
 [ext_resource type="Script" uid="uid://blajcc81k5en1" path="res://Scenes/TutorialPlayer.cs" id="1_qxurd"]
@@ -26,6 +26,7 @@ stream = ExtResource("1_epomf")
 autoplay = true
 expand = true
 loop = true
+bus = &"Music"
 
 [node name="ExitButton" type="Button" parent="Control"]
 layout_mode = 0
