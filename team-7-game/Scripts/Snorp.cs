@@ -39,6 +39,7 @@ public partial class Snorp : CharacterBody2D
 
 		// Gives you maxhealth in the start
 		CurrentHealth = maxhealth;
+		EmitSignal(SignalName.HealthUI, CurrentHealth);
 		// Gets the node hitsound
 		_hitSound = GetNode<AudioStreamPlayer>("HitSound");
 

@@ -142,7 +142,6 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_dtg5n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snorp"]
-visible = false
 position = Vector2(6, -27.874756)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tx7fy")
@@ -312,7 +311,7 @@ autoplay = true
 bus = &"Music"
 playback_type = 1
 
-[connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="HideHeart"]
+[connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="ChangeHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
 [connection signal="timeout" from="Spawner/ObjectTimer" to="Spawner" method="OnObjectTimerTimeout"]
 [connection signal="timeout" from="Spawner/DistracTimer" to="Spawner" method="OnDistracTimerTimeout"]

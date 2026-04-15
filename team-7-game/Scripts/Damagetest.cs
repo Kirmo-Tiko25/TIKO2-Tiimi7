@@ -21,7 +21,7 @@ public partial class Damagetest : Area2D
             snorp.TakeDamage(1);
 
             // Hide a heart when damage occurs
-            heartUI.HideHeart(snorp.CurrentHealth);
+            heartUI.ChangeHeart(snorp.CurrentHealth);
         }
     }
 }

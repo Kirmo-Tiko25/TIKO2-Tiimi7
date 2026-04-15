@@ -14,6 +14,8 @@ public partial class Life : RigidBody2D
 	{
 		if (body.IsInGroup("player"))
 		{
+			SetCollisionLayerValue(5, false);
+			SetCollisionMaskValue(5, false);
 			var tween = CreateTween();
 			tween.TweenProperty(this, "scale", Vector2.Zero, 0.4f)
 				 .SetEase(Tween.EaseType.In)
