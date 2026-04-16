@@ -4,7 +4,8 @@ using System.Reflection;
 
 public partial class Spawner : Node
 {
-	[Export] private int Difficulty = 3;
+	[Export]
+	private int Difficulty = 3;
 	[Export]
 	public PackedScene SmallAsteroidScene { get; set; }
 	[Export]
@@ -21,12 +22,18 @@ public partial class Spawner : Node
 	public PackedScene SatelliteScene { get; set; }
 	[Export]
 	public PackedScene PlanetScene { get; set; }
+	[Export]
+	public PathFollow2D ObjectSpawnLocation;
+	[Export]
+	public CharacterBody2D Snorp;
+	[Export]
+	public float SafeDistance = 800f;
 	public static bool noDistract { get; set; } = true;
 	public static bool satellitePassed { get; set; } = false;
+	public static bool orlopSpawned { get; set; } = false;
 	public override void _Ready()
 	{
 		NewGame();
-
 	}
 
 	public void GameOver()
@@ -86,7 +93,15 @@ public partial class Spawner : Node
 				}
 				else if (foe == 2)
 				{
-					SpawnOrlop();
+					if (orlopSpawned)
+					{
+						SpawnAsteroidBig();
+					}
+					else
+					{
+						SpawnOrlop();
+						orlopSpawned = true;
+					}
 				}
 
 				dangerLevel++;
@@ -102,27 +117,54 @@ public partial class Spawner : Node
 		}
 	}
 
+	private PathFollow2D SafeSpawn(PathFollow2D safeLocation)
+	{
+
+		int attempts = 0;
+		while (attempts < 5)
+		{
+			attempts++;
+			GD.Print("---------> Spawning Attempt: " + attempts);
+			safeLocation.ProgressRatio = GD.Randf();
+
+			Vector2 spawnPos = ObjectSpawnLocation.GlobalPosition;
+			Vector2 playerPos = Snorp.GlobalPosition;
+			if (spawnPos.DistanceTo(playerPos) > SafeDistance)
+			{
+				GD.Print("Safe Spawn Found");
+				return safeLocation;
+			}
+		}
+		// no safe position found
+		GD.Print("No safe position found");
+		return null;
+
+	}
+
 	public void SpawnOrlop()
 	{
+		// Choose a safe random location on Path2D.
+		PathFollow2D SpawnLocation = SafeSpawn(ObjectSpawnLocation);
+
+		if (SpawnLocation == null)
+		{
+			return;
+		}
 		// Create a new instance of the test scene.
-		Orlop orlop = OrlopScene.Instantiate<Orlop>();
-
-		// Choose a random location on Path2D.
-		var SpawnLocation = GetNode<PathFollow2D>("ObjectPath/ObjectSpawnLocation");
-		SpawnLocation.ProgressRatio = GD.Randf();
-
-		// Set the Object's direction perpendicular to the path direction.
-		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+		var orlop = OrlopScene.Instantiate<Orlop>();
 
 		// Set the Object's position to a random location.
 		orlop.Position = SpawnLocation.Position;
+
+		// Set the Object's direction perpendicular to the path direction.
+		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
 
 		// Add some randomness to the direction.
 		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
 		orlop.Rotation = direction;
 
 		// Choose the velocity.
-		var velocity = new Vector2((float)GD.RandRange(100.0, 200.0), 0);
+		var velocity = new Vector2((float)GD.RandRange(200.0, 400.0), 0);
 		orlop.LinearVelocity = velocity.Rotated(direction);
 
 		// Spawn the mob by adding it to the Main scene.
@@ -131,18 +173,21 @@ public partial class Spawner : Node
 
 	private void SpawnBoulder()
 	{
+		// Choose a safe random location on Path2D.
+		PathFollow2D SpawnLocation = SafeSpawn(ObjectSpawnLocation);
+
+		if (SpawnLocation == null)
+		{
+			return;
+		}
 		// Create a new instance of the test scene.
-		Asteroid boulder = BoulderScene.Instantiate<Asteroid>();
-
-		// Choose a random location on Path2D.
-		var SpawnLocation = GetNode<PathFollow2D>("ObjectPath/ObjectSpawnLocation");
-		SpawnLocation.ProgressRatio = GD.Randf();
-
-		// Set the Object's direction perpendicular to the path direction.
-		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+		var boulder = BoulderScene.Instantiate<Asteroid>();
 
 		// Set the Object's position to a random location.
 		boulder.Position = SpawnLocation.Position;
+
+		// Set the Object's direction perpendicular to the path direction.
+		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
 
 		// Add some randomness to the direction.
 		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
@@ -158,18 +203,22 @@ public partial class Spawner : Node
 
 	private void SpawnAsteroidSmall()
 	{
+		// Choose a safe random location on Path2D.
+		PathFollow2D SpawnLocation = SafeSpawn(ObjectSpawnLocation);
+
+		if (SpawnLocation == null)
+		{
+			return;
+		}
+
 		// Create a new instance of the Asteroid scene.
-		Asteroid asteroidS = SmallAsteroidScene.Instantiate<Asteroid>();
-
-		// Choose a random location on Path2D.
-		var SpawnLocation = GetNode<PathFollow2D>("ObjectPath/ObjectSpawnLocation");
-		SpawnLocation.ProgressRatio = GD.Randf();
-
-		// Set the Object's direction perpendicular to the path direction.
-		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+		var asteroidS = SmallAsteroidScene.Instantiate<Asteroid>();
 
 		// Set the Object's position to a random location.
 		asteroidS.Position = SpawnLocation.Position;
+
+		// Set the Object's direction perpendicular to the path direction.
+		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
 
 		// Add some randomness to the direction.
 		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
@@ -184,18 +233,21 @@ public partial class Spawner : Node
 	}
 	private void SpawnAsteroidBig()
 	{
+		// Choose a safe random location on Path2D.
+		PathFollow2D SpawnLocation = SafeSpawn(ObjectSpawnLocation);
+
+		if (SpawnLocation == null)
+		{
+			return;
+		}
 		// Create a new instance of the Asteroid scene.
-		Asteroid asteroidB = BigAsteroidScene.Instantiate<Asteroid>();
-
-		// Choose a random location on Path2D.
-		var SpawnLocation = GetNode<PathFollow2D>("ObjectPath/ObjectSpawnLocation");
-		SpawnLocation.ProgressRatio = GD.Randf();
-
-		// Set the Object's direction perpendicular to the path direction.
-		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
+		var asteroidB = BigAsteroidScene.Instantiate<Asteroid>();
 
 		// Set the Object's position to a random location.
 		asteroidB.Position = SpawnLocation.Position;
+
+		// Set the Object's direction perpendicular to the path direction.
+		float direction = SpawnLocation.Rotation + Mathf.Pi / 2;
 
 		// Add some randomness to the direction.
 		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);

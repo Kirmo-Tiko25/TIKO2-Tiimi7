@@ -86,6 +86,7 @@ public partial class Orlop : RigidBody2D
 
 	public void Removed()
 	{
+		Spawner.orlopSpawned = false;
 		QueueFree(); // removes object
 	}
 

@@ -78,8 +78,10 @@ locale/translations=PackedStringArray("res://Translations/Alien_Adrift_Translati
 2d_physics/layer_2="wall"
 2d_physics/layer_3="pushing"
 2d_physics/layer_4="dragging"
+2d_physics/layer_5="safeSpawn"
 2d_physics/layer_6="succ"
 2d_physics/layer_7="chase"
+2d_physics/layer_8="life"
 
 [physics]
 

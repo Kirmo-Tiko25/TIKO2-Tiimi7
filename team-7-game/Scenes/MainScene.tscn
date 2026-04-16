@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=42 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://cq4ldotoom3sh" path="res://Scripts/MainScene.cs" id="1_rv6c1"]
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
@@ -89,8 +89,6 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xb4mg"]
-
 [sub_resource type="Curve2D" id="Curve2D_4b75m"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 8, 200, 0, 0, 0, 0, 8, 2000)
@@ -127,8 +125,8 @@ texture = ExtResource("3_0iob3")
 [node name="Snorp" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 88
 position = Vector2(1976, 1288)
-collision_layer = 51
-collision_mask = 19
+collision_layer = 17
+collision_mask = 195
 motion_mode = 1
 script = ExtResource("1_tr2i4")
 Speed = 500.0
@@ -157,7 +155,6 @@ bus = &"SFX"
 parameters/looping = true
 
 [node name="ChaseME" type="Area2D" parent="Snorp"]
-visible = false
 collision_layer = 0
 collision_mask = 64
 gravity_space_override = 1
@@ -181,7 +178,7 @@ vertical_alignment = 1
 stream = SubResource("AudioStreamRandomizer_d0jji")
 bus = &"SFX"
 
-[node name="Spawner" type="Node" parent="."]
+[node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("ObjectSpawnLocation", "Snorp")]
 script = ExtResource("5_qxria")
 SmallAsteroidScene = ExtResource("7_xb4mg")
 BigAsteroidScene = ExtResource("8_6t1o7")
@@ -191,6 +188,8 @@ BoulderScene = ExtResource("10_xc4hf")
 BHScene = ExtResource("13_6rnll")
 SatelliteScene = ExtResource("12_enc0b")
 PlanetScene = ExtResource("13_hx8n4")
+ObjectSpawnLocation = NodePath("ObjectPath/ObjectSpawnLocation")
+Snorp = NodePath("../Snorp")
 
 [node name="TouchScene" parent="Spawner" instance=ExtResource("6_0iob3")]
 z_index = 99
@@ -212,23 +211,12 @@ scale = Vector2(1.0030842, 0.94172114)
 curve = SubResource("Curve2D_qxria")
 
 [node name="ObjectSpawnLocation" type="PathFollow2D" parent="Spawner/ObjectPath"]
-visible = false
 z_index = 50
 position = Vector2(-122.82941, -153.72055)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spawner/ObjectPath/ObjectSpawnLocation"]
+visible = false
 texture = ExtResource("6_q68mp")
-
-[node name="Area2D" type="Area2D" parent="Spawner/ObjectPath/ObjectSpawnLocation"]
-z_index = 55
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawner/ObjectPath/ObjectSpawnLocation/Area2D"]
-top_level = true
-z_index = 50
-scale = Vector2(80, 80)
-shape = SubResource("CircleShape2D_xb4mg")
 
 [node name="LeftPath" type="Path2D" parent="Spawner"]
 position = Vector2(-280, 270)
