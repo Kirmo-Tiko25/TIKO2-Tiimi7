@@ -329,7 +329,7 @@ public partial class Spawner : Node
 		sat.Position = SpawnLocation.Position;
 
 		// Choose the velocity.
-		sat.LinearVelocity = new Vector2((float)GD.RandRange(100.0, 400.0), 0);
+		sat.LinearVelocity = new Vector2((float)GD.RandRange(100.0, 200.0), 0);
 
 		// Spawn it by adding it to the Main scene.
 		AddChild(sat);

@@ -1,24 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b787vqwfqkf31"]
+[gd_scene load_steps=4 format=3 uid="uid://cox1lklhgy1kq"]
 
-[ext_resource type="Script" uid="uid://bu31ii0d8vnvr" path="res://Scripts/DebrisA.cs" id="1_7c2nf"]
-[ext_resource type="Texture2D" uid="uid://bb1nloyp4nitq" path="res://Art/debri_cloud.png" id="2_wbu05"]
+[ext_resource type="Script" uid="uid://bu31ii0d8vnvr" path="res://Scripts/DebrisA.cs" id="1_nei6o"]
+[ext_resource type="Texture2D" uid="uid://b4vvkfcyxvqgg" path="res://Art/satdebris.png" id="2_nei6o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nei6o"]
-radius = 181.04419
+radius = 200.0
 
-[node name="DebrisA" type="RigidBody2D"]
+[node name="DebrisS" type="RigidBody2D"]
 z_index = 89
 collision_layer = 32
 collision_mask = 0
-script = ExtResource("1_7c2nf")
+script = ExtResource("1_nei6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wbu05")
+texture = ExtResource("2_nei6o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nei6o")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-228, -219, 449, 444)
+rect = Rect2(-389, -373, 784, 749)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]

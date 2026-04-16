@@ -5,7 +5,7 @@ public partial class Satellite : RigidBody2D
 {
 	[Export] public int MaxHealth = 2;
 	[Export] public int DamageTreshold = 100; // min speed to take damage
-	[Export] public PackedScene DebrisAScene;
+	[Export] public PackedScene DebrisSScene;
 	[Export] public int DebrisCount = 1;
 	private float _health;
 	private bool _immune = false;
@@ -72,7 +72,7 @@ public partial class Satellite : RigidBody2D
 	{
 		for (int i = 0; i < DebrisCount; i++)
 		{
-			DebrisA debris = DebrisAScene.Instantiate<DebrisA>();
+			DebrisA debris = DebrisSScene.Instantiate<DebrisA>();
 			GetParent().AddChild(debris);
 
 			debris.Position = GlobalPosition;

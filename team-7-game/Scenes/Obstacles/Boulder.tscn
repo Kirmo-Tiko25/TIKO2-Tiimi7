@@ -3,7 +3,7 @@
 [ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_mfoax"]
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_pobn3"]
 [ext_resource type="Texture2D" uid="uid://s0bdscee75ua" path="res://Art/boulder.png" id="2_iquer"]
-[ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisA.tscn" id="2_mfoax"]
+[ext_resource type="PackedScene" uid="uid://b787vqwfqkf31" path="res://Scenes/Obstacles/debrisA.tscn" id="2_mfoax"]
 [ext_resource type="Texture2D" uid="uid://b6jwjhnf664rk" path="res://Art/boulder_n.png" id="3_mfoax"]
 [ext_resource type="Texture2D" uid="uid://by1touec6l14m" path="res://Art/boulder_s.png" id="4_7wl32"]
 
