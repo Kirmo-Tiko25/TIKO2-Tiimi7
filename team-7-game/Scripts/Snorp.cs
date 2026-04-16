@@ -14,7 +14,7 @@ public partial class Snorp : CharacterBody2D
 	[Export] private int maxhealth = 3;
 	[Signal] delegate void HealthUIEventHandler(int CurrentHealth);
 	public int CurrentHealth;
-	private bool immune = false;
+	private bool _immune = false;
 	private AudioStreamPlayer _hitSound;
 	public override async void _Ready()
 	{
@@ -35,14 +35,13 @@ public partial class Snorp : CharacterBody2D
 			SceneTreeTimer.SignalName.Timeout
 		);
 
-		canMove = true;
-
 		// Gives you maxhealth in the start
 		CurrentHealth = maxhealth;
 		EmitSignal(SignalName.HealthUI, CurrentHealth);
 		// Gets the node hitsound
 		_hitSound = GetNode<AudioStreamPlayer>("HitSound");
 
+		canMove = true;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -128,14 +127,14 @@ public partial class Snorp : CharacterBody2D
 
 	private void HandleLifeCollision(KinematicCollision2D collision)
 	{
-		if (immune)
+		if (_immune)
 		{
 			GD.Print("life while Immune");
 		}
 		else
 		{
 			// 1 sec immunity
-			immune = true;
+			_immune = true;
 			// start immune timer
 			GetNode<Timer>("ImmuneTimer").Start();
 
@@ -157,18 +156,19 @@ public partial class Snorp : CharacterBody2D
 		// Pushes the player slightly away from the hazard to prevent sticking
 		GlobalPosition += collision.GetNormal() * 1f;
 
-		if (immune)
+		if (_immune)
 		{
 			GD.Print("collision while Immune");
 		}
 		else
 		{
-			// 1 sec immunity
-			immune = true;
+			//wobble for a bit with: (duration, force)
+			Wobble(4f);
 			// switch to damage animation
 			GetNode<AnimatedSprite2D>("SnorpUfo").Play("damage");
 			// start immune timer
 			GetNode<Timer>("ImmuneTimer").Start();
+
 			TakeDamage(1);
 		}
 		Vector2 bounce = direction.Bounce(collision.GetNormal());
@@ -181,9 +181,35 @@ public partial class Snorp : CharacterBody2D
 
 		GD.Print("You crashed into a hazard!");
 	}
+
+	private async void Wobble(float strength)
+	{
+		if (_immune)
+		{
+			return;
+		}
+		// 1 sec immunity
+		_immune = true;
+
+		float origRotation = RotationDegrees;
+		float time = 0f;
+
+		while (_immune)
+		{
+			// Oscallate rotation with sine wave
+			float wobble = (float)(Mathf.Sin((double)time * 40.0) * strength);
+			RotationDegrees = origRotation + wobble;
+
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+			time += (float)GetProcessDeltaTime();
+
+		}
+
+	}
+
 	private void OnImmuneTimerTimeout()
 	{
-		immune = false;
+		_immune = false;
 		GD.Print("Immunity ended");
 		GetNode<AnimatedSprite2D>("SnorpUfo").Play("default");
 	}
