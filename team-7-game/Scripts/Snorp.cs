@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 public partial class Snorp : CharacterBody2D
 {
@@ -13,8 +14,10 @@ public partial class Snorp : CharacterBody2D
 	[Export] private bool canMove = false;
 	[Export] private int maxhealth = 3;
 	[Signal] delegate void HealthUIEventHandler(int CurrentHealth);
+	[Export] public PackedScene DebrisSScene;
 	public int CurrentHealth;
 	private bool _immune = false;
+	private bool _dying = false;
 	private AudioStreamPlayer _hitSound;
 	public override async void _Ready()
 	{
@@ -116,12 +119,32 @@ public partial class Snorp : CharacterBody2D
 		}
 	}
 
-	private void Die()
+	private async void Die()
 	{
+		if (_dying)
+		{
+			return;
+		}
+		_dying = true;
+
+		SetCollisionLayerValue(1, false);
+		SetCollisionMaskValue(1, false);
+
+		SpawnDebris();
+		SetPhysicsProcess(false);
+		// Hide the ship visuals
+		GetNode<AnimatedSprite2D>("SnorpUfo").Visible = false;
+		// Start fading out music
+		FadeOutMusic(4f);
+
 		// When this method is called it means you have died and the game ends
 		GD.Print("You Died!");
 		GD.Print("You got " + GameManager.Points + " Points!");
-		QueueFree();
+
+		//Wait a bit for everything else end
+		await ToSignal(GetTree().CreateTimer(5f), "timeout");
+
+
 		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
 	}
 
@@ -206,11 +229,46 @@ public partial class Snorp : CharacterBody2D
 		}
 
 	}
+	private void SpawnDebris()
+	{
+		for (int i = 0; i < 1; i++)
+		{
+			DebrisA debris = DebrisSScene.Instantiate<DebrisA>();
+			GetParent().AddChild(debris);
 
+			debris.Position = GlobalPosition;
+
+			Vector2 dir = Vector2.Right.Rotated(GD.Randf() * Mathf.Tau);
+			float force = GD.RandRange(80, 200);
+
+			debris.Launch(dir, force);
+		}
+	}
 	private void OnImmuneTimerTimeout()
 	{
 		_immune = false;
 		GD.Print("Immunity ended");
 		GetNode<AnimatedSprite2D>("SnorpUfo").Play("default");
 	}
+	public async void FadeOutMusic(float duration)
+	{
+		int bus = AudioServer.GetBusIndex("Music");
+		float startDb = AudioServer.GetBusVolumeDb(bus);
+		float endDb = -40f; // practically silent
+
+		float time = 0f;
+
+		while (time < duration)
+		{
+			float t = time / duration;
+			float newDb = Mathf.Lerp(startDb, endDb, t);
+			AudioServer.SetBusVolumeDb(bus, newDb);
+
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+			time += (float)GetProcessDeltaTime();
+		}
+
+		AudioServer.SetBusVolumeDb(bus, endDb);
+	}
+
 }
