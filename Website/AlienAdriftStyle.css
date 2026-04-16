@@ -7,31 +7,39 @@
 body {
     margin: 0;
     background-image: url('Pics/NebulaBackground_Small.jpg');
-    background-size: repeat;
+    background-repeat: repeat;
     background-position: center;
     font-family:'Pixelify Sans', sans-serif;
-
 }
 
 /* navigation bar styling
-    make it fixed to the top and full width
-    set background color and padding */
+    set position to fixed so it stays on top of the page
+    set background color and padding
+    set display to flex and align items to center */
 .topnav {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     background-color: black;
     padding: 15px 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* nav grid styling
+    set display to grid and define two columns with a gap between them */
+.nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 70px;
 }
 
 /* nav links styling
-    set color, spacing, font size and weight
+    set color, font size and weight
     change link color on hover */
 .topnav a {
     color: white;
-    margin: 0 30px;
     font-size: 20px;
     font-weight: bold;
 }
@@ -47,6 +55,13 @@ body {
     text-align: center;
     color: white;
     padding: 10px;
+}
+
+/* header and intro p styling
+    set text alignment and margins so its easier to read */
+.header p, .intro p {
+    text-align: left;
+    margin: 0 15px;
 }
 
 /* trailer container styling
@@ -72,7 +87,7 @@ body {
 .pictures {
     display: flex;
     flex-wrap: wrap;
-    direction: column;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -123,7 +138,10 @@ body {
 /* larger screens styling
     change background image 
     change content margin for topnav to look better 
+    change nav to row and add spacing between links
+    change titleshot to larger version
     remove max width from trailer container
+    change pictures container to a row
     change member pictures container to a row
     change logo container to row, still keep stack stacky */
 @media (min-width: 768px) {
@@ -135,8 +153,24 @@ body {
         margin: 100px 10% 10%;
     }
 
+    .topnav {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .nav-grid {
+        display: contents;
+    }
+
+    .header img {
+        content: url("Pics/Titleshot.jpg");
+    }
+
     .trailer-container {
         max-width: none;
+    }
+
+    .pictures {
+        flex-direction: row;
     }
 
     .team-member-container {
