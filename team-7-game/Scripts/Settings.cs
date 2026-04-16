@@ -7,13 +7,19 @@ public partial class Settings : Control
 	[Export] private Button leaderboardVisibilityButton;
 	[Export] private Button tutorialOnButton;
 
-	[Export] private Label	pointsVisibilityLabel;
-	[Export] private Label	leaderboardVisibilityLabel;
+	[Export] private Label pointsVisibilityLabel;
+	[Export] private Label leaderboardVisibilityLabel;
 	[Export] private Label tutorialOnLabel;
 	private int _musicBus;
-    private int _sfxBus;
+	private int _sfxBus;
+	private HSlider musicSlider;
+	private HSlider sfxSlider;
+	private CheckBox points;
+	private CheckBox leaderBoard;
+
 	public override void _Ready()
 	{
+		var settings = GetNode<GameManager>("/root/GameManager");
 		// Get nodes for naming convenience
 		pointsVisibilityButton = GetNode<Button>("SettingsBackground/PointsVisibleButton");
 		leaderboardVisibilityButton = GetNode<Button>("SettingsBackground/LeaderboardVisibleButton");
@@ -33,12 +39,14 @@ public partial class Settings : Control
 
 		//Gets the music and sfx bus nodes.
 		_musicBus = AudioServer.GetBusIndex("Music");
-        _sfxBus = AudioServer.GetBusIndex("SFX");
+		_sfxBus = AudioServer.GetBusIndex("SFX");
 
 		var musicSlider = GetNode<HSlider>("SettingsBackground/Music");
+		musicSlider.Value = settings.MusicVolume;
 		musicSlider.ValueChanged += OnMusicVolumeChanged;
 
 		var sfxSlider = GetNode<HSlider>("SettingsBackground/SFX");
+		sfxSlider.Value = settings.SfxVolume;
 		sfxSlider.ValueChanged += OnSfxVolumeChanged;
 	}
 
@@ -98,22 +106,34 @@ public partial class Settings : Control
 	}
 
 	public void OnMusicVolumeChanged(double value)
-    {
-        AudioServer.SetBusVolumeDb(_musicBus, LinearToDb((float)value));
-    }
-
-    public void OnSfxVolumeChanged(double value)
-    {
-        AudioServer.SetBusVolumeDb(_sfxBus, LinearToDb((float)value));
-    }
-
-  	private float LinearToDb(float linear)
 	{
-    	return Mathf.LinearToDb(Mathf.Max(linear, 0.0001f));
+		float linear = (float)value;
+		float db = Mathf.LinearToDb(linear);
+
+		AudioServer.SetBusVolumeDb(_musicBus, db);
+		var settings = GetNode<GameManager>("/root/GameManager");
+		settings.SetMusicVolume(linear);
+	}
+
+	public void OnSfxVolumeChanged(double value)
+	{
+		float linear = (float)value;
+		float db = Mathf.LinearToDb(linear);
+
+		AudioServer.SetBusVolumeDb(_sfxBus, db);
+		var settings = GetNode<GameManager>("/root/GameManager");
+		settings.SetSfxVolume(linear);
+	}
+
+	private float LinearToDb(float linear)
+	{
+		return Mathf.LinearToDb(Mathf.Max(linear, 0.0001f));
 	}
 
 	private void OnExitButtonPressed()
 	{
+		var settings = GetNode<GameManager>("/root/GameManager");
+		settings.SaveSettings();
 		QueueFree();
 	}
 

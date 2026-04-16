@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=42 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://cq4ldotoom3sh" path="res://Scripts/MainScene.cs" id="1_rv6c1"]
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
@@ -33,7 +33,6 @@
 [ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="17_hx8n4"]
 [ext_resource type="AudioStream" uid="uid://dq2584qsrvp30" path="res://Audio/Music/hitslab-gaming-game-video-game-music-474671.mp3" id="22_bpy1e"]
 [ext_resource type="AudioStream" uid="uid://bud833n17ej5d" path="res://Audio/Music/the_mountain-game-game-music-508018.mp3" id="22_p5ymy"]
-[ext_resource type="PackedScene" uid="uid://cox1lklhgy1kq" path="res://Scenes/Obstacles/debrisS.tscn" id="34_dtg5n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dtg5n"]
 animations = [{
@@ -230,6 +229,8 @@ rotation = 1.5707964
 
 [node name="Sprite2D" type="Sprite2D" parent="Spawner/LeftPath/LeftSpawnLocation"]
 visible = false
+position = Vector2(0, 1.7949777)
+scale = Vector2(1, 0.03183379)
 texture = ExtResource("6_q68mp")
 
 [node name="SpawnOrlop" type="Button" parent="Spawner"]
@@ -299,10 +300,6 @@ stream = SubResource("AudioStreamRandomizer_3va76")
 autoplay = true
 bus = &"Music"
 playback_type = 1
-
-[node name="Satellite" parent="." instance=ExtResource("12_enc0b")]
-position = Vector2(840, 894)
-DebrisSScene = ExtResource("34_dtg5n")
 
 [connection signal="HealthUI" from="Snorp" to="HeartPointsUI" method="ChangeHeart"]
 [connection signal="timeout" from="Snorp/ImmuneTimer" to="Snorp" method="OnImmuneTimerTimeout"]
