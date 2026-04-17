@@ -10,6 +10,7 @@ public partial class GameManager : Node2D
 	public static bool TutorialOn { get; set; }
 	public float MusicVolume { get; private set; }
 	public float SfxVolume { get; private set; }
+	private static float _musicreset;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -65,7 +66,7 @@ public partial class GameManager : Node2D
 		Spawner.satellitePassed = false;
 		Spawner.noDistract = true;
 		Spawner.orlopSpawned = false;
-		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music"), 0.4f);
+		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music"), _musicreset);
 
 	}
 
@@ -93,6 +94,7 @@ public partial class GameManager : Node2D
 		PointsVisible = (bool)config.GetValue("visible", "points", true);
 		LeaderboardVisible = (bool)config.GetValue("visible", "leader", true);
 		TutorialOn = (bool)config.GetValue("tutorial", "tutorial", true);
+		_musicreset = MusicVolume;
 	}
 
 	public void SaveSettings()
@@ -106,6 +108,7 @@ public partial class GameManager : Node2D
 		config.SetValue("tutorial", "tutorial", TutorialOn);
 
 		config.Save("user://config.cfg");
+		_musicreset = MusicVolume;
 	}
 
 	public void SetMusicVolume(float value) => MusicVolume = value;
