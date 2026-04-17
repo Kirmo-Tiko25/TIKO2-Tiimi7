@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dlkbwgesr8grb" path="res://Scripts/Satellite.cs" id="1_ua58u"]
 [ext_resource type="Texture2D" uid="uid://cl63xhstdh6ws" path="res://Art/satellite_2.png" id="2_ua58u"]
 [ext_resource type="Texture2D" uid="uid://couak610k30ei" path="res://Art/satellite_3.png" id="3_88i04"]
-[ext_resource type="PackedScene" uid="uid://u3yndukx8gwp" path="res://Scenes/Obstacles/debrisS.tscn" id="3_kcio1"]
+[ext_resource type="PackedScene" uid="uid://u3yndukx8gwp" path="res://Scenes/Obstacles/debrisSynthetic.tscn" id="3_kcio1"]
 [ext_resource type="Texture2D" uid="uid://df4xxw63etxnf" path="res://Art/satellite_4.png" id="4_p8h68"]
 [ext_resource type="Texture2D" uid="uid://xxrxcnuoncfq" path="res://Art/satellite_5.png" id="5_kcio1"]
 [ext_resource type="AudioStream" uid="uid://bcnerbibt71tm" path="res://Audio/Effects/kuzu420-radar-beeping-192404.mp3" id="7_88i04"]

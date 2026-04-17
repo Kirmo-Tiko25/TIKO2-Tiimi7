@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dbgx6e4frwrat" path="res://Art/Characters/PlayerDamage1.png" id="5_r0vnq"]
 [ext_resource type="PackedScene" uid="uid://bo7aisp40hvdd" path="res://Scenes/Touches/Touch_scene.tscn" id="6_0iob3"]
 [ext_resource type="Texture2D" uid="uid://520rib104su1" path="res://Art/Characters/PlayerDamage2.png" id="6_c3pre"]
-[ext_resource type="PackedScene" uid="uid://u3yndukx8gwp" path="res://Scenes/Obstacles/debrisS.tscn" id="6_dtg5n"]
+[ext_resource type="PackedScene" uid="uid://u3yndukx8gwp" path="res://Scenes/Obstacles/debrisSynthetic.tscn" id="6_dtg5n"]
 [ext_resource type="Texture2D" uid="uid://baolvkt6befuq" path="res://icon.svg" id="6_q68mp"]
 [ext_resource type="AudioStream" uid="uid://mmmp5xjxxwtf" path="res://Audio/Effects/freesound_community-spaceship-cruising-ufo-7176.mp3" id="7_hx8n4"]
 [ext_resource type="PackedScene" uid="uid://dvp7cla4cyh82" path="res://Scenes/BorderWalls.tscn" id="7_q68mp"]

@@ -5,7 +5,7 @@
 [ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_ujr0y"]
 [ext_resource type="PackedScene" uid="uid://d16uba7r24jmd" path="res://Scenes/killZone.tscn" id="2_0xaqp"]
 [ext_resource type="PackedScene" uid="uid://dp00hj8q5tsiq" path="res://Scenes/Obstacles/Life.tscn" id="3_kelae"]
-[ext_resource type="PackedScene" uid="uid://b787vqwfqkf31" path="res://Scenes/Obstacles/debrisA.tscn" id="4_2i65w"]
+[ext_resource type="PackedScene" uid="uid://b787vqwfqkf31" path="res://Scenes/Obstacles/debrisAsteroid.tscn" id="4_2i65w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r7clh"]
 radius = 180.0

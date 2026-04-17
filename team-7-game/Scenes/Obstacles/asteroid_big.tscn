@@ -2,7 +2,7 @@
 
 [ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_w7t3t"]
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_xmiyx"]
-[ext_resource type="PackedScene" uid="uid://b787vqwfqkf31" path="res://Scenes/Obstacles/debrisA.tscn" id="2_0vtb3"]
+[ext_resource type="PackedScene" uid="uid://b787vqwfqkf31" path="res://Scenes/Obstacles/debrisAsteroid.tscn" id="2_0vtb3"]
 [ext_resource type="Texture2D" uid="uid://c2e25y3c7js54" path="res://Art/newasteroid3.png" id="4_w7t3t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7o5tt"]
