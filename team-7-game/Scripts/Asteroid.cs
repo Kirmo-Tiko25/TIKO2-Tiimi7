@@ -9,6 +9,7 @@ public partial class Asteroid : RigidBody2D
 	[Export] public int DebrisCount = 1;
 	private float _health;
 	private bool _immune = false;
+	private AudioStreamPlayer _hitSound;
 	public override void _Ready()
 	{
 		_health = MaxHealth;
@@ -17,14 +18,14 @@ public partial class Asteroid : RigidBody2D
 
 		AngularVelocity = GD.RandRange(-5, 5);
 
-		//_hitSound = GetNode<AudioStreamPlayer2D>("HitSound");
+		_hitSound = GetNode<AudioStreamPlayer>("HitSound");
 	}
 
 	private void OnBodyEntered(Node body)
 	{
 		if (body is not RigidBody2D other)
 			return;
-
+		_hitSound.Play();
 		// Check relative velocity
 		Vector2 relativeVelocity = LinearVelocity - other.LinearVelocity;
 		float impactSpeed = relativeVelocity.Length();

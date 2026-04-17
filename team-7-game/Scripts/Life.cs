@@ -8,8 +8,6 @@ public partial class Life : RigidBody2D
 	{
 		BodyEntered += OnBodyEntered;
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	private void OnBodyEntered(Node body)
 	{
 		if (body.IsInGroup("player"))

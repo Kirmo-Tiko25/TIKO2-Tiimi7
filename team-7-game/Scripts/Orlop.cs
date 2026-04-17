@@ -51,7 +51,6 @@ public partial class Orlop : RigidBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		//self righting bit
-		// upright target
 		float upright = 0f;
 		float currentRot = Rotation;
 		float angleError = Mathf.AngleDifference(currentRot, upright);
