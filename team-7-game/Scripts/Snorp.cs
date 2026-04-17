@@ -19,6 +19,7 @@ public partial class Snorp : CharacterBody2D
 	private bool _immune = false;
 	private bool _dying = false;
 	private AudioStreamPlayer _hitSound;
+	private AudioStreamPlayer _powerSound;
 	public override async void _Ready()
 	{
 		// Randomize start movement direction
@@ -43,7 +44,8 @@ public partial class Snorp : CharacterBody2D
 		EmitSignal(SignalName.HealthUI, CurrentHealth);
 		// Gets the node hitsound
 		_hitSound = GetNode<AudioStreamPlayer>("HitSound");
-
+		// Gets the node powersound
+		_powerSound = GetNode<AudioStreamPlayer>("PowerUpSound");
 		canMove = true;
 	}
 
@@ -95,7 +97,7 @@ public partial class Snorp : CharacterBody2D
 		GD.Print("Bonus life! Player HP: " + CurrentHealth);
 
 		//When the player gets life it plays the hit sound
-		_hitSound.Play();
+		_powerSound.Play();
 	}
 
 	public void TakeDamage(int damage)
