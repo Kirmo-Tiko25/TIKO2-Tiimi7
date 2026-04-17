@@ -12,6 +12,8 @@ public partial class TutorialPlayer : Node2D
 		GetTree().Paused = true;
 		ProcessMode = ProcessModeEnum.Always;
 
+		GD.Print("Tutorial "+ GameManager.TutorialOn);
+
 		GD.Print("TutorialPlayer ready");
 
 		ExitButton.Pressed += OnExitButtonPressed;
@@ -30,8 +32,9 @@ public partial class TutorialPlayer : Node2D
 	{
 		GetTree().Paused = false;
 
-		GameManager.TutorialToggled();
-		
+		GameManager.TutorialOn = false;
+
+		GetNode<GameManager>("/root/GameManager").SaveSettings();
 		QueueFree();
 	}
 }
