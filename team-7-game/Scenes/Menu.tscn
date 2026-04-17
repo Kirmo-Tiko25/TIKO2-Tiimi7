@@ -26,7 +26,8 @@ scale = Vector2(2.134, 1.801)
 texture = ExtResource("1_3kf3n")
 
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(1926, 546)
+position = Vector2(1967, 500)
+scale = Vector2(2, 2)
 texture = ExtResource("2_x0ao6")
 
 [node name="MenuControl" type="Control" parent="." node_paths=PackedStringArray("play", "options", "quit", "tutorial", "finnish", "english", "swedish")]
@@ -49,9 +50,9 @@ swedish = NodePath("Translation/Swedish")
 [node name="play" type="TextureButton" parent="MenuControl"]
 layout_mode = 0
 offset_left = 68.0
-offset_top = -340.0
+offset_top = -212.0
 offset_right = 768.0
-offset_bottom = -17.0
+offset_bottom = 111.0
 texture_normal = ExtResource("4_wfhf6")
 texture_pressed = ExtResource("5_3jcrr")
 
@@ -68,9 +69,9 @@ horizontal_alignment = 1
 [node name="options" type="TextureButton" parent="MenuControl"]
 layout_mode = 0
 offset_left = 75.0
-offset_top = 32.0
+offset_top = 160.0
 offset_right = 775.0
-offset_bottom = 355.0
+offset_bottom = 483.0
 texture_normal = ExtResource("4_wfhf6")
 texture_pressed = ExtResource("5_3jcrr")
 
@@ -89,9 +90,9 @@ horizontal_alignment = 1
 [node name="quit" type="TextureButton" parent="MenuControl"]
 layout_mode = 0
 offset_left = 82.0
-offset_top = 415.0
+offset_top = 543.0
 offset_right = 782.0
-offset_bottom = 738.0
+offset_bottom = 866.0
 texture_normal = ExtResource("4_wfhf6")
 texture_pressed = ExtResource("5_3jcrr")
 
