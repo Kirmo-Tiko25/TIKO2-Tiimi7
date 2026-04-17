@@ -66,7 +66,7 @@ public partial class GameManager : Node2D
 		Spawner.satellitePassed = false;
 		Spawner.noDistract = true;
 		Spawner.orlopSpawned = false;
-		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music"), _musicreset);
+		//AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music"), _musicreset);
 
 	}
 
@@ -130,7 +130,7 @@ public partial class GameManager : Node2D
 	public static void TutorialToggled()
 	{
 		TutorialOn = !TutorialOn;
-		GD.Print("Tutorial: "+TutorialOn);
+		GD.Print("Tutorial: " + TutorialOn);
 	}
 	// Saves settings when closing game
 	public override void _Notification(int what)
