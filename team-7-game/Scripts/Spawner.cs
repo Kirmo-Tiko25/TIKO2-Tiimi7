@@ -45,15 +45,8 @@ public partial class Spawner : Node
 
 	public void NewGame()
 	{
-
-		/* Optional Player start if we want different starting positions.
-			var player = GetNode<Player>("Player");
-			var startPosition = GetNode<Marker2D>("StartPosition");
-			player.Start(startPosition.Position);
-		*/
-
 		// start counting time, that triggers other things like spawning.
-		// GetNode<Timer>("StartTimer").Start();
+		GetNode<Timer>("StartTimer").Start();
 	}
 
 	// After (2) seconds from Game Start: starts the other timers.
@@ -266,19 +259,15 @@ public partial class Spawner : Node
 
 		if (noDistract)
 		{
-			if (satellitePassed)
-			{
-				SpawnPlanet();
-			}
-			else if (cometSpawned == 0)
+			if (cometSpawned == 0)
 			{
 				SpawnComet();
 				cometSpawned++;
 			}
+
 			else if (cometSpawned > 0)
 			{
-				int i = GD.RandRange(0, 2);
-				GD.Print("Spawn Number: " + i);
+				int i = GD.RandRange(0, 3);
 				if (i == 0)
 				{
 					SpawnBlackHole();
@@ -288,6 +277,10 @@ public partial class Spawner : Node
 					SpawnSatellite();
 				}
 				else if (i == 2)
+				{
+					SpawnPlanet();
+				}
+				else if (i == 3)
 				{
 					cometSpawned--;
 				}

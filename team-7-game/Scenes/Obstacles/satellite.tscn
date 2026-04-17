@@ -38,7 +38,7 @@ radius = 110.0
 
 [node name="Satellite" type="RigidBody2D"]
 z_index = 34
-collision_layer = 33
+collision_layer = 41
 mass = 200.0
 physics_material_override = ExtResource("1_p8h68")
 script = ExtResource("1_ua58u")
