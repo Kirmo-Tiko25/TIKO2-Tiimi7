@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6jwjhnf664rk"
-path="res://.godot/imported/boulder_n.png-c96652c300209f6c98344a26c56ad810.ctex"
+uid="uid://bohlkrl4sake5"
+path="res://.godot/imported/AALOGO_Android.png-cfe171e9fe6bf4b5f05e3ae660baf225.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/boulder_n.png"
-dest_files=["res://.godot/imported/boulder_n.png-c96652c300209f6c98344a26c56ad810.ctex"]
+source_file="res://Art/AALOGO_Android.png"
+dest_files=["res://.godot/imported/AALOGO_Android.png-cfe171e9fe6bf4b5f05e3ae660baf225.ctex"]
 
 [params]
 

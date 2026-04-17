@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dox1ot7i0iqqw"]
 
-[ext_resource type="Script" uid="uid://blajcc81k5en1" path="res://Scenes/TutorialPlayer.cs" id="1_qxurd"]
-[ext_resource type="VideoStream" uid="uid://cgqmn0tugin8h" path="res://Videos/Tutorial.ogv" id="2_m8pnw"]
+[ext_resource type="Script" path="res://Scenes/TutorialPlayer.cs" id="1_qxurd"]
+[ext_resource type="VideoStream" uid="uid://vpgrwvdgylcs" path="res://Videos/Tutorial_Smaller.ogv" id="2_m8pnw"]
 [ext_resource type="FontFile" uid="uid://dj681rw682mqk" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_m8pnw"]
 
 [node name="TutorialVideo" type="Node2D" node_paths=PackedStringArray("ExitButton", "DontShowAgainButton")]
