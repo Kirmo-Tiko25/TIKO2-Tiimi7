@@ -32,7 +32,7 @@ public partial class GameOver : Control
     private void OnRetryPressed()
     {
         _buttonSound.Play();
-        GetTree().ChangeSceneToFile("res://Scenes/Mainscene.tscn");
+        GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
         GameManager.ResetPoints();
     }
 

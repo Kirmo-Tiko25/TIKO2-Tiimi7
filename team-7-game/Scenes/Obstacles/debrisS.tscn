@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cox1lklhgy1kq"]
+[gd_scene load_steps=4 format=3 uid="uid://u3yndukx8gwp"]
 
 [ext_resource type="Script" uid="uid://bu31ii0d8vnvr" path="res://Scripts/DebrisA.cs" id="1_nei6o"]
 [ext_resource type="Texture2D" uid="uid://b4vvkfcyxvqgg" path="res://Art/satdebris.png" id="2_nei6o"]
