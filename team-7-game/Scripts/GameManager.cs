@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class GameManager : Node2D
 {
@@ -60,6 +61,11 @@ public partial class GameManager : Node2D
 	public static void ResetPoints()
 	{
 		Points = 0;
+		Spawner.satellitePassed = false;
+		Spawner.noDistract = true;
+		Spawner.orlopSpawned = false;
+		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music"), 0.4f);
+
 	}
 
 	public void LoadSettings()
