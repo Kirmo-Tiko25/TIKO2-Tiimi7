@@ -83,8 +83,6 @@ public partial class Snorp : CharacterBody2D
 				HandleWallCollision(collision);
 			}
 		}
-		// TODO shaking system to make it appear unctrolloed.
-		// Rotate(0.1f);
 	}
 
 	private void TakeLife(int damage)
@@ -106,13 +104,13 @@ public partial class Snorp : CharacterBody2D
 		CurrentHealth -= damage;
 		EmitSignal(SignalName.HealthUI, CurrentHealth);
 		GD.Print("Player HP: " + CurrentHealth);
-		// This checks that if you have 0 HP after taking damage the game ends and you die
 
 		// Decreases speed by speedDecrease amount
 		Speed *= speedDecrease;
 		//When the player takes damage it plays the hit sound
 		_hitSound.Play();
 
+		// This checks that if you have 0 HP after taking damage the game ends and you die
 		if (CurrentHealth <= 0)
 		{
 			Die();
@@ -254,7 +252,7 @@ public partial class Snorp : CharacterBody2D
 	{
 		int bus = AudioServer.GetBusIndex("Music");
 		float startDb = AudioServer.GetBusVolumeDb(bus);
-		float endDb = -40f; // practically silent
+		float endDb = -40f; // silences music
 
 		float time = 0f;
 
