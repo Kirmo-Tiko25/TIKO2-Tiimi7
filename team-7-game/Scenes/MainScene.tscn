@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cwpm1jnf5exi3"]
+[gd_scene load_steps=44 format=3 uid="uid://cwpm1jnf5exi3"]
 
 [ext_resource type="Script" uid="uid://cq4ldotoom3sh" path="res://Scripts/MainScene.cs" id="1_rv6c1"]
 [ext_resource type="Script" uid="uid://c0wjoke0h1t24" path="res://Scripts/Snorp.cs" id="1_tr2i4"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://cs503r0wtc83l" path="res://Audio/Effects/floraphonic-metal-hit-50-193312.mp3" id="15_dtg5n"]
 [ext_resource type="FontFile" uid="uid://0i7y4ttqo4gp" path="res://Fonts/Pixelify_Sans/static/PixelifySans-SemiBold.ttf" id="15_enc0b"]
 [ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="17_hx8n4"]
+[ext_resource type="AudioStream" uid="uid://uio74m2i710g" path="res://Audio/Effects/ribhavagrawal-power-up-type-1-230548.mp3" id="18_d0jji"]
 [ext_resource type="AudioStream" uid="uid://dq2584qsrvp30" path="res://Audio/Music/hitslab-gaming-game-video-game-music-474671.mp3" id="22_bpy1e"]
 [ext_resource type="AudioStream" uid="uid://bud833n17ej5d" path="res://Audio/Music/the_mountain-game-game-music-508018.mp3" id="22_p5ymy"]
 
@@ -178,6 +179,13 @@ vertical_alignment = 1
 
 [node name="HitSound" type="AudioStreamPlayer" parent="Snorp"]
 stream = SubResource("AudioStreamRandomizer_d0jji")
+bus = &"SFX"
+
+[node name="PowerUpSound" type="AudioStreamPlayer" parent="Snorp"]
+stream = ExtResource("18_d0jji")
+
+[node name="PowerUpSound2" type="AudioStreamPlayer" parent="Snorp"]
+stream = ExtResource("18_d0jji")
 bus = &"SFX"
 
 [node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("ObjectSpawnLocation", "Snorp")]
