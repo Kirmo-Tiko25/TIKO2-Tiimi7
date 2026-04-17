@@ -58,6 +58,7 @@ public partial class GameManager : Node2D
 		GD.Print("You got a point, now you have: " + Points);
 	}
 
+	// Resets points and other things for a new game
 	public static void ResetPoints()
 	{
 		Points = 0;
@@ -127,7 +128,7 @@ public partial class GameManager : Node2D
 	{
 		TutorialOn = !TutorialOn;
 	}
-	// Save settings when closing game
+	// Saves settings when closing game
 	public override void _Notification(int what)
 	{
 		if (what == NotificationWMCloseRequest)

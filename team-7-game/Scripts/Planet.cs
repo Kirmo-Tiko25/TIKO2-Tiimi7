@@ -3,11 +3,11 @@ using System;
 
 public partial class Planet : RigidBody2D
 {
-	[Export] public int MaxHealth = 10;
+	[Export] public int MaxHealth = 6;
 	[Export] public int DamageTreshold = 10; // min speed to take damage
 	[Export] public PackedScene LifeScene;
 	[Export] public PackedScene DebrisAScene;
-	[Export] public int DebrisCount = 1;
+	[Export] public int DebrisCount = 2;
 	private float _health;
 	private bool _immune = false;
 	public override void _Ready()
