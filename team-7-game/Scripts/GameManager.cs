@@ -130,6 +130,7 @@ public partial class GameManager : Node2D
 	public static void TutorialToggled()
 	{
 		TutorialOn = !TutorialOn;
+		GD.Print("Tutorial: "+TutorialOn);
 	}
 	// Saves settings when closing game
 	public override void _Notification(int what)

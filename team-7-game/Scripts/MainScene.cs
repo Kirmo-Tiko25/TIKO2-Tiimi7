@@ -7,7 +7,7 @@ public partial class MainScene : Node2D
 	public override void _Ready()
 	{
 		// load the tutorial if it's on in settings
-		if (GameManager.TutorialOn)
+		if (GameManager.TutorialOn == true)
 		{
 			var tutorialLayer = new CanvasLayer();
 			AddChild(tutorialLayer);

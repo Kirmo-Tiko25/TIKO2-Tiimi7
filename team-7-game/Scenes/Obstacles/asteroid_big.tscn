@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs6oihemqwhgr"]
+[gd_scene load_steps=7 format=3 uid="uid://bs6oihemqwhgr"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://bdqij5acmd5rr" path="res://Materials/rock.tres" id="1_w7t3t"]
 [ext_resource type="Script" uid="uid://cmlpvv6ms6dye" path="res://Scripts/Asteroid.cs" id="1_xmiyx"]
 [ext_resource type="PackedScene" uid="uid://b787vqwfqkf31" path="res://Scenes/Obstacles/debrisAsteroid.tscn" id="2_0vtb3"]
 [ext_resource type="Texture2D" uid="uid://c2e25y3c7js54" path="res://Art/newasteroid3.png" id="4_w7t3t"]
+[ext_resource type="AudioStream" uid="uid://dp8lr86dujns6" path="res://Audio/Effects/u_xjrmmgxfru-hit-rock-02-266304.mp3" id="5_e1el5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7o5tt"]
 radius = 80.0
@@ -35,6 +36,10 @@ shape = SubResource("CircleShape2D_7o5tt")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-87, -75, 167, 154)
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_e1el5")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]
