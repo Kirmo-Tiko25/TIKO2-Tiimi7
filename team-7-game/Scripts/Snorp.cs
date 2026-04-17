@@ -53,17 +53,8 @@ public partial class Snorp : CharacterBody2D
 	{
 		if (!canMove) return;
 
-		GetNode<Label>("SpeedLabel").Text = $"S: {Speed:F0}";
-
 		// Create Velocity and local _velocity
 		Vector2 Velocity = direction * Speed;
-
-		// downgrade speed to maxspeed
-		if (Speed > maxSpeed)
-		{
-			GetNode<Label>("SpeedLabel").AddThemeColorOverride("font_color",
-			new Color(1, 0, 0, 1)); //colors speed to Red
-		}
 
 		// Create Movement and enables colliding instead of MoveAndSlide sliding
 		var collision = MoveAndCollide(Velocity * (float)delta);
