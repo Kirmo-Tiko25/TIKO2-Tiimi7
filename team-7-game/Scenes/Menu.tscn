@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2scnpeoidmyf"]
+[gd_scene load_steps=19 format=3 uid="uid://b2scnpeoidmyf"]
 
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://dd6wwwplcusbd" path="res://Scripts/Menu.cs" id="2_6pedr"]
 [ext_resource type="Texture2D" uid="uid://ckk4tkjww6i5n" path="res://Art/idk.png" id="2_x0ao6"]
+[ext_resource type="Texture2D" uid="uid://cjyr2cmbgigiv" path="res://Art/Characters/Snorp.png" id="3_krje8"]
 [ext_resource type="Texture2D" uid="uid://d2vdp6dqkxrty" path="res://Art/Buttons/button_700.png" id="4_wfhf6"]
 [ext_resource type="Texture2D" uid="uid://bn4x4hn2yohf2" path="res://Art/Buttons/buttonPressed_700.png" id="5_3jcrr"]
 [ext_resource type="AudioStream" uid="uid://dsus7aug5288x" path="res://Audio/Music/Project Ex - Neo Nebula (freetouse.com).mp3" id="5_ma218"]
@@ -29,6 +30,11 @@ texture = ExtResource("1_3kf3n")
 position = Vector2(1967, 500)
 scale = Vector2(2, 2)
 texture = ExtResource("2_x0ao6")
+
+[node name="Snorp" type="Sprite2D" parent="."]
+position = Vector2(3160, 1439)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_krje8")
 
 [node name="MenuControl" type="Control" parent="." node_paths=PackedStringArray("play", "options", "quit", "tutorial", "finnish", "english", "swedish")]
 custom_minimum_size = Vector2(100, 0)
