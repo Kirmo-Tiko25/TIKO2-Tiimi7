@@ -126,8 +126,6 @@ public partial class Snorp : CharacterBody2D
 		// Hide the ship visuals
 		GetNode<AnimatedSprite2D>("SnorpUfo").Visible = false;
 
-		// FadeOutMusic(4f); // Start fading out music
-
 		// When this method is called it means you have died and the game ends
 		GD.Print("You Died!");
 		GD.Print("You got " + GameManager.Points + " Points!");
@@ -241,26 +239,4 @@ public partial class Snorp : CharacterBody2D
 		GD.Print("Immunity ended");
 		GetNode<AnimatedSprite2D>("SnorpUfo").Play("default");
 	}
-	/*
-	public async void FadeOutMusic(float duration)
-	{
-		int bus = AudioServer.GetBusIndex("Music");
-		float startDb = AudioServer.GetBusVolumeDb(bus);
-		float endDb = -40f; // silences music
-
-		float time = 0f;
-
-		while (time < duration)
-		{
-			float t = time / duration;
-			float newDb = Mathf.Lerp(startDb, endDb, t);
-			AudioServer.SetBusVolumeDb(bus, newDb);
-
-			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-			time += (float)GetProcessDeltaTime();
-		}
-
-		AudioServer.SetBusVolumeDb(bus, endDb);
-	}
-	*/
 }

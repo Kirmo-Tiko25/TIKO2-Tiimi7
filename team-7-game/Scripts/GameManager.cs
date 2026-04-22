@@ -66,8 +66,6 @@ public partial class GameManager : Node2D
 		Spawner.satellitePassed = false;
 		Spawner.noDistract = true;
 		Spawner.orlopSpawned = false;
-		//AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music"), _musicreset);
-
 	}
 
 	public void LoadSettings()

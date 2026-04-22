@@ -49,7 +49,7 @@ public partial class Orlop : RigidBody2D
 	// Rotates Orlop upright constantly
 	public float UpForce = 10f;
 	public override void _PhysicsProcess(double delta)
-	{
+	{/*
 		//self righting bit
 		float upright = 0f;
 		float currentRot = Rotation;
@@ -57,7 +57,7 @@ public partial class Orlop : RigidBody2D
 
 		float torque = -angleError * UpForce - AngularVelocity * 2f;
 		ApplyTorque(torque);
-
+*/
 		// collision bit
 		var collision = MoveAndCollide(LinearVelocity * (float)delta);
 

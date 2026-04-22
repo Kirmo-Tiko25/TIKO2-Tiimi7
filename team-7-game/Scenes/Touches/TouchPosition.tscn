@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://nbnwm3dmo3n0" path="res://Art/touch.png" id="1_ys4ww"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pj1k1"]
-radius = 160.0
+radius = 180.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ys4ww"]
 radius = 90.0
