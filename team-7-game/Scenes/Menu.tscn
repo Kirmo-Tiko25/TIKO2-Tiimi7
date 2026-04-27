@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2scnpeoidmyf"]
+[gd_scene load_steps=20 format=3 uid="uid://b2scnpeoidmyf"]
 
 [ext_resource type="Texture2D" uid="uid://c6qmuljyn5t2a" path="res://Art/Background/1.jpg" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://dd6wwwplcusbd" path="res://Scripts/Menu.cs" id="2_6pedr"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://ujbspd8wdyr3" path="res://Audio/Effects/freesoundeffects-button-click-289742.mp3" id="12_byewe"]
 [ext_resource type="Texture2D" uid="uid://yoeqvaggeem3" path="res://Art/Flags/Sweden_Flag.png" id="12_x0ao6"]
 [ext_resource type="Texture2D" uid="uid://con00pgjh1ce1" path="res://Art/Flags/Sweden_Flag_Pressed.png" id="13_dsmso"]
+[ext_resource type="Texture2D" uid="uid://dtlcguuqf7qu7" path="res://Art/logot.png" id="19_dd46u"]
 
 [node name="Menu" type="Node2D"]
 
@@ -32,8 +33,8 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_x0ao6")
 
 [node name="Snorp" type="Sprite2D" parent="."]
-position = Vector2(3160, 1439)
-scale = Vector2(0.8, 0.8)
+position = Vector2(1044, 1617)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_krje8")
 
 [node name="MenuControl" type="Control" parent="." node_paths=PackedStringArray("play", "options", "quit", "tutorial", "finnish", "english", "swedish")]
@@ -176,3 +177,8 @@ stream = ExtResource("5_ma218")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="Logot" type="Sprite2D" parent="."]
+position = Vector2(3160.0002, 1482.0001)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("19_dd46u")
